@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪔 Diwali Mega Price-Lock Sale | Direct Factory Pass Offers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #780206 0%, #061161 100%);
+        }
+        .gold-border {
+            border: 2px solid #f59e0b;
+        }
+		#productGrid{
+		overflow: auto;
+			max-height:500px;
+			 scrollbar-width: thin;
+			scrollbar-color: #888 #f1f1f1;
+		}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Header / Banner -->
+    <header class="gradient-bg text-white py-8 px-4 shadow-lg text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+	
+	<div class="diwali-banner">
+	<style>        /* Offer Highlights */
+        .diwali-banner {
+            background: linear-gradient(45deg, var(--maroon), var(--crimson));
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .diwali-banner h2 {
+            color: var(--gold);
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .diwali-banner p {
+            font-size: 15px;
+            color: #fff;
+        }
+</style>
+            <h2>✨ 🪔 शुभ धनतेरस एवं दीपावली महाबचत ऑफर 🪔 ✨</h2>
+        </div>
+			
+            <span class="bg-amber-500 text-slate-900 font-bold px-3 py-1 rounded-full text-xs tracking-wider uppercase inline-block mb-2">
+                🪔 Limited Stock Dhanteras Offer
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-amber-300">
+                Diwali "Price-Lock" Special Deals
+            </h1>
+            <p class="text-slate-200 text-sm md:text-base max-w-2xl mx-auto">
+                Pay just 30% Advance today to lock Factory-Direct Pass-Through Prices! Guaranteed Delivery on Dhanteras + FREE Delivery up to 10 KM.
+            </p>
+			
+			
+        </div>
+    </header>
+
+    <!-- Benefits Grid -->
+    <div class="bg-amber-50 border-y border-amber-200 py-3 px-4">
+        <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs md:text-sm font-semibold text-amber-900">
+            <div><i class="fas fa-lock text-amber-600 mr-1"></i> Lock Price with 30%</div>
+            <div><i class="fas fa-truck text-amber-600 mr-1"></i> Free Home Delivery (10 KM)</div>
+            <div><i class="fas fa-calendar-check text-amber-600 mr-1"></i> Dhanteras Guaranteed</div>
+            <div><i class="fas fa-tags text-amber-600 mr-1"></i> Up to 25% Off DP</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- Search and Filter Bar -->
+        <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+            <div class="relative w-full md:w-1/3">
+                <i class="fas fa-search absolute left-3 top-3.5 text-slate-400"></i>
+                <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+            
+            <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+                <button onclick="setCategory('ALL')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap">All</button>
+                <button onclick="setCategory('Refrigerator')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Fridge</button>
+                <button onclick="setCategory('Top Load')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Top Load</button>
+                <button onclick="setCategory('Front Load')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Front Load</button>
+                <button onclick="setCategory('MWO')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Microwaves</button>
+                <button onclick="setCategory('Dishwasher')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Dishwashers</button>
+                <button onclick="setCategory('Cloth Dryer')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">CD</button>
+                <button onclick="setCategory('WDR')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">WDR</button>
+            </div>
+        </div>
+
+        <!-- Product Cards Container -->
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamic JS Injected Cards -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs">
+        <p>🪔 Festive Offers valid for limited stock booking only. Remaining 70% amount payable on delivery.</p>
+        <p class="mt-1">Free Delivery available within 10 KM store radius.</p>
+    </footer>
+
+    <!-- Script / Data -->
+    <script>
+        const products = [
+				{ category: "Cloth Dryer", name: "TURBO DRY", capacity: "5.5", mrp: 27790, offerPrice: 21658, advance: 8337, color: "White"}, 
+				{ category: "Cloth Dryer", name: "TURBO DRY EX", capacity: "5.5", mrp: 29090, offerPrice: 22798, advance: 8727, color: "Rich Silver"}, 
+				{ category: "Dishwasher", name: "NEPTUNE VX14", capacity: "14 Place", mrp: 54990, offerPrice: 41402, advance: 16497, color: "-"}, 
+				{ category: "Dishwasher", name: "NEPTUNE VX15", capacity: "15 Place", mrp: 58490, offerPrice: 46601, advance: 17547, color: "-"}, 
+				{ category: "Dishwasher", name: "NEPTUNE VX16", capacity: "16 Place", mrp: 69990, offerPrice: 53259, advance: 20997, color: "-"}, 
+				{ category: "Dishwasher", name: "NEPTUNE SX16", capacity: "16 Place", mrp: 74990, offerPrice: 55756, advance: 22497, color: "-"}, 
+				{ category: "Front Load", name: "ELENA GXN 6510 CMS", capacity: "6.5 Kg/L", mrp: 37990, offerPrice: 26940, advance: 11397, color: "Grey"}, 
+				{ category: "Front Load", name: "SERENA GXN 7012 CMS", capacity: "7 Kg/L", mrp: 39890, offerPrice: 29742, advance: 11967, color: "Grey"}, 
+				{ category: "Front Load", name: "SERENA MBN 7012 CMS", capacity: "7 Kg/L", mrp: 41390, offerPrice: 30978, advance: 12417, color: "Mocha"}, 
+				{ category: "Front Load", name: "SERENA MSN 7012K CMS", capacity: "7 Kg/L", mrp: 42290, offerPrice: 31802, advance: 12687, color: "Metallic Silver"}, 
+				{ category: "Front Load", name: "SERENA MBN 7012K CMS", capacity: "7 Kg/L", mrp: 43590, offerPrice: 32791, advance: 13077, color: "Mocha"}, 
+				{ category: "Front Load", name: "SENATOR SXN 8012K CMS", capacity: "8 Kg/L", mrp: 49190, offerPrice: 35593, advance: 14757, color: "Silver"}, 
+				{ category: "Front Load", name: "SENATOR MSN 8012K CMS", capacity: "8 Kg/L", mrp: 49790, offerPrice: 36005, advance: 14937, color: "Metallic Silver"}, 
+				{ category: "Front Load", name: "SENATOR BXN 8012K CMS", capacity: "8 Kg/L", mrp: 50190, offerPrice: 36417, advance: 15057, color: "Black"}, 
+				{ category: "Front Load", name: "EXECUTIVE MSN 9014K CMS", capacity: "9 Kg/L", mrp: 50790, offerPrice: 37488, advance: 15237, color: "Metallic Silver"}, 
+				{ category: "Front Load", name: "SENATOR MBN 8014K CMS", capacity: "8 Kg/L", mrp: 51090, offerPrice: 37571, advance: 15327, color: "Mocha"}, 
+				{ category: "Front Load", name: "EXECUTIVE OXN 9014K CMS", capacity: "9 Kg/L", mrp: 51290, offerPrice: 37818, advance: 15387, color: "Onyx"}, 
+				{ category: "Front Load", name: "EXECUTIVE BXN 9014K CMS", capacity: "9 Kg/L", mrp: 53490, offerPrice: 39631, advance: 16047, color: "Black"}, 
+				{ category: "Front Load", name: "EXECUTIVE PLUS MBN 1014K CMS", capacity: "10 Kg/L", mrp: 56890, offerPrice: 41197, advance: 17067, color: "Mocha"}, 
+				{ category: "Front Load", name: "EXECUTIVE BHC 9014 SSLC", capacity: "9 Kg/L", mrp: 63190, offerPrice: 44905, advance: 18957, color: "Black"}, 
+				{ category: "Front Load", name: "EXECUTIVE PLUS BXN 1114KH", capacity: "11 Kg/L", mrp: 67690, offerPrice: 46883, advance: 20307, color: "Black Hairline"}, 
+				{ category: "Front Load", name: "EXECUTIVE PLUS MXC 1014 SSL", capacity: "10 Kg/L", mrp: 64690, offerPrice: 47378, advance: 19407, color: "Mocha"}, 
+				{ category: "Front Load", name: "EXECUTIVE PLUS VSC 1014 SSL", capacity: "10 Kg/L", mrp: 65490, offerPrice: 48119, advance: 19647, color: "Stainless Steel"}, 
+				{ category: "Front Load", name: "EXECUTIVE PLUS VSG 1114", capacity: "11 Kg/L", mrp: 73690, offerPrice: 51498, advance: 22107, color: "Stainless Steel"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 20PM-MEC2", capacity: "20 L", mrp: 8990, offerPrice: 6572, advance: 2697, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 20PM-MEC2B", capacity: "20 L", mrp: 9190, offerPrice: 6725, advance: 2757, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 24PM2B", capacity: "24 L", mrp: 10690, offerPrice: 7872, advance: 3207, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 20PG4S", capacity: "20 L", mrp: 12190, offerPrice: 8630, advance: 3657, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 20BC4", capacity: "20 L", mrp: 16390, offerPrice: 11789, advance: 4917, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 21SC5", capacity: "21 L", mrp: 17190, offerPrice: 12158, advance: 5157, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 23BC5", capacity: "23 L", mrp: 18990, offerPrice: 12527, advance: 5697, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 23BC4", capacity: "23 L", mrp: 18790, offerPrice: 13485, advance: 5637, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 25BC3", capacity: "25 L", mrp: 19590, offerPrice: 14075, advance: 5877, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 25SC4", capacity: "25 L", mrp: 19890, offerPrice: 14370, advance: 5967, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 25BC4", capacity: "25 L", mrp: 20990, offerPrice: 14812, advance: 6297, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 28BC5", capacity: "28 L", mrp: 21490, offerPrice: 15255, advance: 6447, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 30BC5", capacity: "30 L", mrp: 22290, offerPrice: 16361, advance: 6687, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 30BRC3", capacity: "30 L", mrp: 23590, offerPrice: 16951, advance: 7077, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 30FRC2", capacity: "30 L", mrp: 24190, offerPrice: 17835, advance: 7257, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 30BRC4", capacity: "30 L", mrp: 25490, offerPrice: 18204, advance: 7647, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 36BRC2", capacity: "36 L", mrp: 30690, offerPrice: 21596, advance: 9207, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 34BC2", capacity: "34 L", mrp: 49990, offerPrice: 36120, advance: 14997, color: "-"}, 
+				{ category: "MWO", name: "MICRO WAVE OVEN 34FBBSC2", capacity: "34 L", mrp: 62990, offerPrice: 46443, advance: 18897, color: "-"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213AFAS", capacity: "187 L", mrp: 18400, offerPrice: 12881, advance: 5520, color: "Alpha Silver"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213AFSS", capacity: "187 L", mrp: 18700, offerPrice: 13131, advance: 5610, color: "Steel / Silver Steel"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213AFCS", capacity: "187 L", mrp: 18700, offerPrice: 13131, advance: 5610, color: "Crystal Silver"}, 
+				{ category: "Refrigerator", name: "METAL-COOL IFBDC-213AFBO", capacity: "187 L", mrp: 19600, offerPrice: 13550, advance: 5880, color: "Botanical Olive"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213AFRW", capacity: "187 L", mrp: 19900, offerPrice: 13884, advance: 5970, color: "Rose Wine / Red Wine"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213AFBW", capacity: "187 L", mrp: 19900, offerPrice: 13884, advance: 5970, color: "Blossom White"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFCS", capacity: "187 L", mrp: 20300, offerPrice: 14052, advance: 6090, color: "Crystal Silver"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFSS", capacity: "187 L", mrp: 20300, offerPrice: 14052, advance: 6090, color: "Steel / Silver Steel"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFAS", capacity: "187 L", mrp: 20300, offerPrice: 14052, advance: 6090, color: "Alpha Silver"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFBL", capacity: "187 L", mrp: 21500, offerPrice: 14637, advance: 6450, color: "Blue / Black Leather"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFRL", capacity: "187 L", mrp: 21500, offerPrice: 14637, advance: 6450, color: "Red Leather"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIBS", capacity: "187 L", mrp: 21900, offerPrice: 15119, advance: 6570, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-213CIRL", capacity: "187 L", mrp: 22500, offerPrice: 15533, advance: 6750, color: "Red Leather"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFBLD", capacity: "187 L", mrp: 23000, offerPrice: 15557, advance: 6900, color: "Blue Diamond / Floral"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIBI", capacity: "187 L", mrp: 23000, offerPrice: 15863, advance: 6900, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DIBS", capacity: "187 L", mrp: 23100, offerPrice: 15946, advance: 6930, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CIBS", capacity: "197 L", mrp: 23300, offerPrice: 15946, advance: 6990, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIBSD", capacity: "187 L", mrp: 23300, offerPrice: 16028, advance: 6990, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFRG", capacity: "187 L", mrp: 23500, offerPrice: 16310, advance: 7050, color: "Red Glass"}, 
+				{ category: "Refrigerator", name: "Metal-Cool IFBDC-213BFKG", capacity: "187 L", mrp: 23500, offerPrice: 16310, advance: 7050, color: "Black Krystal Glass"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIKS", capacity: "197 L", mrp: 24600, offerPrice: 16524, advance: 7380, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-232CIBS", capacity: "206 L", mrp: 26500, offerPrice: 16589, advance: 7950, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIBS", capacity: "187 L", mrp: 25000, offerPrice: 16607, advance: 7500, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DIRN", capacity: "187 L", mrp: 24600, offerPrice: 16689, advance: 7380, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DIBN", capacity: "187 L", mrp: 24600, offerPrice: 16689, advance: 7380, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CIRM", capacity: "197 L", mrp: 24600, offerPrice: 16689, advance: 7380, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CIBM", capacity: "197 L", mrp: 24600, offerPrice: 16689, advance: 7380, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIBID", capacity: "187 L", mrp: 24500, offerPrice: 16772, advance: 7350, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223EIKS", capacity: "197 L", mrp: 25800, offerPrice: 17102, advance: 7740, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIRP", capacity: "197 L", mrp: 25900, offerPrice: 17185, advance: 7770, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIBP", capacity: "197 L", mrp: 25900, offerPrice: 17185, advance: 7770, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIBC", capacity: "187 L", mrp: 26100, offerPrice: 17268, advance: 7830, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIRM", capacity: "187 L", mrp: 26100, offerPrice: 17268, advance: 7830, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232DIKS", capacity: "206 L", mrp: 26800, offerPrice: 17287, advance: 8040, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIFG", capacity: "187 L", mrp: 24800, offerPrice: 17350, advance: 7440, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIIG", capacity: "187 L", mrp: 24800, offerPrice: 17350, advance: 7440, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-232CIBN", capacity: "206 L", mrp: 27800, offerPrice: 17364, advance: 8340, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIKSD", capacity: "197 L", mrp: 26100, offerPrice: 17433, advance: 7830, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232DIBN", capacity: "206 L", mrp: 27800, offerPrice: 17442, advance: 8340, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232DIRN", capacity: "206 L", mrp: 27800, offerPrice: 17520, advance: 8340, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DIRND", capacity: "187 L", mrp: 26200, offerPrice: 17598, advance: 7860, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DIBND", capacity: "187 L", mrp: 26200, offerPrice: 17598, advance: 7860, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CIBMD", capacity: "197 L", mrp: 26100, offerPrice: 17598, advance: 7830, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223EIBI", capacity: "197 L", mrp: 27000, offerPrice: 17846, advance: 8100, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223EIRP", capacity: "197 L", mrp: 27000, offerPrice: 17846, advance: 8100, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213DISG", capacity: "187 L", mrp: 26300, offerPrice: 18011, advance: 7890, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232EIRP", capacity: "206 L", mrp: 30200, offerPrice: 18062, advance: 9060, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232EIBP", capacity: "206 L", mrp: 30200, offerPrice: 18062, advance: 9060, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIRPD", capacity: "197 L", mrp: 27400, offerPrice: 18094, advance: 8220, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIBPD", capacity: "197 L", mrp: 27400, offerPrice: 18094, advance: 8220, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-232CIBND", capacity: "206 L", mrp: 29100, offerPrice: 18140, advance: 8730, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIBCD", capacity: "187 L", mrp: 27600, offerPrice: 18176, advance: 8280, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIRMD", capacity: "187 L", mrp: 27600, offerPrice: 18176, advance: 8280, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CILG", capacity: "197 L", mrp: 26600, offerPrice: 18176, advance: 7980, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CISG", capacity: "197 L", mrp: 26600, offerPrice: 18176, advance: 7980, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CIAG", capacity: "197 L", mrp: 26600, offerPrice: 18176, advance: 7980, color: "Anthracite Grey"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-232CIRG", capacity: "206 L", mrp: 28400, offerPrice: 18217, advance: 8520, color: "Red Glass"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIFGD", capacity: "187 L", mrp: 26600, offerPrice: 18424, advance: 7980, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213CIIGD", capacity: "187 L", mrp: 26600, offerPrice: 18424, advance: 7980, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232DIRND", capacity: "206 L", mrp: 29400, offerPrice: 18450, advance: 8820, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232DIBND", capacity: "206 L", mrp: 29400, offerPrice: 18450, advance: 8820, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-248DIBS", capacity: "222 L", mrp: 30300, offerPrice: 18615, advance: 9090, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EISG", capacity: "187 L", mrp: 27700, offerPrice: 18755, advance: 8310, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIPG", capacity: "187 L", mrp: 27700, offerPrice: 18755, advance: 8310, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIIG", capacity: "197 L", mrp: 27500, offerPrice: 18755, advance: 8250, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIAG", capacity: "197 L", mrp: 27500, offerPrice: 18755, advance: 8250, color: "Anthracite Grey"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIRG", capacity: "197 L", mrp: 27500, offerPrice: 18755, advance: 8250, color: "Red Glass"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223EIBID", capacity: "197 L", mrp: 28500, offerPrice: 18755, advance: 8550, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-232EIBPD", capacity: "206 L", mrp: 31700, offerPrice: 18915, advance: 9510, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-213EIPGD", capacity: "187 L", mrp: 27700, offerPrice: 19003, advance: 8310, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223CISGD", capacity: "197 L", mrp: 28600, offerPrice: 19250, advance: 8580, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-232CIRGD", capacity: "206 L", mrp: 30200, offerPrice: 19302, advance: 9060, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-248DIRN", capacity: "222 L", mrp: 32100, offerPrice: 19360, advance: 9630, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-248DIBN", capacity: "222 L", mrp: 32100, offerPrice: 19360, advance: 9630, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-223EIAG", capacity: "197 L", mrp: 28500, offerPrice: 19416, advance: 8550, color: "Anthracite Grey"}, 
+				{ category: "Refrigerator", name: "Advance-Cool IFBDC-223DIRGD", capacity: "197 L", mrp: 29300, offerPrice: 19911, advance: 8790, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-277CIBS", capacity: "251 L", mrp: 32700, offerPrice: 20253, advance: 9810, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-277CILS", capacity: "251 L", mrp: 32700, offerPrice: 20253, advance: 9810, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-277CIZS", capacity: "251 L", mrp: 32700, offerPrice: 20253, advance: 9810, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-277CIBA", capacity: "251 L", mrp: 33700, offerPrice: 21370, advance: 10110, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ADVANCE-COOL IFBDC-277DIBS", capacity: "251 L", mrp: 34000, offerPrice: 21370, advance: 10200, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291AILS", capacity: "241 L", mrp: 37500, offerPrice: 22115, advance: 11250, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291AIGS", capacity: "241 L", mrp: 37500, offerPrice: 22115, advance: 11250, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Eco-Cool IFBFF-291AIBS", capacity: "241 L", mrp: 38000, offerPrice: 22487, advance: 11400, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291AIKST", capacity: "241 L", mrp: 40700, offerPrice: 24274, advance: 12210, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Eco-Cool IFBFF-291BIBS", capacity: "241 L", mrp: 41600, offerPrice: 24274, advance: 12480, color: "Brushed Steel"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291BIKST", capacity: "241 L", mrp: 44400, offerPrice: 25540, advance: 13320, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291BIGST", capacity: "241 L", mrp: 44400, offerPrice: 25540, advance: 13320, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Eco-Cool IFBFF-315AIBST", capacity: "265 L", mrp: 44900, offerPrice: 25709, advance: 13470, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291BIBCT", capacity: "241 L", mrp: 45800, offerPrice: 26359, advance: 13740, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-315BILSTM", capacity: "265 L", mrp: 46400, offerPrice: 26651, advance: 13920, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-315BIKSTM", capacity: "265 L", mrp: 46400, offerPrice: 27013, advance: 13920, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291AIKGT", capacity: "241 L", mrp: 46000, offerPrice: 27401, advance: 13800, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-291CIKSTM", capacity: "241 L", mrp: 47400, offerPrice: 27625, advance: 14220, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-315BIBCTM", capacity: "265 L", mrp: 48400, offerPrice: 27809, advance: 14520, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Eco-Cool IFBFF-291BIRGT", capacity: "241 L", mrp: 49200, offerPrice: 28220, advance: 14760, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-315CIBSTM", capacity: "265 L", mrp: 49600, offerPrice: 28896, advance: 14880, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-315BIRGTM", capacity: "265 L", mrp: 50900, offerPrice: 29620, advance: 15270, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Eco-Cool IFBFF-383AIBST", capacity: "331 L", mrp: 55100, offerPrice: 31865, advance: 16530, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-383BIKSTM", capacity: "331 L", mrp: 57100, offerPrice: 33313, advance: 17130, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "ECO-COOL IFBFF-383BIKGTM", capacity: "331 L", mrp: 58400, offerPrice: 35486, advance: 17520, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Expert-Cool IFBFF-383BIKSTU", capacity: "331 L", mrp: 61500, offerPrice: 35486, advance: 18450, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "Expert-Cool IFBFF-383CIBSTU", capacity: "331 L", mrp: 64300, offerPrice: 37803, advance: 19290, color: "Standard Finish"}, 
+				{ category: "Refrigerator", name: "AI-MAGIC IFBFF-SMART383CIKSTU", capacity: "331 L", mrp: 70300, offerPrice: 41279, advance: 21090, color: "Standard Finish"}, 
+				{ category: "Top Load", name: "TL700MB1", capacity: "7 Kg/L", mrp: 24190, offerPrice: 17632, advance: 7257, color: "Midnight Black"}, 
+				{ category: "Top Load", name: "TL650CB1ID", capacity: "6.5 Kg/L", mrp: 25890, offerPrice: 18781, advance: 7767, color: "Cobalt Blue"}, 
+				{ category: "Top Load", name: "TL701AG1ID", capacity: "7 Kg/L", mrp: 25890, offerPrice: 18781, advance: 7767, color: "Anthracite Grey"}, 
+				{ category: "Top Load", name: "TL801EP1", capacity: "8 Kg/L", mrp: 27190, offerPrice: 19688, advance: 8157, color: "Espresso"}, 
+				{ category: "Top Load", name: "TL701CB1ID", capacity: "7 Kg/L", mrp: 27490, offerPrice: 19935, advance: 8247, color: "Cobalt Blue"}, 
+				{ category: "Top Load", name: "TL701AG1SID", capacity: "7 Kg/L", mrp: 28890, offerPrice: 20924, advance: 8667, color: "Anthracite Grey"}, 
+				{ category: "Top Load", name: "TL751MS2SID", capacity: "7.5 Kg/L", mrp: 29790, offerPrice: 21583, advance: 8937, color: "Mystic Silver (Sparkle)"}, 
+				{ category: "Top Load", name: "TL801MS2ID", capacity: "8 Kg/L", mrp: 31090, offerPrice: 22490, advance: 9327, color: "Mystic Silver (Sparkle)"}, 
+				{ category: "Top Load", name: "TL800AG1SID", capacity: "8 Kg/L", mrp: 32290, offerPrice: 23396, advance: 9687, color: "Anthracite Grey"}, 
+				{ category: "Top Load", name: "TL801MM2SID", capacity: "8 Kg/L", mrp: 33390, offerPrice: 24220, advance: 10017, color: "Mystic Silver (Sparkle)"}, 
+				{ category: "Top Load", name: "TL801OG2SID", capacity: "8 Kg/L", mrp: 33690, offerPrice: 24385, advance: 10107, color: "Onyx Grey (Sparkle)"}, 
+				{ category: "Top Load", name: "TL-901AG1ID", capacity: "9 Kg/L", mrp: 33690, offerPrice: 24385, advance: 10107, color: "Anthracite Grey"}, 
+				{ category: "Top Load", name: "TL-901MS2SID", capacity: "9 Kg/L", mrp: 34890, offerPrice: 25292, advance: 10467, color: "Mystic Silver (Sparkle)"}, 
+				{ category: "Top Load", name: "TL-900NB2SID", capacity: "9 Kg/L", mrp: 35590, offerPrice: 25786, advance: 10677, color: "Noir Black (Sparkle)"}, 
+				{ category: "Top Load", name: "TL100NB2SID", capacity: "10 Kg/L", mrp: 39490, offerPrice: 28588, advance: 11847, color: "Noir Black (Sparkle)"}, 
+				{ category: "Top Load", name: "TL111RB2SID", capacity: "11 Kg/L", mrp: 45290, offerPrice: 32791, advance: 13587, color: "Royal Blue"}, 
+				{ category: "Top Load", name: "TL121RB2SID", capacity: "12 Kg/L", mrp: 47890, offerPrice: 34686, advance: 14367, color: "Royal Blue"}, 
+				{ category: "Top Load", name: "TL701EP1ID", capacity: "7 Kg/L", mrp: 26990, offerPrice: 19814, advance: 8097, color: "Espresso"}, 
+				{ category: "Top Load", name: "TL800CB1SID", capacity: "8 Kg/L", mrp: 32990, offerPrice: 24247, advance: 9897, color: "Cobalt Blue"}, 
+				{ category: "Top Load", name: "TL-9000G2SWID", capacity: "9 Kg/L", mrp: 37290, offerPrice: 27426, advance: 11187, color: "Onyx Grey (Sparkle)"}, 
+				{ category: "Top Load", name: "TL100RB2SID", capacity: "10 Kg/L", mrp: 41390, offerPrice: 30437, advance: 12417, color: "Royal Blue"}, 
+				{ category: "Top Load", name: "TL100IN3SWID", capacity: "10 Kg/L", mrp: 43290, offerPrice: 31858, advance: 12987, color: "Inox"}, 
+				{ category: "WDR", name: "WDR EXECUTIVE ZMN 9/6/3 CMS", capacity: "9/6/3", mrp: 69490, offerPrice: 50595, advance: 20847, color: "Mocha"}, 
+				{ category: "WDR", name: "EXECUTIVE ZBN 9/6/3 CMS", capacity: "9/6/3", mrp: 70690, offerPrice: 51506, advance: 21207, color: "Black PCM Hairline"}, 
+				{ category: "WDR", name: "EXECUTIVE PLUS ZBG 11/7/3", capacity: "11/7/3", mrp: 84690, offerPrice: 61693, advance: 25407, color: "Black Hairline"}
+        ];
+
+        let selectedCategory = 'ALL';
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = products.filter(p => {
+                const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`;
+                return;
+            }
+
+            filtered.forEach(p => {
+                const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${p.offerPrice.toLocaleString('en-IN')}. \nPlease confirm 30% advance booking procedure.`);
+                const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
+
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${p.category}</span>
+                                <span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
+                            <p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
+                            
+                            <div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
+                                <div class="flex justify-between text-xs text-slate-500 mb-1">
+                                    <span>MRP: <del>₹${p.mrp.toLocaleString('en-IN')}</del></span>
+                                    <span class="text-emerald-600 font-semibold">Special Diwali Pass</span>
+                                </div>
+                                <div class="text-2xl font-extrabold text-amber-600">
+                                    ₹${p.offerPrice.toLocaleString('en-IN')}
+                                </div>
+                                <div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
+                                    <span>30% Advance Booking:</span>
+                                    <strong class="text-slate-900 font-bold">₹${p.advance.toLocaleString('en-IN')}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="${waUrl}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 transition">
+                            <i class="fab fa-whatsapp text-lg"></i> Book Now at 30% Advance
+                        </a>
+                    </div>
+                `;
+            });
+        }
+
+        function setCategory(cat) {
+            selectedCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+            });
+            event.target.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+            renderProducts();
+        }
+
+        function filterProducts() {
+            renderProducts();
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>
