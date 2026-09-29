@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🪔 Diwali Mega Sale</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="\resources\default.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header यहाँ Load होगा -->
+    <div id="header-placeholder"></div>
+    <!-- Main Content -->
+    <main>
+        <p>This is the main content of the page.</p>
+    </main>
+    <!-- Footer यहाँ Load होगा -->
+    <div id="footer-placeholder"></div>
 
+    <script>
+        // Function to load HTML file into a specific element
+        function loadHTML(elementId, filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('File not found');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading ' + filePath, error);
+                    document.getElementById(elementId).innerHTML = '<p>Error loading content</p>';
+                });
+        }
+
+        // Call the function
+        loadHTML('header-placeholder', '\resources\header.html');
+        loadHTML('footer-placeholder', '\resources\footer.html');
+    </script>
+
+  
+</body></html>
