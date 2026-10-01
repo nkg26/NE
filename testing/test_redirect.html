@@ -9,9 +9,10 @@
   <div id="timer" class="timer"> 
     <span id="message"> </span>
   <button id="t-stop" onclick="stopRedirect()"> stop </button>
+  <button id="t-go" onclick="goRedirect()"> stop </button>
 	  <script>
 		var redirectUrl = "https://nkg26.github.io/NE";		
-		var time = 5*1000;// 5 seconds
+		var time = 15*1000;// 5 seconds
 		var cnt_timer=0;
 		
 		// hide stop button..
@@ -34,13 +35,15 @@
 			redirectUrl = null; 
 			document.getElementById("timer").innerHTML = ''; 
 		}
-		
-		setTimeout(function() { if(redirectUrl!==null) {
-			clearInterval(interval_ID);
-			document.getElementById("timer").innerHTML = 'now you are auto-move to new page...';
-			window.location.href = redirectUrl;
-		}}, time); 
-		
+		  
+		function goRedirect(){ 
+			if(redirectUrl!==null) {
+				clearInterval(interval_ID);
+				document.getElementById("timer").innerHTML = 'now you are auto-move to new page...';
+				window.location.href = redirectUrl;
+			}
+		}
+		setTimeout(goRedirect, time); 		
 	</script>
   </div>
   
