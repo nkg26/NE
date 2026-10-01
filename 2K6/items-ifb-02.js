@@ -3,6 +3,7 @@
             const grid = document.getElementById('productGrid');
             const searchVal = document.getElementById('searchInput').value.toLowerCase();
             grid.innerHTML = '';
+            grid.class = null;
 
             const filtered = getProducts().filter(p => {
                 const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
