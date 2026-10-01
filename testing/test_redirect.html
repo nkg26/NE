@@ -8,7 +8,7 @@
   
   <div id="timer" class="timer"> 
     <span id="message"> </span>
-  <button id="t-go" onclick="goRedirect()"> go </button>
+  <button id="t-go" onclick="goRedirect()"> GO </button>
   <button id="t-stop" onclick="stopRedirect()"> stop </button>
 	  <script>
 		var redirectUrl = "https://nkg26.github.io/NE";		
@@ -20,7 +20,7 @@
 		const interval_ID = setInterval(function() {
 			 cnt_timer += 1;
 			 document.getElementById("t-stop").style.color=((cnt_timer%2)===0)?"Red":"green";
-			 document.getElementById("t-stop").style.display="inline-block";
+			 document.getElementById("t-stop").style.display=null;
 			try{
         // count-down message...
 				document.getElementById("message").innerHTML = 'You will be redirect in '+(time -= 1000)/1000+' seconds. ';
