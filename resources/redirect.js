@@ -62,6 +62,7 @@ function Redirect_START(){
 // delete old redirect inverval id
 function Redirect_deleteOldInterval() {
 	if(redirect_Interval_ID !== null){
+		console.log(" << deleting old REDIRECT-INTERVAL-ID = "+ redirect_Interval_ID);
 		clearInterval(redirect_Interval_ID);
 		redirect_Interval_ID=null;
 	}
@@ -71,6 +72,7 @@ function Redirect_deleteOldInterval() {
 function Redirect_createInterval() {
 	Redirect_deleteOldInterval();
 	redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
+	console.log(" >> create new REDIRECT-INTERVAL-ID = "+ redirect_Interval_ID);
 	return redirect_Interval_ID;
 }
 
@@ -81,7 +83,7 @@ function Redirect_callInterval() {
 	 var timeLeft = (redirect_time/1000)-redirect_cnt_timer;
 	 
 	try{
-	Redirect_updateHTML();
+		Redirect_updateHTML();
 	}catch (e){
 		console.log("clear Interval ID = "+ redirect_Interval_ID);
 		console.log("error = "+ e);
@@ -94,7 +96,6 @@ function Redirect_callInterval() {
 	
 // for internal use only
 function Redirect_updateHTML() {
-
 	 var timeLeft = (redirect_time/1000)-redirect_cnt_timer;
 	document.getElementById("t-stop").style.color=((timeLeft%2)===0)?"Red":"green";
 	document.getElementById("t-stop").style.display=null;
