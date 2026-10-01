@@ -15,3 +15,21 @@
                     document.getElementById(elementId).innerHTML = '<p>Error loading content</p>';
                 });
         }
+
+   // Caller ko khud handle karna hoga
+   function readHTML(filePath) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('File not found');
+                    }
+                    return response.text();
+                })
+                .catch(error => {
+                    console.error('Error loading ' + filePath, error);
+                    return '<p>Error loading content</p>';
+                });
+        }
+
+
+
