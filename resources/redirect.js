@@ -25,14 +25,12 @@ and modify as per your requirement.
 */
 
 function insertDefaultRedirectHTML(){
-	return '  
-			<div id="redirect-timer" class="timer"> 
+	return `<div id="redirect-timer" class="timer">
 				<span id="redirect-message"> </span><br/>
 				<span id="redirect-url-path"> </span>
 				<button id="t-go" onclick="goRedirect()"> go </button>
 				<button id="t-stop" onclick="stopRedirect()"> stop </button>
-			</div>
-		';
+			</div> `;
 }
 
 		var redirectUrl = "https://nkg26.github.io/NE";
