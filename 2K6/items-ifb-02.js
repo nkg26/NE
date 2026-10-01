@@ -16,7 +16,18 @@
                 return;
             }
 			
-			var mydata = `<table border=true cellspacing=0 > `;
+			var css = `<style> 
+			.productGrid table{
+				border:2px dotted cyan;
+			}
+			.productGrid table tr{
+				border:1px solid red;
+				padding:3px;
+			}
+			</style>`;
+			
+			var mydata = ""+css;			
+			mydata += `<table border=true cellspacing=0 > `;
 			mydata += `<tr> <th> Cat</th> <th> Cap</th> <th> name</th> <th> color</th> <th> mrp</th> <th> offer-price</th> <th> advance</th> <th> call</th> </tr>`;
 			mydata += `<tbody style="max-height:200px; overflow=auto;">`;
             
