@@ -55,7 +55,8 @@ var redirect_cnt_timer=0;
 function Redirect_START(){ 
 	Redirect_deleteOldInterval(); // delete old Interval id
 	// setTimeout(Redirect_GO, redirect_time);  // here you can skip..
-	redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
+	// redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
+	Redirect_createInterval();
 }
 
 // delete old redirect inverval id
@@ -69,7 +70,8 @@ function Redirect_deleteOldInterval() {
 // delete old redirect inverval id
 function Redirect_createInterval() {
 	Redirect_deleteOldInterval();
-	return redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
+	redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
+	return redirect_Interval_ID;
 }
 
 
