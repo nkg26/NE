@@ -42,7 +42,7 @@ function Redirect_InitDefaultSetting(){
 	// hide stop button..
 	document.getElementById("t-stop").style.display="none";
 	document.getElementById("redirect-timer").style.display="none";
-	document.getElementById("redirect-timer").style.border="5px solid red";
+	//document.getElementById("redirect-timer").style.border="5px solid red";
 }
 
 var redirect_URL = "https://nkg26.github.io/NE";
