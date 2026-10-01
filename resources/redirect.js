@@ -99,7 +99,7 @@ function Redirect_updateHTML() {
 	 var timeLeft = (redirect_time/1000)-redirect_cnt_timer;
 	document.getElementById("t-stop").style.color=((timeLeft%2)===0)?"Red":"green";
 	document.getElementById("t-stop").style.display=null;
-	document.getElementById("redirect-message").innerHTML = 'You will be redirect in '+timeLeft+"/"+(time/1000)+' seconds. ';
+	document.getElementById("redirect-message").innerHTML = 'You will be redirect in '+timeLeft+"/"+(redirect_time/1000)+' seconds. ';
 	document.getElementById("redirect-url-path").innerHTML = redirect_URL;
 	if(redirect_cnt_timer>1) document.getElementById("redirect-timer").style.display=null;
 }
