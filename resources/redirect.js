@@ -1,17 +1,25 @@
 // 		start_redirect(); // use this function
 /*
-how to implement...
+how to implement...  
+copy below div tag... 
+and modify as per your requirement.
+ ---------------------------------------------------------------
   <div id="redirect-timer" class="timer"> 
     <span id="redirect-message"> </span><br/>
     <span id="redirect-url-path"> </span>
   <button id="t-go" onclick="goRedirect()"> go </button>
   <button id="t-stop" onclick="stopRedirect()"> stop </button>
   </div>
+ ---------------------------------------------------------------
+    <script src="../resources/default.js"></script>
+    <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
 
-	  <script> 
+	<script> 
       setRedirectURL("https://www.yahoo.com");
+	  setRedirectTime(5*1000);
       start_redirect(); 	
     </script>
+ ---------------------------------------------------------------
 
 */
 
