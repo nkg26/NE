@@ -53,7 +53,7 @@ var redirect_cnt_timer=0;
 // start redirect timer
 // this will initiate all functions...
 function Redirect_START(){ 
-	Redirect_deleteInterval(); // delete old Interval id
+	Redirect_deleteOldInterval(); // delete old Interval id
 	// setTimeout(Redirect_GO, redirect_time);  // here you can skip..
 	redirect_Interval_ID = setInterval(Redirect_callInterval,1000);
 }
@@ -83,7 +83,7 @@ function Redirect_callInterval() {
 	}catch (e){
 		console.log("clear Interval ID = "+ redirect_Interval_ID);
 		console.log("error = "+ e);
-		Redirect_deleteInterval();
+		Redirect_deleteOldInterval();
 	} 
 	 if (timeLeft<=0){
 		Redirect_GO();
