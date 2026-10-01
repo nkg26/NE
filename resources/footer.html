@@ -1,5 +1,28 @@
 <footer>
-==============================================================================================
-  <br/> this is footer part...<br/>
-==============================================================================================
+
+  <button id="shareBtn2">Share to another</button>
+<script>
+  //const url = window.location.href;
+  const url = "https://nkg26.github.io/NE/consumer.html";
+  const title = document.title;
+  const btn = document.getElementById('shareBtn');
+
+  btn.addEventListener('click', async () => {
+    // Native share (mobile)
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, url });
+        return;
+      } catch (e) { /* user cancelled */ }
+    }
+    // Fallback: copy + prompt
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('Link copied!');
+    } catch {
+      window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`, '_blank');
+    }
+  });
+</script>
+  
 </footer>
