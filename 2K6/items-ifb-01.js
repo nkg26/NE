@@ -181,7 +181,12 @@
 
         function renderProducts() {
             const grid = document.getElementById('productGrid');
-            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            const searchVal = '';
+			try{
+				searchVal = document.getElementById('searchInput').value.toLowerCase();
+			}catch(e){
+				console.log(e);
+			}
             grid.innerHTML = '';
 
             const filtered = getProducts().filter(p => {
