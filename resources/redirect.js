@@ -15,7 +15,7 @@ and modify as per your requirement.
     <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
 
 	<script> 
-		Redirect_InsertDefaultHTML(ID){
+		Redirect_InsertDefaultHTML(ID);
 		Redirect_InitDefaultSetting();		
 	    Redirect_setURL("https://www.yahoo.com");
 		Redirect_setTime(5*1000);
