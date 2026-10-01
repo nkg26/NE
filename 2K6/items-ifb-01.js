@@ -187,7 +187,8 @@
 			}
             var searchVal = '';
 			try{
-				searchVal = document.getElementById('searchInput').value.toLowerCase();
+				var el = document.getElementById('searchInput');
+				searchVal = el===null?'':el.value.toLowerCase();
 			}catch(e){
 				console.log(e);
 			}
