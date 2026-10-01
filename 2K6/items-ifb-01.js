@@ -181,7 +181,11 @@
 
         function renderProducts() {
             const grid = document.getElementById('productGrid');
-            const searchVal = '';
+			if(grid === null){
+				console.log("null element having id productGrid");
+				return;
+			}
+            var searchVal = '';
 			try{
 				searchVal = document.getElementById('searchInput').value.toLowerCase();
 			}catch(e){
