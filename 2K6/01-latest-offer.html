@@ -19,10 +19,9 @@
 
 </head>
 <body>
-    <div>
-		<button onclick="renderProducts()">renderProducts</button>
-		<button onclick="renderProducts">renderProducts-2</button>
-	</div>
+	<!--
+    <div> <button onclick="renderProducts()">renderProducts</button></div>
+		-->
 	
     <div id="header-placeholder"></div>
     <div id="banner-fest-header"></div>
@@ -42,8 +41,8 @@
 		
         loadHTML('module-items', 'module-items-ifb.html');
 
+		setTimeout(renderProducts,1000);
     </script>
-		<script> renderProducts(); </script>
 
   
 </body></html>
