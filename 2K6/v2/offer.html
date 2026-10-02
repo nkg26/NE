@@ -66,6 +66,12 @@
 		}
 		
 		setTimeout(renderProducts,1000);  
+
+		var catList = getUniqueCategory(getItemsAll());
+		catList.forEach(item =>{
+			document.getElementById("search-category").innerHTML += ` <button onclick="setCategory('${item}')">${item}</button> `;
+		});
+		
 	</script>
   
 </body></html>
