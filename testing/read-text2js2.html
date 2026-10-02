@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Text File 2 Script Help</title>
+<style>
+  #outputContainer {
+  border: 1px dotted gray;
+  padding:5px;
+  margin:5px;
+  }
+  
+  #fileInput{
+	width:100%;
+	border : 2px dotted gray;
+	padding:15px;
+  }
+  
+  #fileInput:hover{
+  background-color: yellow;
+  }
+
+</style>
+</head>
+<body>
+
+<h2>Text पढ़ें और java Script k leye List of Map data में दिखाएँ</h2>
+<h3>just paste text into this input box...</h3>
+<br/>
+
+<textarea id="input" rows="4" cols="50"></textarea>
+<button onClick="go()" > reload file </button>
+  
+  <input type="checkbox" id="skipEmptyValue" checked > Skip Empty Cell Value </input>
+  <input type="checkbox" id="quoteHeader" > select headers in quotes </input>
+  <input type="checkbox" id="trimHeader" > trim header </input>
+  <input type="checkbox" id="trimValue" > trim value </input>
+
+<div id="outputContainer">
+output:     <button onclick="copyText()">कॉपी करें</button> <br/>
+<textarea id="ta" rows="4" cols="50"></textarea>
+</div>
+
+<div id="sample">
+file data sample in tabular format: टैब (	), कॉमा(,), पाइप (|)  seperated plain text file.
+
+<br/>
+<br/>
+<table border=1 cellspacing=0	>
+<tr><th>column data type:</th><th>str</th><th>str</th><th>str</th><th>int</th><th>str</th></tr>
+<tr><th>Include This Column in output</th><th>1</th><th>0</th><th>1</th><th>1</th><th>1</th></tr>
+<tr><th>Table Header :</th><th>SAP-CODE</th><th>SERIAL</th><th>MODEL</th><th>AMT</th><th>CAT</th></tr>
+<tr><td>table Data Row :</td><td>8908574</td><td>kjhk3jh42</td><td>ref</td><td></td><td>IFB</td></tr>
+<tr><td>table Data Row :</td><td>8904134</td><td>234jljlkl</td><td>AC</td><td></td><td>Godrej</td></tr>
+</table>
+</div>
+
+
+<script>
+
+  
+// actual file reader function
+function go() {
+  var text = document.getElementById('ta').value;
+  showPorcessedOutput(text);
+}
+
+function splitRawToLines(raw_content) {
+  // Lines में तोड़ो
+  const lines = raw_content.split(`
+`).filter(line => line.trim() !== '');
+  return lines;
+}
+
+function splitLinesToTable(lines) {
+  // पहली line header मान लो (अगर comma separated है)
+  const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+	var TABLE = [];
+  const headers = lines[0].split(delimiter);
+	/// task pending here....
+	
+}
+  
+function setOutput(output_content) {
+  document.getElementById('ta').value = output_content;
+  //document.getElementById('outputContainer').innerHTML = output;
+  document.getElementById('sample').innerHTML = "";  
+}
+  
+	
+function showPorcessedOutput(raw_text) {
+  //const file = e.target.files[0];
+  if (!raw_text) return;
+  const content = raw_text; // पूरी फाइल का text
+  
+  // Lines में तोड़ो
+  const lines = splitRawToLines(content);
+  
+  // अगर कोई line नहीं तो बाहर निकलो
+  if (lines.length === 0) {
+    setOutput('<p>फाइल खाली है।</p>');
+    return;
+  }
+
+  // पहली line header मान लो (अगर comma separated है)
+  const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+  const headers = lines[0].split(delimiter).map(h => h.trim());
+	  
+	  // converting table into java-script list of mapped data.
+	var H = lines[2].split(delimiter); // header
+	var T = lines[0].split(delimiter); // data-type
+	var IN = lines[1].split(delimiter); // data-include
+	
+	//var skipEmptyValue = true;
+	
+	var skipEmptyValue = document.getElementById("skipEmptyValue").checked;
+	var quoteHeader = document.getElementById("quoteHeader").checked;
+	var trimHeader = document.getElementById("trimHeader").checked;
+	var trimValue = document.getElementById("trimValue").checked;
+	
+	var QH=quoteHeader?"'":"";
+	
+  if(trimHeader){
+    for (let i = 0; i < H.length; i++) {
+      H[i] = H[i].trim();
+    }
+  }
+  
+  var output='';
+  for (let i = 3; i < lines.length; i++) {
+    var D = lines[i].split(delimiter);
+    var cnt = 0;
+    var this_row = "";
+    
+    for (let c = 0; c < D.length; c++) {
+      var finalCellValue = null ; // assume 
+      var includeThis = true ; // assume include this column data..
+      includeThis = includeThis &&(IN[c]==='1');
+      includeThis = includeThis &&(H[c]!==''); // check header should not empty..
+      
+      if(includeThis){
+        var V = D[c]; // cell value
+        V = trimValue?V.trim():V;        
+        var isNum = T[c]==='int';
+        var isEmpty = V==='';
+        var skipThis = skipEmptyValue && isEmpty;
+        if(!skipThis){
+          var Q = isNum?"":"'"; // quotes
+          finalCellValue = (QH+H[c]+QH+":"+Q+V+Q);
+        }
+      }
+      if(finalCellValue !== null){
+        this_row += (cnt>0?", ":"");
+        this_row += finalCellValue;
+        cnt++;
+      }
+    }			
+    
+    output += (cnt==0?"":"{"+this_row+"}");
+    output += (i < lines.length-1?",":"");
+    //output += "<br/>";
+    output += "\n";
+  }
+	setOutput(output);
+}
+
+// Delimiter पहचानने का सरल तरीका
+function detectDelimiter(firstLine) {
+  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
+  if (firstLine.includes('	')) return '	';
+  if (firstLine.includes('|')) return '|';
+  return ','; // डिफ़ॉल्ट कॉमा
+}
+
+ function copyText() {
+    // इनपुट फील्ड को चुनें
+    var copyText = document.getElementById("ta").value;
+    // क्लिपबोर्ड पर कॉपी करें
+    navigator.clipboard.writeText(copyText);
+    // यूजर को सूचना दें
+    alert("कॉपी हो गया: " + copyText.length);
+}
+
+</script>
+
+</body>
+</html>
