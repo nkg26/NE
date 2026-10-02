@@ -6,10 +6,6 @@ function getItemsAll() {
 	return products;
 }
 
-function getItems_Current() {
-	return getItemsAll();
-}
-
 // all category in items
 function getUniqueCategory(itemsList) {
 	const uniqueCategories = [...new Set(itemsList.map(item => item.category))];
