@@ -39,7 +39,7 @@
     <script src="https://nkg26.github.io/NE/2K6/js/items-fx-02.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/js/items.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
-	
+	<style>.selected_cat_button{background-color:cyan;} </style>
     <script>  
 	  function filterProducts() {
 		  renderProducts();
@@ -48,9 +48,9 @@
 	  function setCategory(cat) {
             selectedCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = null;
+                btn.className = '';
             });
-            event.target.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+            event.target.className = "selected_cat_button";
             renderProducts();
         }
 		
