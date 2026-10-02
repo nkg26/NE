@@ -53,14 +53,23 @@
         }
 		
 		function renderProducts() {
-			const grid = document.getElementById('productGrid');
-			var searchVal = document.getElementById('searchInput').value.toLowerCase();
-			
-			var ALL_ITEMS = getItemsAll();
-			var filtered_1 = filterItemsByCategory(ALL_ITEMS, selectedCategory);
-			var filtered_2 = filterItems_byText(filtered_1, searchVal);
-			
-			grid.innerHTML = getnerateSimpleTable(filtered_2);
+			try{
+				const grid = document.getElementById('productGrid');
+				var searchVal = document.getElementById('searchInput').value.toLowerCase();
+				
+				var ALL_ITEMS = getItemsAll();
+				var filtered_1 = filterItemsByCategory(ALL_ITEMS, selectedCategory);
+				var filtered_2 = filterItems_byText(filtered_1, searchVal);
+	
+				var mydata = getnerateSimpleTable(filtered_2);
+				try{
+					mydata = `<div> ${filtered_2.length} / ${filtered_1.length} / ${ALL_ITEMS.length} record's found.. <br/> ${mydata}</div>`;
+				}catch{
+				}
+				grid.innerHTML = mydata;
+			}catch(e){
+				grid.innerHTML = e;
+			}
 		}
 		
 		setTimeout(renderProducts,1000);  
