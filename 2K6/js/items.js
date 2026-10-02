@@ -2,36 +2,27 @@
 //this variable came form products.js
 
 // all products...
-function getProducts() {
+function getItemsAll() {
 	return products;
 }
-// function renderProducts() {
-// 	console.log("renderProducts() function is not implemented by script...");
-// }
 
-// temp js object
-var temp_map = {};
-// return array for saved database to speed-up..
-function getProducts_Category(category) {
-	var out = temp_map.category;
-	if(out === null){
-		temp_map.category = (out = filterProducts_Category(category));
-	}
-	return out;
+function getItems_Current() {
+	return getItemsAll();
 }
 
-// filter items by category exist in database
-function filterProducts_Category(category) {
-	const filtered = getProducts().filter(p => {
+// all category in items
+function getUniqueCategory(itemsList) {
+	const uniqueCategories = [...new Set(itemsList.map(item => item.category))];
+	return uniqueCategories;
+}
+
+
+// filter items by category 
+function filterItemsByCategory(itemsList, category) {
+	const filtered = itemsList.filter(p => {
 		return (selectedCategory === 'ALL' || p.category === selectedCategory);
 	});
 	return filtered;
-}
-
-// all category exist in database
-function getAllCategory() {
-	const uniqueCategories = [...new Set(productList.map(item => item.category))];
-	return uniqueCategories;
 }
 
 function filterItems_byText(itemList, searchVal) {
