@@ -1,17 +1,16 @@
-    <!-- Main Container -->
-    <main id="items-bag">
-        <!-- Search and Filter Bar -->
-        <div>
-            <div id="search-div">
-              "🔍" <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search by model name or category (e.g. Elena, 8 Kg)...">
-            </div>
-            <div id="category-div">
-                <button onclick="setCategory('ALL')">All</button>
-            </div>
+<!-- Main Container -->
+<main id="items-bag">
+    <!-- Search and Filter Bar -->
+    <div id="search-div">
+        <div id="search-box">
+            🔍<input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search by model name or category (e.g. Elena, 8 Kg)...">
         </div>
-
-        <!-- Product Cards Container -->
-        <div id="productGrid">
-            <!-- Dynamic JS Injected Cards -->
+        
+        <div id="search-category">
+            <button onclick="setCategory('ALL')">All</button>
         </div>
-    </main>
+    </div>
+    
+    <!-- Product Cards Container -->
+    <div id="productGrid"></div>
+</main>
