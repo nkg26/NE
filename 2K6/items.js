@@ -12,6 +12,16 @@
     function getProducts() {
 			return products;
 		}
+var temp_map = {};
+
+// return array for saved database to speed-up..
+function getProducts_Category(category) {
+	var out = temp_map.category;
+	if(out === null){
+		temp_map.category = (out = filterProducts_Category(category));
+	}
+	return out;
+}
 
   // filter items by category exist in database
     function filterProducts_Category(category) {
@@ -28,11 +38,10 @@
 
     function filterItems_byText(itemList, searchVal) {
       if(searchVal === null || searchVal === '' || itemList === null) itemList;
-      
        return itemList.filter(p => {
             return (p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal));
         });
-		}
+	}
 
 
 
