@@ -53,8 +53,8 @@
         }
 		
 		function renderProducts() {
+			const grid = document.getElementById('productGrid');
 			try{
-				const grid = document.getElementById('productGrid');
 				var searchVal = document.getElementById('searchInput').value.toLowerCase();
 				
 				var ALL_ITEMS = getItemsAll();
@@ -68,6 +68,7 @@
 				}
 				grid.innerHTML = mydata;
 			}catch(e){
+				if(grid !== null)
 				grid.innerHTML = e;
 			}
 		}
