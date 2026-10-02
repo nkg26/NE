@@ -13,9 +13,9 @@ var products = [
 function getProducts() {
 	return products;
 }
-function renderProducts() {
-	console.log("renderProducts() function is not implemented by script...");
-}
+// function renderProducts() {
+// 	console.log("renderProducts() function is not implemented by script...");
+// }
 
 // temp js object
 var temp_map = {};
