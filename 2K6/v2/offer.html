@@ -41,6 +41,10 @@
     <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
 	
     <script>  
+	  function filterProducts() {
+		  renderProducts();
+	  }
+		
 	  function setCategory(cat) {
             selectedCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -52,25 +56,15 @@
 		
 		function renderProducts() {
 			const grid = document.getElementById('productGrid');
-			if(grid === null){
-				console.log("null element having id productGrid");
-				return;
-			}
-			var searchVal = '';
-			try{
-				var el = document.getElementById('searchInput');
-				searchVal = el===null?'':el.value.toLowerCase();
-			}catch(e){
-				console.log(e);
-			}
-			grid.innerHTML = '';
+			var searchVal = document.getElementById('searchInput').value.toLowerCase();
 			
-			var productList = getProducts_Category(selectedCategory);
-			var output = getnerateSimpleTable(productList);
-			grid.innerHTML = output;
+			var ALL_ITEMS = getItemsAll();
+			var filtered_1 = filterItemsByCategory(ALL_ITEMS, selectedCategory);
+			var filtered_2 = filterItems_byText(filtered_1, searchVal);
 			
-			
+			grid.innerHTML = getnerateSimpleTable(filtered_2);
 		}
+		
 		setTimeout(renderProducts,1000);  
 	</script>
   
