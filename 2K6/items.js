@@ -9,9 +9,11 @@
 				{ category: "WDR", name: "EXECUTIVE PLUS ZBG 11/7/3", capacity: "11/7/3", mrp: 84690, offerPrice: 61693, advance: 25407, color: "Black Hairline"}
         ];
 
+// all products...
     function getProducts() {
 			return products;
 		}
+// temp js object
 var temp_map = {};
 
 // return array for saved database to speed-up..
@@ -23,39 +25,40 @@ function getProducts_Category(category) {
 	return out;
 }
 
-  // filter items by category exist in database
-    function filterProducts_Category(category) {
-       const filtered = getProducts().filter(p => {
-            return (selectedCategory === 'ALL' || p.category === selectedCategory);
-        });
-      return filtered;
-		}
+// filter items by category exist in database
+function filterProducts_Category(category) {
+	const filtered = getProducts().filter(p => {
+		return (selectedCategory === 'ALL' || p.category === selectedCategory);
+	});
+	return filtered;
+}
 
-  // all category exist in database
-    function getAllCategory() {
-      return [];
-		}
+// all category exist in database
+function getAllCategory() {
+	const uniqueCategories = [...new Set(productList.map(item => item.category))];
+	return uniqueCategories;
+}
 
-    function filterItems_byText(itemList, searchVal) {
-      if(searchVal === null || searchVal === '' || itemList === null) itemList;
-       return itemList.filter(p => {
-            return (p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal));
-        });
-	}
+function filterItems_byText(itemList, searchVal) {
+  if(searchVal === null || searchVal === '' || itemList === null) itemList;
+   return itemList.filter(p => {
+		return (p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal));
+	});
+}
 
 
-
-    function getProducts(category, searchVal) {
-      searchVal = searchVal===null?"":searchVal;
-      // step 1 - get filtered list..
-       const filtered = getProducts().filter(p => {
-            const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
-            const matchSearch = p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal);
-            return matchCat && matchSearch;
-        });
-      return filtered;
-		}
-
+/*
+function getProducts(category, searchVal) {
+	searchVal = searchVal===null?"":searchVal;
+	// step 1 - get filtered list..
+	const filtered = getProducts().filter(p => {
+		const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
+		const matchSearch = p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal);
+		return matchCat && matchSearch;
+	});
+	return filtered;
+}
+*/
 
 
 
