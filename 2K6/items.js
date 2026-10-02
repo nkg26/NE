@@ -1,4 +1,4 @@
-const products = [
+var products = [
 	{ category: "Refrigerator", name: "ECO-COOL IFBFF-383BIKSTM", capacity: "331 L", mrp: 57100, offerPrice: 33313, advance: 17130, color: "Standard Finish"}, 
 	{ category: "Refrigerator", name: "ECO-COOL IFBFF-383BIKGTM", capacity: "331 L", mrp: 58400, offerPrice: 35486, advance: 17520, color: "Standard Finish"}, 
 	{ category: "Refrigerator", name: "Expert-Cool IFBFF-383BIKSTU", capacity: "331 L", mrp: 61500, offerPrice: 35486, advance: 18450, color: "Standard Finish"}, 
