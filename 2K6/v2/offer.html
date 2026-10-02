@@ -9,29 +9,39 @@
     <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
 </head>
 <body>
-	<!--
-    <div> <button onclick="renderProducts()">renderProducts</button></div>
-		-->
-	
     <div id="header-placeholder"></div>
     <div id="banner-fest-header"></div>
     <div id="banner-fest-header2"></div>
-    <div id="module-items"></div>
+    <div id="module-items">
+		<main id="items-bag">
+		    <!-- Search and Filter Bar -->
+		    <div id="search-div">
+		        <div id="search-box">
+		            🔍<input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search by model name or category (e.g. Elena, 8 Kg)...">
+		        </div>
+		        
+		        <div id="search-category">
+		            <button onclick="setCategory('ALL')">All</button>
+		        </div>
+		    </div>
+		    
+		    <!-- Product Cards Container -->
+		    <div id="productGrid"></div>
+		</main>
+		
+	</div>
     <div id="banner-fest-footer"></div>
     <div id="footer-placeholder"></div>
 
-    <script>
-//        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
-        loadHTML('module-items', 'module-items-V2.html');
-	</script>
+
 	
     <script src="https://nkg26.github.io/NE/2K6/items-ifb-01.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/items-ifb-02.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/items.js"></script>
 	
-    <script>  setTimeout(renderProducts,1000);  </script>
-    
-
-
+    <script>  
+		
+		setTimeout(renderProducts,1000);  
+	</script>
   
 </body></html>
