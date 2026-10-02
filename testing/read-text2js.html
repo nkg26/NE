@@ -158,7 +158,31 @@ file data sample in tabular format: टैब (	), कॉमा(,), पाइप
    function reloadFile() {
    readPlainTextFile(masterFile);
    }
+
+   function splitRawToLines(raw_content) {
+      // Lines में तोड़ो
+      const lines = raw_content.split(`
+`).filter(line => line.trim() !== '');
+	   return lines;
+   }
+
+function splitLinesToTable(lines) {
+      // पहली line header मान लो (अगर comma separated है)
+    const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+	var TABLE = [];
+    const headers = lines[0].split(delimiter);
+	/// task pending here....
+	
+}
   
+/*
+
+
+
+
+*/
+	
+	
 	var masterFile=null;
   // actual file reader function
    function readPlainTextFile(file) {
