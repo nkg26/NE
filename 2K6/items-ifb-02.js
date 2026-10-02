@@ -1,3 +1,4 @@
+// override for tabular format...
 
         function renderProducts() {
             const grid = document.getElementById('productGrid');
@@ -12,7 +13,7 @@
             });
 
             if(filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`;
+                grid.innerHTML = `<div>No appliances found matching your criteria.</div>`;
                 return;
             }
 			
@@ -42,7 +43,7 @@
 				<td>${p.color}</td>
 				<td><del>₹${p.mrp.toLocaleString('en-IN')}</del></td>
 				<td>₹${p.offerPrice.toLocaleString('en-IN')}</td>
-				<td><strong class="text-slate-900 font-bold">₹${p.advance.toLocaleString('en-IN')}</strong></td>
+				<td><strong>₹${p.advance.toLocaleString('en-IN')}</strong></td>
 				<td>
 				<a href="${waUrl}" target="_blank" >
                             <i class="fab fa-whatsapp text-lg"></i> Book Now
