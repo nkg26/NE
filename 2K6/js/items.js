@@ -86,7 +86,6 @@ function getnerateSimpleTable(filtered) {
 	});
 
 	mydata += `</tbody></table>`;
-	mydata = `<div> ${filtered.length} / ${getProducts().length} record's found.. <br/> ${mydata}</div>`;
 	return mydata;
 }
 
