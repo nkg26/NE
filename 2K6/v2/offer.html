@@ -47,7 +47,7 @@
 		
 	  function setCategory(cat) {
             selectedCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
+            document.querySelectorAll('.selected_cat_button').forEach(btn => {
                 btn.className = '';
             });
             event.target.className = "selected_cat_button";
