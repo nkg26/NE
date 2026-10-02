@@ -66,7 +66,8 @@
 		setTimeout(renderProducts,1000);  
 
 		var catList = getUniqueCategory(getItemsAll());
-		selectedCategory = "ALL";
+		
+		selectedCategory = "ALL"; // set default value...
 		document.getElementById("search-category").innerHTML = "<button class='selected_cat_button' onclick="setCategory('ALL')">All</button> ";
 		catList.forEach(item =>{
 			document.getElementById("search-category").innerHTML += ` <button onclick="setCategory('${item}')">${item}</button> `;
