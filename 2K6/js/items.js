@@ -60,6 +60,10 @@ function getProducts(category, searchVal) {
 // override for tabular format...
 
 function getnerateSimpleTable(filtered) {
+	if(filtered === null) {
+		return `<div> null data lisr....</div>`;
+	}
+	
 	if(filtered.length === 0) {
 		return `<div>No appliances found matching your criteria.</div>`;
 	}
