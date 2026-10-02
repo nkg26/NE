@@ -49,9 +49,8 @@
 // actual file reader function
 function go() {
 	var text = document.getElementById('input').value;
-	var out = convertOutput(text);
-	showPorcessedOutput(text);
-	document.getElementById('output').value = output_content;
+	var output = convertOutput(text);
+	document.getElementById('output').value = output;
 	//document.getElementById('outputContainer').innerHTML = output;
 	//document.getElementById('sample').innerHTML = "";  
 }
