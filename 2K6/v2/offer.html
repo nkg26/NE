@@ -21,7 +21,6 @@
 		        </div>
 		        
 		        <div id="search-category">
-		            <button onclick="setCategory('ALL')">All</button>
 		        </div>
 		    </div>
 		    
@@ -41,6 +40,8 @@
 	  function filterProducts() {
 		  renderProducts();
 	  }
+
+		var selectedCategory = "ALL";
 		
 	  function setCategory(cat) {
             selectedCategory = cat;
@@ -65,6 +66,8 @@
 		setTimeout(renderProducts,1000);  
 
 		var catList = getUniqueCategory(getItemsAll());
+		selectedCategory = "ALL";
+		document.getElementById("search-category").innerHTML = "<button class='selected_cat_button' onclick="setCategory('ALL')">All</button> ";
 		catList.forEach(item =>{
 			document.getElementById("search-category").innerHTML += ` <button onclick="setCategory('${item}')">${item}</button> `;
 		});
