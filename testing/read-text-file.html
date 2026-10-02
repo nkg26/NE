@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Text File to Table</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+<h2>Text File पढ़ें और Table में दिखाएँ</h2>
+<input type="file" id="fileInput" accept=".txt,.csv,.tsv,.dat">
+<div id="tableContainer"></div>
+
+<script>
+  document.getElementById('fileInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function() {
+      const content = reader.result; // पूरी फाइल का text
+
+      // Lines में तोड़ो
+      const lines = content.split('
+').filter(line => line.trim() !== '');
+
+      // अगर कोई line नहीं तो बाहर निकलो
+      if (lines.length === 0) {
+        document.getElementById('tableContainer').innerHTML = '<p>फाइल खाली है।</p>';
+        return;
+      }
+
+      // पहली line header मान लो (अगर comma separated है)
+      const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+      const headers = lines[0].split(delimiter).map(h => h.trim());
+
+      // Table बनाना शुरू
+      let tableHtml = '<table><thead><tr>';
+      headers.forEach(h => {
+        tableHtml += `<th>${h}</th>`;
+      });
+      tableHtml += '</tr></thead><tbody>';
+
+      // बाकी की rows
+      for (let i = 1; i < lines.length; i++) {
+        const cells = lines[i].split(delimiter).map(c => c.trim());
+        tableHtml += '<tr>';
+        cells.forEach(c => {
+          tableHtml += `<td>${c}</td>`;
+        });
+        tableHtml += '</tr>';
+      }
+
+      tableHtml += '</tbody></table>';
+      document.getElementById('tableContainer').innerHTML = tableHtml;
+    };
+
+    reader.readAsText(file); // फाइल को text के रूप में पढ़ो
+  });
+
+  // Delimiter पहचानने का सरल तरीका
+  function detectDelimiter(firstLine) {
+    // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
+    if (firstLine.includes('	')) return '	';
+    if (firstLine.includes('|')) return '|';
+    return ','; // डिफ़ॉल्ट कॉमा
+  }
+</script>
+
+</body>
+</html>
