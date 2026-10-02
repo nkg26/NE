@@ -36,12 +36,41 @@
 
 	
     <script src="https://nkg26.github.io/NE/2K6/items-ifb-01.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/items-ifb-02.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/items.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/products.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/items-fx-02.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/items.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
 	
     <script>  
+	  function setCategory(cat) {
+            selectedCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = null;
+            });
+            event.target.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+            renderProducts();
+        }
 		
+		function renderProducts() {
+			const grid = document.getElementById('productGrid');
+			if(grid === null){
+				console.log("null element having id productGrid");
+				return;
+			}
+			var searchVal = '';
+			try{
+				var el = document.getElementById('searchInput');
+				searchVal = el===null?'':el.value.toLowerCase();
+			}catch(e){
+				console.log(e);
+			}
+			grid.innerHTML = '';
+			
+			var productList = getProducts_Category(selectedCategory);
+			var output = getnerateSimpleTable(productList);
+			grid.innerHTML = output;
+			
+			
+		}
 		setTimeout(renderProducts,1000);  
 	</script>
   
