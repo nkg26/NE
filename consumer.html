@@ -6,7 +6,6 @@
   </head>
 <body>
 	
-	hello user...
 	<div id="asd"></div>
 
 <div id="asd"></div>
@@ -15,11 +14,119 @@
 		Redirect_InitDefaultSetting();		
 	    //Redirect_setURL("cust/off1-dhanteras.html");
 	    Redirect_setURL("2K6/01-latest-offer.html");
-		Redirect_setTime(2*1000);
+		Redirect_setTime(10*1000);
 	    Redirect_START(); 	
   </script>
 
 
+
+
+
+
+
+	
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .gandhi-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            text-align: center;
+            border-top: 5px solid #ff9933;
+            border-bottom: 5px solid #138808;
+        }
+        .gandhi-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #000080;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #000080;
+            margin: 10px 0 5px 0;
+            font-size: 28px;
+        }
+        .date {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+            text-align: justify;
+        }
+        .quote {
+            font-weight: bold;
+            color: #ff9933;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        /* कॉपी बटन का स्टाइल */
+        .copy-btn {
+            background-color: #000080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            background-color: #ff9933;
+        }
+    </style>
+    <div class="gandhi-card">
+        <!-- गांधी जी की तस्वीर (आप src में अपनी इमेज का लिंक डाल सकते हैं) -->
+        <img src="resources/mahatma-gandhi.png" alt="Mahatma Gandhi" class="gandhi-img">
+        
+        <h1>राष्ट्रपिता महात्मा गांधी</h1>
+        <div class="date">गांधी जयंती - 2 अक्टूबर</div>
+        
+        <!-- टेक्स्ट जिसे कॉपी करना है -->
+        <p id="gandhiText">
+            आज 2 अक्टूबर को पूरा विश्व महात्मा गांधी की जयंती को 'अंतरराष्ट्रीय अहिंसा दिवस' के रूप में मनाता है। गांधी जी केवल भारत के ही नहीं, बल्कि पूरी दुनिया के प्रेरणास्रोत हैं। मार्टिन लूथर किंग से लेकर नेल्सन मंडेला तक, संसार के महानतम नेताओं ने उनके सिद्धांतों को अपनाया है। सत्य, अहिंसा और शांति के इन्हीं वैश्विक विचारों के कारण आज पूरी दुनिया उन्हें एक मसीहा के रूप में पूजती है और उनका सम्मान करती है।
+        </p>
+        
+        <div class="quote">"अहिंसा एक ऐसा बल है जिसे मानव जाति ने अपनी प्रगति के लिए पाया है।" — महात्मा गांधी</div>
+        
+        <!-- कॉपी करने वाला बटन -->
+        <button class="copy-btn" onclick="copyText()">इस संदेश को कॉपी करें</button>
+    </div>
+
+    <script>
+        function copyText() {
+            // पैराग्राफ से टेक्स्ट उठाना
+            var textToCopy = document.getElementById("gandhiText").innerText;
+            
+            // आधुनिक क्लिपबोर्ड API से कॉपी करना
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    alert("गांधी जी का संदेश कॉपी हो गया है!");
+                })
+                .catch(err => {
+                    console.error("कॉपी करने में समस्या आई: ", err);
+                });
+        }
+    </script>
   
 </body>
 </html>
