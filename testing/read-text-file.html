@@ -35,8 +35,8 @@
       const content = reader.result; // पूरी फाइल का text
 
       // Lines में तोड़ो
-      const lines = content.split('
-').filter(line => line.trim() !== '');
+      const lines = content.split(`
+`).filter(line => line.trim() !== '');
 
       // अगर कोई line नहीं तो बाहर निकलो
       if (lines.length === 0) {
