@@ -41,25 +41,32 @@
 		  renderProducts();
 	  }
 
-		var selectedCategory = "ALL";
+		var this_selectedCategory = null;
+		var this_filteredProduct = null;
 		
 	  function setCategory(cat) {
-            selectedCategory = cat;
+          this_selectedCategory = cat;
+		  this_selectedCategory = this_selectedCategory===null?"ALL":this_selectedCategory; // set default value...
+		  
+		  // clear class value, elements having class name "selected_cat_button"
             document.querySelectorAll('.selected_cat_button').forEach(btn => {
                 btn.className = '';
             });
             event.target.className = "selected_cat_button";
+			var ALL_ITEMS = getItemsAll();
+			this_filteredProduct = filterItemsByCategory(ALL_ITEMS, this_selectedCategory);
+		  // update filter...
             renderProducts();
         }
-		
+
+		// show final output...
 		function renderProducts() {
 			const grid = document.getElementById('productGrid');
 			try{
 				var searchVal = document.getElementById('searchInput').value.toLowerCase();
-				
-				var ALL_ITEMS = getItemsAll();
-				var filtered_1 = filterItemsByCategory(ALL_ITEMS, selectedCategory);
-				var filtered_2 = filterItems_byText(filtered_1, searchVal);
+
+				var plist = (this_filteredProduct !== null)?this_filteredProduct: getItemsAll();
+				var filtered_2 = filterItems_byText(plist, searchVal);
 	
 				var mydata = getnerateSimpleTable(filtered_2);
 				try{
@@ -72,12 +79,12 @@
 				grid.innerHTML = e;
 			}
 		}
-		
+
+		setCategory(null); //auto set default..
 		setTimeout(renderProducts,1000);  
 
+		// extract unique categories ...
 		var catList = getUniqueCategory(getItemsAll());
-		
-		selectedCategory = "ALL"; // set default value...
 		document.getElementById("search-category").innerHTML = ` <button class='selected_cat_button' onclick="setCategory('ALL')">All</button> `;
 		catList.forEach(item =>{
 			document.getElementById("search-category").innerHTML += ` <button onclick="setCategory('${item}')">${item}</button> `;
