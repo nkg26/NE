@@ -1,21 +1,186 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <!-- Mobile responsiveness ke liye critical viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NE-Safe</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-<html>
-  <head>
-    <title>NE-Customer</title>
-    <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
-  </head>
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f6f9;
+      overflow: hidden;
+    }
+
+    /* Mobile Header (Mobile screen par show hoga) */
+    .mobile-header {
+      display: none;
+      background: #4f46e5;
+      color: white;
+      padding: 12px 15px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Left Sidebar Styling */
+    .sidebar {
+      width: 20%;
+      min-width: 200px;
+      max-width: 250px;
+	  
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Navigation Links */
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+      text-align: center;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Center Main Content Area */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* Center Iframe */
+    .center-iframe {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: white;
+    }
+
+    /* ======================================= */
+    /* Mobile Screen Responsive CSS Rules      */
+    /* ======================================= */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      /* Mobile header show hoga */
+      .mobile-header {
+        display: flex;
+      }
+
+      /* Sidebar ko mobile par side me hide rakhein */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%); /* Screen ke bahar rakhega */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      }
+
+      /* Jab toggle class add hogi tab sidebar slide hokar samne aayega */
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-wrapper {
+        height: calc(100vh - 50px);
+      }
+    }
+  </style>
+</head>
 <body>
 
+  <!-- Left Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <h5>Nitin Enterprises</h5>
+    <!-- Link click hone par link center frame me khulega aur mobile menu auto-close ho jayega -->
+    <a href="https://nkg26.github.io/NE/2K6/01-latest-offer.html" target="center-frame" onclick="closeSidebar()">Latest Offer</a>
+<br/><br/><br/>
+
+
+	  
+    <a href="https://nkg26.github.io/NE/ocassion/fest-oct-2.html" target="center-frame" onclick="closeSidebar()">Oct 02</a>
+    <a href="https://nkg26.github.io/NE/resources/Bajaj QR.jpg" target="center-frame" onclick="closeSidebar()">Bajaj QR</a>
+    <a href="https://nkg26.github.io/NE/resources/contact-us.html" target="center-frame" onclick="closeSidebar()">Contact Us</a>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
     
-		
-<div id="asd"></div>
+    <!-- Mobile Header Bar -->
+    <div class="mobile-header">
+      <span style="font-weight: bold;">Nitin Enterprises</span>
+      <button onclick="toggleSidebar()">☰ Menu</button>
+    </div>
+
+    <!-- Center Viewing Area -->
+    <div class="main-content">
+      <iframe name="center-frame" class="center-iframe" src="https://nkg26.github.io/NE/cust/customer-welcome.html" target="_blank" ></iframe>
+    </div>
+
+  </div>
+
   <script>
-		Redirect_InsertDefaultHTML("asd");
-		Redirect_InitDefaultSetting();		
-	    //Redirect_setURL("cust/off1-dhanteras.html");
-	    Redirect_setURL("2K6/01-latest-offer.html");
-		Redirect_setTime(1*1000);
-	    Redirect_START(); 	
+    // Sidebar toggle karne ke liye simple vanilla JS
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    // Link par click hote hi mobile menu close ho jaye
+    function closeSidebar() {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active');
+      }
+    }
   </script>
+
 </body>
 </html>
