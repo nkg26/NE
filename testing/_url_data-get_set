@@ -1,0 +1,47 @@
+<!-- HTML Link Ke Zariye -->
+<script>
+  // Page load hone par URL se parameters nikalna
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Current URL ke query parameters GET karein
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 2. Specific Key ka value read karein
+    const name = urlParams.get('name');   // "Rahul"
+    const phone = urlParams.get('phone'); // "9876543210"
+
+    console.log("Name:", name);
+    console.log("Phone:", phone);
+
+    // 3. (Optional) Auto-fill Input Fields (Aapke Form Me Set Karne Ke Liye)
+    if (name) {
+      document.getElementById('fullName').value = name;
+    }
+    if (phone) {
+      document.getElementById('phoneNumber').value = phone;
+    }
+  });
+</script>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+<!-- HTML Link Ke Zariye -->
+<a href="contact.html?name=Rahul&phone=9876543210">Contact Rahul</a>
+
+<script>
+  // JavaScript Ke Zariye Page Open Ya Redirect Karte Waqt:
+  function goToPage() {
+    const name = "Rahul";
+    const phone = "9876543210";
+    
+    // URL Encoding use karein taaki spaces/special characters handle ho sakein
+    window.location.href = `contact.html?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`;
+  }
+</script>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Key Points (Dhyan Rakhne Yogy Baatein):
+encodeURIComponent(): Jab aap URL me spaces ya special characters (&, =, ?) bhej rahe hon, toh use hamesha encodeURIComponent('value') se pass karein.
+
+Security: URL parameters sabhi ko visible hote hain. Isme sensitive data jaise Password ya Card details kabhi mat bhejein.
