@@ -209,7 +209,7 @@
 		catList.forEach(item =>{
 			cat_html += ` <button class="${cls}" onclick="setCategory('${item}')">${item}</button> `;
 		});
-		document.getElementById("search-category").innerHTML = cat_html;
+		document.getElementById("cat-buttons").innerHTML = cat_html;
 	  	// end
 
 		setCategory(null); //auto set default..
