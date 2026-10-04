@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Support & Inquiries</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+
+    /* Left Info Panel */
+    .info-side {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      flex: 1 1 300px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-side h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .info-side p {
+      font-size: 15px;
+      color: #e0e7ff;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 15px;
+    }
+
+    .detail-item span {
+      background: rgba(255, 255, 255, 0.2);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+
+    /* Right Form Panel */
+    .form-side {
+      flex: 1 1 400px;
+      padding: 40px;
+    }
+
+    .form-side h3 {
+      color: #1f2937;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: #4f46e5;
+    }
+
+    .input-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #4f46e5;
+      color: #ffffff;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: #4338ca;
+    }
+
+    /* Message Banner */
+    .success-alert {
+      display: none;
+      background-color: #d1fae5;
+      color: #065f46;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .info-side, .form-side {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-card">
+    <!-- Left Information Side -->
+    <div class="info-side">
+      <div>
+        <h2>Get in Touch</h2>
+        <p>Feel free to contact us anytime. We will get back to you as soon as possible!</p>
+        
+        <div class="contact-details">
+          <div class="detail-item">
+            <span>📞</span>
+            <div>+91 70567 15458</div>
+          </div>
+          <div class="detail-item">
+            <span>✉️</span>
+            <div>support@test.com</div>
+          </div>
+          <div class="detail-item">
+            <span>📍</span>
+            <div>Dadri Road, Badhra, Distt. Ch. Dadri, Haryana - 127308</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Form Side -->
+    <div class="form-side">
+      <h3>Send a Message</h3>
+
+      <div class="success-alert" id="successMessage">
+        Thank you! Your message has been sent successfully.
+      </div>
+
+      <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="input-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="John Doe" required>
+        </div>
+
+        <div class="input-group">
+          <label for="emailAddress">Email Address</label>
+          <input type="email" id="emailAddress" placeholder="john@example.com" required>
+        </div>
+
+        <div class="input-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" placeholder="+91 987 654 3210" required>
+        </div>
+
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Type your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  
+	  function get(id){
+		return document.getElementById(id).value;
+	  }
+	  
+    function handleFormSubmit(event) {
+      event.preventDefault();
+	  
+	  var text =`Hi Nitin Enterprises, \n\n I am ${get('fullName')} \n contact: ${get('phoneNumber')}  \n email: ${get('emailAddress')}	  
+		message: ${get('message')}
+	  `;
+
+      // Show success alert banner
+      const alert = document.getElementById('successMessage');
+      alert.style.display = 'block';
+      //alert.innerHTML = text;
+
+      // Clear input fields
+      document.getElementById('contactForm').reset();
+
+      // Automatically hide alert after 4 seconds
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
