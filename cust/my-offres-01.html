@@ -135,7 +135,7 @@
 			var cls_unsel = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
 
 			// clear class value, elements having class name "selected_cat_button"
-			document.querySelectorAll('.selected_cat_button').forEach(btn => {btn.className = cls_unsel;});
+			document.querySelectorAll('.cat-btn').forEach(btn => {btn.className = cls_unsel;});
 			event.target.className = cls_sel;
 		  
 			var ALL_ITEMS = getItemsAll();
@@ -225,9 +225,9 @@ function createHTML_VIEW_Item(p) {
 
 		// extract unique categories ...
 		var catList = getUniqueCategory(getItemsAll());
-		var cat_html = `<button onclick="setCategory('ALL')">All</button> `;
+		var cat_html = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
 		catList.forEach(item =>{
-			cat_html += ` <button onclick="setCategory('${item}')">${item}</button> `;
+			cat_html += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;
 		});
 		document.getElementById("cat-buttons").innerHTML = cat_html;
 	  	// end
