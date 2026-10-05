@@ -140,9 +140,9 @@ function getnerateSimpleTable(filtered) {
 		<td class='col2'>${p.capacity}</td>
 		<td class='col3'>${p.name}</td>
 		<td class='col4'>${p.color}</td>
-		<td class='col5'>${p.mrp.toLocaleString('en-IN')}</td>
-		<td class='col6'>${p.offerPrice.toLocaleString('en-IN')}</td>
-		<td class='col7'>${p.advance.toLocaleString('en-IN')}</td>
+		<td class='col5'>${safeLocaleString(p.mrp)}</td>
+		<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
+		<td class='col7'>${safeLocaleString(p.advance)}</td>
 		</tr>`;
 	});
 
