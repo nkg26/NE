@@ -164,11 +164,17 @@ function render_and_show_Products() {
 function render_and_show_Products_01() {
 	const grid = document.getElementById('productGrid');
 	const searchVal = document.getElementById('searchInput').value.toLowerCase();
+	const srch = document.getElementById("search-msg");
+	
 	grid.innerHTML = 'Searching...';
-	document.getElementById("search-msg").innerHTML = " searching..";
+	srch.innerHTML = " searching..";
 
 	var filtered = GET_ITEMS();
 	filtered = filterItems_byText(filtered, searchVal);
+
+	srch.innerHTML = " searching.. in "+filtered.length+" items.;
+	grid.innerHTML = srch.innerHTML;
+
 
 	var output = "";
 	if(filtered.length === 0) {
@@ -179,7 +185,7 @@ function render_and_show_Products_01() {
 		});
 	}
 	grid.innerHTML = output;
-	document.getElementById("search-msg").innerHTML = filtered.length +" result found.";
+	document.getElementById("search-msg").innerHTML = " ... "+ filtered.length +" items found.";
 }
 
     
