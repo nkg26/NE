@@ -188,9 +188,13 @@ function render_and_show_Products_01() {
 	document.getElementById("search-msg").innerHTML = " ... "+ filtered.length +" items found.";
 }
 
+function val_safe(value) {
+	if(value!==null){ try{return value.toLocaleString('en-IN');}catch{}	}
+	return value;
+}
     
 function createHTML_VIEW_Item(p) {
-	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${p.offerPrice.toLocaleString('en-IN')}. \nPlease confirm 30% advance booking procedure.`);
+	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${val_safe(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
 	const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
 
   // create one item-div-box.
@@ -206,15 +210,12 @@ function createHTML_VIEW_Item(p) {
 				
 				<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
 					<div class="flex justify-between text-xs text-slate-500 mb-1">
-						<span>MRP: <del>₹${p.mrp.toLocaleString('en-IN')}</del></span>
+						<span>MRP: <del>₹${val_safe(p.mrp)}</del></span>
 						<span class="text-emerald-600 font-semibold">Special Diwali Pass</span>
 					</div>
-					<div class="text-2xl font-extrabold text-amber-600">
-						₹${p.offerPrice.toLocaleString('en-IN')}
-					</div>
+					<div class="text-2xl font-extrabold text-amber-600"> ₹${val_safe(p.offerPrice)}</div>
 					<div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
-						<span>30% Advance Booking:</span>
-						<strong class="text-slate-900 font-bold">₹${p.advance.toLocaleString('en-IN')}</strong>
+						<span>30% Advance Booking:</span> <strong class="text-slate-900 font-bold">₹${val_safe(p.advance)}</strong>
 					</div>
 				</div>
 			</div>
@@ -225,6 +226,10 @@ function createHTML_VIEW_Item(p) {
 		</div>
 	`;
 }
+
+
+
+	  
 
     function showError(e) {
 		document.getElementById("error_message").innerHTML = e;
