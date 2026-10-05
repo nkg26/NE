@@ -6,23 +6,69 @@ getUniqueCategory(getItemsAll());
 
 var this_selectedCategory = null;
 var this_filteredProduct = null;
+var this_filter_text = null;
 
 var cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
 var cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
 var cat_btn_cls = cat_btn_cls_unselected;
 
-  
+/*  
 function getProducts() {
-  console.log(" >> getProducts is not implemented... show_item_style-00.js");
+  console.log(" >> getProducts() is not implemented... show_item_style-00.js");
+}
+*/
+
+// invoked by text field on keyup...
+function show_filtered_products() {
+  //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
+	this_filter_text = document.getElementById('searchInput').value.toLowerCase();
+	render_and_show_items();
 }
 
-function show_filtered_products() {
-  console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
+// return final showing items list.
+function get_final_filtered_items() {
+  //console.log(" >> get_final_filtered_items() is not implemented... show_item_style-00.js");
+	var filtered = GET_ITEMS();
+	if(this_filter_text !== null)
+		filtered = filterItems_byText(filtered, this_filter_text);
 }
 
 function render_and_show_items() {
-  console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
+  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
+	const grid = document.getElementById('productGrid');
+
+	if(grid !== null){
+		const srch = document.getElementById("search-msg");
+		var filtered = get_final_filtered_items();
+
+		var text = " searching.. in " + filtered.length + " items.";
+
+		if(srch !== null) srch.innerHTML = text;
+		grid.innerHTML = text;
+		
+		var output_html = "";
+		if(filtered.length === 0) {
+			output_html = `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`;
+		} else {
+			filtered.forEach(p => { output_html += create_HTML_VIEW_OF_ITEM(p);});
+		}
+		grid.innerHTML = output_html;
+		text = " "+ filtered.length +" items found.";
+		if(srch !== null) srch.innerHTML = text;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function setItemFilter(filterName, filterValue) {
   console.log(` >> function invoked setItemFilter(${filterName} = ${filterValue})...`);
@@ -57,8 +103,9 @@ function setCategory(cat) {
 }
 
 
+
 function showError(e, time=1000) {
-		var err = document.getElementById("error_message");
+	var err = document.getElementById("error_message");
     if(err!=null){
   		err.innerHTML = e;
   		err.style.display = "visible";
@@ -74,4 +121,10 @@ function createHTML_CategoryButtons(){
   _buttonsHtml = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
   uniqueCategories.forEach(item =>{ _buttonsHtml += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;});
   return _buttonsHtml;
+}
+
+// most comman use 
+function create_HTML_VIEW_OF_ITEM(p){
+  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
+  return `<div class='product_html'> no html defined...${p}, name = ${p.name},  category = ${p.category}</div>`;
 }
