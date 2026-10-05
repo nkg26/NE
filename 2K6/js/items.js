@@ -12,6 +12,12 @@ function getUniqueCategory(itemsList) {
 	return uniqueCategories;
 }
 
+// working fine...
+function getUnique(itemsList, cat) {
+	const uniqueCategories = [...new Set(itemsList.map(item => item[cat]))];
+	return uniqueCategories;
+}
+
 
 // filter items by category 
 function filterItemsByCategory(itemsList, ofCategory) {
