@@ -37,11 +37,12 @@ function filterItems_byText(itemList, searchVal) {
 
 // रनटाइम सर्च फंक्शन
 function dynamicFilterString(list, searchKey, searchValue) {
+	var search__Test = searchValue.toLowerCase;
     return list.filter(item => {
         // यह चेक करता है कि ऑब्जेक्ट में वह 'key' मौजूद है या नहीं
         if (item[searchKey] !== undefined) {
             // केस-सेंसिटिविटी की समस्या से बचने के लिए दोनों को Lowercase में बदल कर मैच करते हैं
-            return item[searchKey].toLowerCase().includes(searchValue.toLowerCase());
+            return item[searchKey].toLowerCase().includes(search__Test);
         }
         return false;
     });
