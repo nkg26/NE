@@ -35,6 +35,16 @@ function filterItems_byText(itemList, searchVal) {
 	});
 }
 
+function safeLocaleString(value, defaultValue='') {
+	if(value!==null){ try{return value.toLocaleString('en-IN');}catch{}	}
+	return defaultValue;
+}
+
+function safeNumber(value, defaultValue=0) {
+	if(value!==null){ try{return value*1;}catch{}	}
+	return defaultValue;
+}
+
 // रनटाइम सर्च फंक्शन
 function dynamicFilterString(list, searchKey, searchValue) {
 	var search__Test = searchValue.toLowerCase;
