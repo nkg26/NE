@@ -18,6 +18,10 @@ function getProducts() {
 }
 */
 
+// help in initializing data...
+function init_item_style_script(){
+}
+
 // invoked by text field on keyup...
 function show_filtered_products() {
   //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
