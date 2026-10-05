@@ -55,7 +55,7 @@
             </div>
         </div>
 
-	<div id="search-result" class="bg-amber-100"></div>
+	<div id="search-msg" class="bg-amber-100"></div>
 
         <!-- Product Cards Container -->
         <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -128,7 +128,7 @@
         }
     
 	  function setCategory(cat) {
-			var cls_sel = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+			var cls_sel   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
 			var cls_unsel = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
 
 			// clear class value, elements having class name "selected_cat_button"
@@ -136,8 +136,7 @@
 			event.target.className = cls_sel;
 		  
 			var ALL_ITEMS = getItemsAll();
-			this_selectedCategory = cat;
-			this_selectedCategory = this_selectedCategory===null?"ALL":this_selectedCategory; // set default value...
+			this_selectedCategory = cat===null?"ALL":cat; // set default value...
 			this_filteredProduct = filterItemsByCategory(ALL_ITEMS, this_selectedCategory);
 			
 		  // update filter...
@@ -148,7 +147,7 @@
             const grid = document.getElementById('productGrid');
             const searchVal = document.getElementById('searchInput').value.toLowerCase();
             grid.innerHTML = 'Searching...';
-			document.getElementById("search-result").innerHTML = " searching..";
+			document.getElementById("search-msg").innerHTML = " searching..";
 
 			var filtered = GET_ITEMS();
 			filtered = filterItems_byText(filtered, searchVal);
@@ -161,8 +160,8 @@
 	                output += createHTML_VIEW_Item(p);
 	            });
 			}
-			grid.innerHTML += output;
-			document.getElementById("search-result").innerHTML = filtered.length +" result found.";
+			grid.innerHTML = output;
+			document.getElementById("search-msg").innerHTML = filtered.length +" result found.";
         }
 
 
@@ -214,7 +213,7 @@
 		document.getElementById("cat-buttons").innerHTML = cat_html;
 	  	// end
 
-		setCategory(null); //auto set default..
+		setTimeout(setCategory,500); //auto set default..
 		setTimeout(renderProducts,1000);  
 
   </script>
