@@ -39,6 +39,7 @@
         </div>
     </div>
 
+	<div id="error_message" style="color:red;"></div>
 	
     <!-- Main Container -->
     <main class="max-w-6xl mx-auto px-4 py-8">
@@ -126,8 +127,20 @@
 			}
           return this_filteredProduct;
         }
-    
+	  
 	  function setCategory(cat) {
+		  try{
+			  setCategory_01(cat);
+		  }catch(e){showError(e);}
+	  }
+	          
+	  function render_and_show_Products() {
+		  try{
+			  render_and_show_Products_01(cat);
+		  }catch(e){showError(e);}
+		}
+
+	  function setCategory_01(cat) {
 			var cls_sel   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
 			var cls_unsel = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
 
@@ -143,7 +156,7 @@
 		  render_and_show_Products();
 	  }
       
-        function render_and_show_Products() {
+        function render_and_show_Products_01() {
             const grid = document.getElementById('productGrid');
             const searchVal = document.getElementById('searchInput').value.toLowerCase();
             grid.innerHTML = 'Searching...';
@@ -163,9 +176,6 @@
 			grid.innerHTML = output;
 			document.getElementById("search-msg").innerHTML = filtered.length +" result found.";
         }
-
-
-
 
     
     function createHTML_VIEW_Item(p) {
@@ -203,6 +213,12 @@
                 </a>
             </div>
         `;}
+    
+    function showError(e) {
+		document.getElementById("error_message").innerHTML = e;
+		document.getElementById("error_message").style.display = "visible";
+		setTimeout(function(){document.getElementById("error_message").style.display = "none";},500); 
+	}
 
 		// extract unique categories ...
 		var catList = getUniqueCategory(getItemsAll());
