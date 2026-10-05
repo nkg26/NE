@@ -8,8 +8,8 @@ var this_selectedCategory = null;
 var this_filteredProduct = null;
 var this_filter_text = null;
 
-var cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
-var cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+var cat_btn_cls_selected   = "cat-btn selected"; // example
+var cat_btn_cls_unselected = "cat-btn uns";
 var cat_btn_cls = cat_btn_cls_unselected;
 
 /*  
@@ -25,8 +25,12 @@ function init_item_style_script(){
 // invoked by text field on keyup...
 function show_filtered_products() {
   //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
-	this_filter_text = document.getElementById('searchInput').value.toLowerCase();
-	render_and_show_items();
+	var box = document.getElementById('searchInput');
+	if(box !== null){
+		this_filter_text = box.value.toLowerCase();
+		render_and_show_items();
+	} else 
+		console.log(" no input search box found having id 'searchInput'.");
 }
 
 // return final showing items list.
@@ -40,6 +44,7 @@ function get_final_filtered_items() {
 function render_and_show_items() {
   //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
 	const grid = document.getElementById('productGrid');
+	if(grid === null) console.log(" no item show area found of id 'productGrid'.");
 
 	if(grid !== null){
 		const srch = document.getElementById("search-msg");
