@@ -20,8 +20,7 @@
 		            🔍<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, 8 Kg)...">
 		        </div>
 		        
-		        <div id="search-category">
-		        </div>
+		        <div id="search-category"></div>
 		    </div>
 		    
 		    <!-- Product Cards Container -->
@@ -53,10 +52,10 @@
 		cat_btn_cls_unselected = "";
 		cat_btn_cls = "selected_cat_button";
 		
+		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+		
 		setCategory(null); //auto set default..
 		setTimeout(show_items_table,1000); 
-		
-		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
 	}
 	
 	function __generate_HTML_VIEW_OF_ITEMs(itemList) {
