@@ -14,9 +14,9 @@ function getUniqueCategory(itemsList) {
 
 
 // filter items by category 
-function filterItemsByCategory(itemsList, category) {
+function filterItemsByCategory(itemsList, ofCategory) {
 	const filtered = itemsList.filter(p => {
-		return (selectedCategory === 'ALL' || p.category === selectedCategory);
+		return (ofCategory === 'ALL' || p.category === ofCategory);
 	});
 	return filtered;
 }
