@@ -1,4 +1,4 @@
-var RS = "₹";
+//var RS = "₹";
 var products = [
 {category:'WM', name:'TL650CB1ID', capacity:'6.5 Kg/L', color:'Cobalt Blue', mrp:25890, offerPrice:18781, advance:10356},
 {category:'WM', name:'TL700MB1', capacity:'7 Kg/L', color:'Midnight Black', mrp:24190, offerPrice:17632, advance:9676},
