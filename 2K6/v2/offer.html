@@ -35,63 +35,37 @@
 
     <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>
+	
 	<style>.selected_cat_button{background-color:cyan;} </style>
     <script>  
-/*
- ##########################     PRIVATE        #############################
- ##########################     PRIVATE        #############################
- ##########################     PRIVATE        #############################
- ##########################     PRIVATE        #############################
+	/*
+	 ##########################     PRIVATE        #############################
+	 ##########################     PRIVATE        #############################
+	 ##########################     PRIVATE        #############################
+	 ##########################     PRIVATE        #############################
+	
+	*/
 
-*/
+	function init_item_style_script(){
+		cat_btn_cls_selected   = "selected_cat_button"; // example
+		cat_btn_cls_unselected = "";
+		cat_btn_cls = "selected_cat_button";
 		
-	  function show_filtered_products() {
-		  show_items_table();
-	  }
-
-		var this_selectedCategory = null;
-		var this_filteredProduct = null;
-		
-	  function setCategory(cat) {
-          this_selectedCategory = cat;
-		  this_selectedCategory = this_selectedCategory===null?"ALL":this_selectedCategory; // set default value...
-		  
-		  // clear class value, elements having class name "selected_cat_button"
-          document.querySelectorAll('.selected_cat_button').forEach(btn => {btn.className = '';});
-          event.target.className = "selected_cat_button";
-		  var ALL_ITEMS = getItemsAll();
-
-		  //this_filteredProduct = filterItemsByCategory(ALL_ITEMS, this_selectedCategory); // old way
-		  if(this_selectedCategory === "ALL") this_filteredProduct = ALL_ITEMS;
-		  else this_filteredProduct = dynamicFilterString(ALL_ITEMS, 'category', this_selectedCategory);
-		  
-		  // update filter...
-            show_items_table();
-        }
-
-		// show final output...
-		function show_items_table() {
-			const grid = document.getElementById('productGrid');
-			try{
-				var searchVal = document.getElementById('searchInput').value.toLowerCase();
-				var items_list_1 = (this_filteredProduct !== null)?this_filteredProduct: getItemsAll();
-				var items_list_2 = filterItems_byText(items_list_1, searchVal);
-				var mydata = getnerateSimpleTable(items_list_2);
-				try{ mydata = `<div> ${items_list_2.length} / ${items_list_1.length} record's found.. <br/> ${mydata}</div>`; }catch{}
-				grid.innerHTML = mydata;
-			}catch(e){ if(grid !== null) grid.innerHTML = e; }
-		}
-
 		setCategory(null); //auto set default..
-		setTimeout(show_items_table,1000);  
-
-		// extract unique categories ...
-		var catList = getUniqueCategory(getItemsAll());
-		document.getElementById("search-category").innerHTML = ` <button class='selected_cat_button' onclick="setCategory('ALL')">All</button> `;
-		catList.forEach(item =>{
-			document.getElementById("search-category").innerHTML += ` <button onclick="setCategory('${item}')">${item}</button> `;
-		});
+		setTimeout(show_items_table,1000); 
 		
+		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+	}
+	
+	function __generate_HTML_VIEW_OF_ITEMs(itemList) {
+		return getnerateSimpleTable(itemList);
+	}
+
+	// extract unique categories ...
+	init_item_style_script(); // this should be call first..
+
 	</script>
   
 </body></html>
