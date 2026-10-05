@@ -31,39 +31,7 @@
             }
 
             filtered.forEach(p => {
-                const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${p.offerPrice.toLocaleString('en-IN')}. \nPlease confirm 30% advance booking procedure.`);
-                const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
-
-                grid.innerHTML += `
-                    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-start mb-2">
-                                <span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${p.category}</span>
-                                <span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
-                            </div>
-                            <h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
-                            <p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
-                            
-                            <div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
-                                <div class="flex justify-between text-xs text-slate-500 mb-1">
-                                    <span>MRP: <del>₹${p.mrp.toLocaleString('en-IN')}</del></span>
-                                    <span class="text-emerald-600 font-semibold">Special Diwali Pass</span>
-                                </div>
-                                <div class="text-2xl font-extrabold text-amber-600">
-                                    ₹${p.offerPrice.toLocaleString('en-IN')}
-                                </div>
-                                <div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
-                                    <span>30% Advance Booking:</span>
-                                    <strong class="text-slate-900 font-bold">₹${p.advance.toLocaleString('en-IN')}</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="${waUrl}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 transition">
-                            <i class="fab fa-whatsapp text-lg"></i> Book Now at 30% Advance
-                        </a>
-                    </div>
-                `;
+                
             });
         }
 
@@ -79,3 +47,42 @@
         function filterProducts() {
             renderProducts();
         }
+
+
+
+
+
+// most comman use 
+function create_HTML_VIEW_OF_ITEM(p){
+	// safeLocaleString(...) from fx-item.js
+	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${safeLocaleString(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
+	const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
+	
+	return `
+		<div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
+			<div>
+				<div class="flex justify-between items-start mb-2">
+					<span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${p.category}</span>
+					<span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
+				</div>
+				<h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
+				<p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
+				
+				<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
+					<div class="flex justify-between text-xs text-slate-500 mb-1">
+						<span>MRP: <del>₹${safeLocaleString(p.mrp)}</del></span>
+						<span class="text-emerald-600 font-semibold">Special Diwali Pass</span>
+					</div>
+					<div class="text-2xl font-extrabold text-amber-600"> ₹${safeLocaleString(p.offerPrice)}</div>
+					<div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
+						<span>30% Advance Booking:</span> <strong class="text-slate-900 font-bold">₹${safeLocaleString(p.advance)}</strong>
+					</div>
+				</div>
+			</div>
+	
+			<a href="${waUrl}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 transition">
+				<i class="fab fa-whatsapp text-lg"></i> Book Now at 30% Advance
+			</a>
+		</div>
+	`;
+}
