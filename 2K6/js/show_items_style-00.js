@@ -54,22 +54,26 @@ function render_and_show_items() {
 
 		if(srch !== null) srch.innerHTML = text;
 		grid.innerHTML = text;
+		grid.innerHTML = (filtered.length === 0) 
+						? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
+						: __generate_HTML_VIEW_OF_ITEMs(filtered);
 		
-		var output_html = "";
-		if(filtered.length === 0) {
-			output_html = `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`;
-		} else {
-			filtered.forEach(p => { output_html += create_HTML_VIEW_OF_ITEM(p);});
-		}
-		grid.innerHTML = output_html;
-		text = " "+ filtered.length +" items found.";
-		if(srch !== null) srch.innerHTML = text;
+		if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
 	}
 }
 
+// if we want to show items as an simple table we should override this function...
+function __generate_HTML_VIEW_OF_ITEMs(itemList) {
+	var output_html = "";
+	itemList.forEach(p => { output_html += create_HTML_VIEW_OF_ITEM(p);});
+	return output_html;
+}
 
-
-
+// most comman use to generate single item view.
+function create_HTML_VIEW_OF_ITEM(p){
+  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
+  return `<div class='product_html'> no html defined...${p}, name = ${p.name},  category = ${p.category}</div>`;
+}
 
 
 
@@ -132,8 +136,3 @@ function createHTML_CategoryButtons(){
   return _buttonsHtml;
 }
 
-// most comman use 
-function create_HTML_VIEW_OF_ITEM(p){
-  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
-  return `<div class='product_html'> no html defined...${p}, name = ${p.name},  category = ${p.category}</div>`;
-}
