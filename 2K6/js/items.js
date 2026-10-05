@@ -52,7 +52,7 @@ function dynamicFilterNumber(list, searchKey, searchValue) {
 function dynamicFilterNumberRange(list, searchKey, value_1, value_2) {
     return list.filter(item => {
         if (item[searchKey] !== undefined) 
-            return (item[searchKey] >== value_1)||(item[searchKey] <== value_2);
+            return (item[searchKey] > value_1)||(item[searchKey] < value_2);
         return false;
     });
 }
