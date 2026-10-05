@@ -1,56 +1,5 @@
-        let selectedCategory = 'ALL';
-
-        function getProducts() {
-			return products;
-		}
-
-        function renderProducts() {
-            const grid = document.getElementById('productGrid');
-			if(grid === null){
-				console.log("null element having id productGrid");
-				return;
-			}
-            var searchVal = '';
-			try{
-				var el = document.getElementById('searchInput');
-				searchVal = el===null?'':el.value.toLowerCase();
-			}catch(e){
-				console.log(e);
-			}
-            grid.innerHTML = '';
-
-            const filtered = getProducts().filter(p => {
-                const matchCat = selectedCategory === 'ALL' || p.category === selectedCategory;
-                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.category.toLowerCase().includes(searchVal);
-                return matchCat && matchSearch;
-            });
-
-            if(filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`;
-                return;
-            }
-
-            filtered.forEach(p => {
-                
-            });
-        }
-
-        function setCategory(cat) {
-            selectedCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
-            });
-            event.target.className = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
-            renderProducts();
-        }
-
-        function filterProducts() {
-            renderProducts();
-        }
-
-
-
-
+function init_item_style_script(){
+}
 
 // most comman use 
 function create_HTML_VIEW_OF_ITEM(p){
