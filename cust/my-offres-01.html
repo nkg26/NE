@@ -194,7 +194,7 @@ function val_safe(value) {
 }
     
 function createHTML_VIEW_Item(p) {
-	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${val_safe(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
+	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) \n\n at Diwali Deal Price ₹${val_safe(p.offerPrice)}. \nPlease confirm 30% of MRP as advance booking procedure.`);
 	const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
 
   // create one item-div-box.
@@ -221,7 +221,7 @@ function createHTML_VIEW_Item(p) {
 			</div>
 
 			<a href="${waUrl}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 transition">
-				<i class="fab fa-whatsapp text-lg"></i> Book Now at 30% Advance
+				<i class="fab fa-whatsapp text-lg"></i> Book Now
 			</a>
 		</div>
 	`;
