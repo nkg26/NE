@@ -1,14 +1,3 @@
-//  delete........................
-
-
-var products = [
-	{ category: "Cloth Dryer", name: "TURBO DRY", capacity: "5.5", mrp: 27790, offerPrice: 21658, advance: 8337, color: "White"}, 
-	{ category: "Top Load", name: "TL100IN3SWID", capacity: "10 Kg/L", mrp: 43290, offerPrice: 31858, advance: 12987, color: "Inox"}, 
-	{ category: "WDR", name: "WDR EXECUTIVE ZMN 9/6/3 CMS", capacity: "9/6/3", mrp: 69490, offerPrice: 50595, advance: 20847, color: "Mocha"}, 
-	{ category: "WDR", name: "EXECUTIVE ZBN 9/6/3 CMS", capacity: "9/6/3", mrp: 70690, offerPrice: 51506, advance: 21207, color: "Black PCM Hairline"}, 
-	{ category: "WDR", name: "EXECUTIVE PLUS ZBG 11/7/3", capacity: "11/7/3", mrp: 84690, offerPrice: 61693, advance: 25407, color: "Black Hairline"}
-];
-
         let selectedCategory = 'ALL';
 
         function getProducts() {
