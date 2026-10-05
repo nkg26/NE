@@ -100,7 +100,7 @@ function setCategory(cat) {
   
   // clear category buttons class value, elements having class name "selected_cat_button"
   document.querySelectorAll('.'+cat_btn_cls).forEach(btn => {btn.className = cat_btn_cls_unselected;});
-  try{event.target.className = cat_btn_cls_selected; }catch(){}  // update seleced class
+  try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
     
   var ALL_ITEMS = getItemsAll(); // from another js
   this_selectedCategory = cat===null?"ALL":cat; // set default value...
