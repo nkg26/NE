@@ -5,6 +5,9 @@
 function getItemsAll() {
 	return products;
 }
+function get_final_filtered_items() {
+	return getItemsAll();
+}
 
 // all category in items
 function getUniqueCategory(itemsList) {
