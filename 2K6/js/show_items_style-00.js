@@ -5,11 +5,11 @@ getUniqueCategory(getItemsAll());
 */
 
 var this_selectedCategory = null;
-var this_filteredProduct = null;
 var this_filter_text = null;
+var this_filtered_items_cat = null;
 
 var cat_btn_cls_selected   = "cat-btn selected"; // example
-var cat_btn_cls_unselected = "cat-btn uns";
+var cat_btn_cls_unselected = "cat-btn uns";  // example
 var cat_btn_cls = cat_btn_cls_unselected;
 
 /*  
@@ -36,9 +36,10 @@ function show_filtered_products() {
 // return final showing items list.
 function get_final_filtered_items() {
   //console.log(" >> get_final_filtered_items() is not implemented... show_item_style-00.js");
-	var filtered = GET_ITEMS();
+	var filtered = this_filtered_items_cat;
 	if(this_filter_text !== null)
 		filtered = filterItems_byText(filtered, this_filter_text);
+	return filtered;
 }
 
 function render_and_show_items() {
@@ -108,8 +109,8 @@ function setCategory(cat) {
   console.log(" ALL_ITEMS_COUNT = "+ALL_ITEMS.length);
   console.log("\t selected Category = "+this_selectedCategory);
     
-  this_filteredProduct = filterItemsByCategory(ALL_ITEMS, this_selectedCategory); // from another js
-  console.log(" this_filteredProduct = "+this_filteredProduct.length);
+  this_filtered_items_cat = filterItemsByCategory(ALL_ITEMS, this_selectedCategory); // from another js
+  console.log(" this_filtered_items_cat = "+this_filtered_items_cat.length);
     
   // show items...
   render_and_show_items();
