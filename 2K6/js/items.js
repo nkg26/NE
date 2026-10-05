@@ -29,6 +29,47 @@ function filterItems_byText(itemList, searchVal) {
 	});
 }
 
+// रनटाइम सर्च फंक्शन
+function dynamicFilterString(list, searchKey, searchValue) {
+    return list.filter(item => {
+        // यह चेक करता है कि ऑब्जेक्ट में वह 'key' मौजूद है या नहीं
+        if (item[searchKey] !== undefined) {
+            // केस-सेंसिटिविटी की समस्या से बचने के लिए दोनों को Lowercase में बदल कर मैच करते हैं
+            return item[searchKey].toLowerCase().includes(searchValue.toLowerCase());
+        }
+        return false;
+    });
+}
+
+// रनटाइम सर्च फंक्शन
+function dynamicFilterNumber(list, searchKey, searchValue) {
+    return list.filter(item => {
+        if (item[searchKey] !== undefined) 
+            return item[searchKey] === searchValue;
+        return false;
+    });
+}
+function dynamicFilterNumberRange(list, searchKey, value_1, value_2) {
+    return list.filter(item => {
+        if (item[searchKey] !== undefined) 
+            return (item[searchKey] >== value_1)||(item[searchKey] <== value_2);
+        return false;
+    });
+}
+function dynamicFilterNumberBelow(list, searchKey, value) {
+    return list.filter(item => {
+        if (item[searchKey] !== undefined) 
+            return (item[searchKey] < value);
+        return false;
+    });
+}
+function dynamicFilterNumberAbove(list, searchKey, value) {
+    return list.filter(item => {
+        if (item[searchKey] !== undefined) 
+            return (item[searchKey] > value);
+        return false;
+    });
+}
 
 /*
 function getProducts(category, searchVal) {
