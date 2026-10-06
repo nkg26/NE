@@ -1,7 +1,11 @@
 function init_item_style_script(){
+	cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+	cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+	cat_btn_cls = cat_btn_cls_unselected;
+
 }
 
-// most comman use 
+@override
 function create_HTML_VIEW_OF_ITEM(p){
 	// safeLocaleString(...) from fx-item.js
 	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${safeLocaleString(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
