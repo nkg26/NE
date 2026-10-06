@@ -5,7 +5,7 @@ function init_item_style_script(){
 
 }
 
-@override
+// @override
 function create_HTML_VIEW_OF_ITEM(p){
 	// safeLocaleString(...) from fx-item.js
 	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${safeLocaleString(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
