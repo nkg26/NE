@@ -73,7 +73,7 @@ function __generate_HTML_VIEW_OF_ITEMs(itemList) {
 // most comman use to generate single item view.
 function create_HTML_VIEW_OF_ITEM(p){
   console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
-  return `<div class='product_html'> no html defined...${p}, name = ${p.name},  category = ${p.category}</div>`;
+  return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
 }
 
 
