@@ -36,6 +36,7 @@ function show_filtered_products() {
 // return final showing items list.
 function get_final_filtered_items() {
   //console.log(" >> get_final_filtered_items() is not implemented... show_item_style-00.js");
+	if(this_filtered_items_cat === null){ setCategory(null); }	
 	var filtered = this_filtered_items_cat;
 	if(this_filter_text !== null)
 		filtered = filterItems_byText(filtered, this_filter_text);
