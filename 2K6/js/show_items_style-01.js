@@ -8,7 +8,7 @@ function init_item_style_script(){
 // @override
 function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 	// safeLocaleString(...) from fx-item.js
-	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${safeLocaleString(p.offerPrice)}. \nPlease confirm 30% advance booking procedure.`);
+	const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${safeLocaleString(p.offerPrice)}. \nPlease confirm 30% advance of MRP booking procedure.`);
 	const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
 	
 	return `
@@ -28,13 +28,13 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 					</div>
 					<div class="text-2xl font-extrabold text-amber-600"> ₹${safeLocaleString(p.offerPrice)}</div>
 					<div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
-						<span>30% Advance Booking:</span> <strong class="text-slate-900 font-bold">₹${safeLocaleString(p.advance)}</strong>
+						<span>Advance Booking:</span> <strong class="text-slate-900 font-bold">₹${safeLocaleString(p.advance)}</strong>
 					</div>
 				</div>
 			</div>
 	
 			<a href="${waUrl}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 transition">
-				<i class="fab fa-whatsapp text-lg"></i> Book Now at 30% Advance
+				<i class="fab fa-whatsapp text-lg"></i> Book Now
 			</a>
 		</div>
 	`;
