@@ -86,15 +86,17 @@
         loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
         loadHTML('footer-placeholder', 'https://nkg26.github.io/NE/resources/footer.html');
 		
-		setTimeout(renderProducts,1000);  
-		// extract unique categories ...
-		var uniqueCategories = getUniqueCategory(getItemsAll());
-		var _buttonsHtml = '';
-		_buttonsHtml = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
-		uniqueCategories.forEach(item =>{ _buttonsHtml += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;});
-		document.getElementById("search-category").innerHTML = _buttonsHtml;
-		// finish categories buttons ...
-
+		// most comman use to generate single item view.
+		function create_HTML_VIEW_OF_ITEM(p){ return create_HTML_VIEW_OF_ITEM_STYLE_01(p);}
+		function init_item_style_script(){
+			cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+			cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+			cat_btn_cls = "cat-btn";
+		
+			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+			setTimeout(render_and_show_items,1000);  
+		}
+		setTimeout(init_item_style_script,100);
 		
 	</script>
     
