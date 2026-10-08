@@ -8,32 +8,33 @@ function getItemsAll() {
 
 function getItemImage(p) {return null;}
 function getItemImages(p) {return null;}
-function getItemRemark(p) {return null;}
-function getItemColors(p) {return null;}
+function getItemRemark(p) {return p.remark;}
+function getItemColors(p) {return p.color;}
 function getItemFinish(p) {return getItemColors(p);}
 function getItemVarient(p) {return null;}
 function getItemFeatures(p) {return null;}
 
-function getItemBrandName(p) {return null;}
-function getItemBrandSegment(p) {return null;}
-function getItemBrandSapCode(p) {return null;}
-function getItemStarRating(p) {return null;}
-function getItemCapicity(p) {return null;}
+function getItemBrandName(p) {return p.brandName;}
+function getItemBrandSegment(p) {return p.brandSegment;}
+function getItemBrandSapCode(p) {return p.sapcode;}
+function getItemStarRating(p) {return p.starRaiting;}
+function getItemCapicity(p) {return p.capicity;}
 
-function getItemBrandCategory(p) {return null;}
+function getItemBrandCategory(p) {return p.category;}
 
 
-function getItemCategory(p) {return null;}
+function getItemCategory(p) {return p.category;}
 function getItemBuyCondition(p) {return null;}
 function getItemSapCode(p) {return getItemBrandSapCode(p);}
 function getItemCategory(p) {return getItemBrandCategory(p);}
 
-function getItemName(p) {return null;}
-function getItemMRP(p) {return null;}
-function getItemPrice(p) {return null;}
+function getItemName(p) {return p.nane;}
+function getItemMRP(p) {return p.mrp;}
+function getItemPrice(p) {return p.price;}
 
 function getItemOfferName(p) {return null;}
-function getItemOfferPrice(p) {return null;}
+function getItemOfferPrice(p) {return p.offerPrice;}
+function getItemOfferAdvance(p) {return p.advance;}
 function getItemOfferRemark(p) {return null;}
 
 
