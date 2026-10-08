@@ -5,6 +5,13 @@
 function getItemsAll() {
 	return products;
 }
+function getItemImage(p) {
+	return null;
+}
+function getItemImages(p) {
+	return null;
+}
+
 function get_final_filtered_items() {
 	return getItemsAll();
 }
@@ -103,7 +110,6 @@ function getProducts(category, searchVal) {
 	return filtered;
 }
 */
-
 
 // override for tabular format...
 
