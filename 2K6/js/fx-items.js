@@ -5,12 +5,28 @@
 function getItemsAll() {
 	return products;
 }
-function getItemImage(p) {
-	return null;
-}
-function getItemImages(p) {
-	return null;
-}
+
+function getItemImage(p) {return null;}
+function getItemImages(p) {return null;}
+function getItemRemark(p) {return null;}
+function getItemColors(p) {return null;}
+function getItemVarient(p) {return null;}
+
+function getItemSapCode(p) {return null;}
+function getItemStarRating(p) {return null;}
+function getItemCapicity(p) {return null;}
+
+function getItemName(p) {return null;}
+function getItemMRP(p) {return null;}
+function getItemPrice(p) {return null;}
+
+function getItemOfferName(p) {return null;}
+function getItemOfferPrice(p) {return null;}
+function getItemOfferRemark(p) {return null;}
+
+function getItemCategory(p) {return null;}
+function getItemCondition(p) {return null;}
+
 
 function get_final_filtered_items() {
 	return getItemsAll();
