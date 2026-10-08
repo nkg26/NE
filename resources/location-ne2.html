@@ -184,22 +184,91 @@
   <div class="btn-group">
     <!-- 2 Google Locations Grid -->
     <div class="btn-grid">
-      <!-- Location 1 Link -->
-      <a href="LOCATION_1_MAP_LINK" class="btn-map" target="_blank">
-        🗺️ Location 1 (Main Branch)
-      </a>
-
-      <!-- Location 2 Link -->
-      <a href="LOCATION_2_MAP_LINK" class="btn-map" target="_blank">
-        🗺️ Location 2 (Branch / Store)
-      </a>
+		  <!-- Location 1 Link -->
+		  <a id="gmap-button-1" href="" class="btn-map" target="_blank">🗺️ Location 1</a>
+		  <!-- Location 2 Link -->
+		  <a id="gmap-button-2" href="" class="btn-map" target="_blank">🗺️ Location 2</a>
     </div>
-
+	
     <!-- Firm Photos/Gallery Link -->
-    <a href="PHOTOS_OR_GALLERY_LINK" class="btn-gallery" target="_blank">
-      🖼️ शोरूम & फर्म की Photos देखें
-    </a>
+    <a id="img-button-1" href="" class="btn-gallery" target="_blank">🖼️ शोरूम & फर्म की Photos देखें</a>
   </div>
+
+
+Google Location : <br/>
+
+<div class="map-view">
+  Nitin Enterprises <br/>
+  <iframe id="gmap-frame-1" allowfullscreen="true" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+
+<div class="map-view">
+  IFB Point - Krantikari Chowk, Badhra <br/>
+  Krantikari Chowk, near Gramin Bank, Badhra, Haryana 127308 <br/>
+  <iframe id="gmap-frame-2"  allowfullscreen="true" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+
+<div class="image-view">
+	Shop front image <br/>
+	<img class="firm-img" id="firm-img-1" />
+</div>
+
+<br/>
 
 </div>
 <!-- GOOGLE LOCATIONS & FIRM IMAGES SECTION END -->
+
+<style>
+  .map-view, .image-view{
+    border : 2px dashed gray;
+    padding:3px;
+    margin:5px;
+    display: inline-block;
+	width:100%;
+  }
+
+  .firm-img, .map-view iframe{
+    border: 5px solid transparent; 
+    _width:500px;
+    _height:300px; 
+    max-width:600px;
+    max-height:450px; 
+	width:98%;
+	height:300px;
+  }
+  .map-view iframe:hover {
+    border: 5px solid gray; 
+  }
+  .map-view, .image-view {
+	background: radial-gradient(circle,rgba(251, 63, 251, 0.26) 22%, rgba(252, 70, 107, 1) 85%);
+	background: radial-gradient(circle,rgba(214, 13, 67, 0.83) 22%, rgba(70, 216, 252, 1) 85%);
+	background: radial-gradient(circle,rgba(14, 232, 218, 0.83) 22%, rgba(70, 216, 252, 1) 85%);
+  }
+  
+  .map-view:hover, .image-view:hover {
+    background: linear-gradient(135deg, red, yellow); 
+  }
+  
+</style>
+
+<script>
+var gmap1= "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d219.11660193039052!2d75.94578385236622!3d28.513690161384265!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3912f1f0e7ead553%3A0x595360ffe3a49837!2sNitin%20Enterprises!5e0!3m2!1sen!2sin!4v1791447337649!5m2!1sen!2sin";
+var gmap2="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.885322660781!2d75.94255987546455!3d28.513097775730152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3912f10f5c811001%3A0x8e2642e1e77c753b!2sIFB%20Point%20-%20Krantikari%20Chowk%2C%20Badhra!5e0!3m2!1sen!2sin!4v1791430886611!5m2!1sen!2sin";
+var f_img1="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkl8TkuMdyM1wAMzNcE4a6aDsJb108WHfisCit7gZ6TGv3hfyhP4bfOGqmylJE8ou5lnwVBnwZ_BVUC4QqXdw_gxe8YgL4fFIROSVJkRksvsHKhLABt5Y9gtGeP_9YV7LpIiDwiG7A_AXS-=w408-h356-k-no";
+
+document.getElementById("gmap-button-1").innerHTML = "🗺️"+"Nitin Enterprises";
+document.getElementById("gmap-button-2").innerHTML = "🗺️"+"IFB Point";
+
+document.getElementById("gmap-button-1").src = gmap1;
+document.getElementById("gmap-button-2").src = gmap2;
+
+document.getElementById("gmap-frame-1").src = gmap1;
+document.getElementById("gmap-frame-2").src = gmap2;
+document.getElementById("firm-img-1").src = f_img1;
+
+document.getElementById("img-button-1").href= f_img1;
+
+
+</script>
+
+
