@@ -10,11 +10,23 @@ function getItemImage(p) {return null;}
 function getItemImages(p) {return null;}
 function getItemRemark(p) {return null;}
 function getItemColors(p) {return null;}
+function getItemFinish(p) {return getItemColors(p);}
 function getItemVarient(p) {return null;}
+function getItemFeatures(p) {return null;}
 
-function getItemSapCode(p) {return null;}
+function getItemBrandName(p) {return null;}
+function getItemBrandSegment(p) {return null;}
+function getItemBrandSapCode(p) {return null;}
 function getItemStarRating(p) {return null;}
 function getItemCapicity(p) {return null;}
+
+function getItemBrandCategory(p) {return null;}
+
+
+function getItemCategory(p) {return null;}
+function getItemBuyCondition(p) {return null;}
+function getItemSapCode(p) {return getItemBrandSapCode(p);}
+function getItemCategory(p) {return getItemBrandCategory(p);}
 
 function getItemName(p) {return null;}
 function getItemMRP(p) {return null;}
@@ -23,9 +35,6 @@ function getItemPrice(p) {return null;}
 function getItemOfferName(p) {return null;}
 function getItemOfferPrice(p) {return null;}
 function getItemOfferRemark(p) {return null;}
-
-function getItemCategory(p) {return null;}
-function getItemCondition(p) {return null;}
 
 
 function get_final_filtered_items() {
