@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NE-Catalogue</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://nkg26.github.io/NE/resources/default.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div id="module-items">
+	    <main class="max-w-6xl mx-auto px-4 py-8">
+	        <!-- Search and Filter Bar -->
+	        <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+	            <div class="relative w-full md:w-1/3"> <i class="fas fa-search absolute left-3 top-3.5 text-slate-400"></i>
+	                <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+	            </div>
+	            <!-- Search buttons -->
+	            <div id="search-category" class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+	                <button onclick="setCategory('ALL')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap">All</button>
+	                <button onclick="setCategory('Ref')" class="cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap">Fridge</button>
+	            </div>
+	        </div>
+	        <!-- Product Cards Container -->
+	        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 gap-6"> <!-- Dynamic JS Injected Cards --> </div>	
+      </main>
+	</div>
+  <div id="footer-placeholder"></div>
+
+	<!--
+
+	gap...
+
+
+
+
+
+	
+	script started....
+	-->
+    <script src="https://nkg26.github.io/NE/resources/default.js"></script>
+    <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>	
+	
+    <script>
+        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
+        loadHTML('footer-placeholder', 'https://nkg26.github.io/NE/resources/footer.html');
+		
+		// most comman use to generate single item view.
+		function create_HTML_VIEW_OF_ITEM(p){ return create_HTML_VIEW_OF_ITEM_STYLE_01(p);}
+		function init_item_style_script(){
+			cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+			cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+			cat_btn_cls = "cat-btn";
+		
+			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+			setTimeout(render_and_show_items,1000);  
+		}
+		setTimeout(init_item_style_script,100);
+		
+	</script>  
+</body></html>
