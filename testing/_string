@@ -1,0 +1,37 @@
+https://github.com/nkg26/NE/blob/main/shop/catlog.html
+
+const str = "JavaScript";
+console.log(str.length);       // 10
+console.log(str.charAt(0));    // "J"
+console.log(str.at(-1));       // "t" (last character)
+
+const text = "Hello World";
+console.log(text.slice(0, 5));      // "Hello"
+console.log(text.slice(-5));        // "World"
+console.log(text.substring(0, 5));  // "Hello"
+
+const sentence = "Coding is fun and coding is rewarding.";
+console.log(sentence.includes("fun"));        // true
+console.log(sentence.indexOf("coding"));      // 18 (case-sensitive)
+console.log(sentence.startsWith("Coding"));   // true
+
+const original = "   Learn JS   ";
+console.log(original.trim());                 // "Learn JS"
+console.log(original.toUpperCase());          // "   LEARN JS   "
+console.log(original.replace("JS", "Code"));  // "   Learn Code   "
+
+console.log("5".padStart(3, "0")); // "005"
+console.log("Hi".repeat(3));       // "HiHiHi"
+
+const csv = "apple,banana,orange";
+const fruits = csv.split(","); 
+console.log(fruits); // ["apple", "banana", "orange"]
+
+const characters = "JS".split(""); 
+console.log(characters); // ["J", "S"]
+
+
+.
+.
+.
+.
