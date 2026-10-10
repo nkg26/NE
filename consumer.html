@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <!-- Mobile responsiveness ke liye critical viewport tag -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NE-Safe</title>
+  <title>Nitin Enterprises - Customers</title>
   <style>
     * {
       margin: 0;
@@ -41,12 +41,13 @@
     }
 
     /* Left Sidebar Styling */
-    .sidebar, .aaa  {
+    .sidebar {
       width: 20%;
       min-width: 200px;
       max-width: 250px;
-	  
       background: linear-gradient(135deg, #4f46e5, #7c3aed);
+	   background: linear-gradient(180deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+	   background: linear-gradient(168deg,rgba(140, 17, 17, 1) 0%, rgba(12, 99, 48, 1) 71%, rgba(235, 212, 9, 1) 100%);
       padding: 20px;
       color: white;
       display: flex;
@@ -54,13 +55,26 @@
       gap: 12px;
       transition: transform 0.3s ease;
       z-index: 1000;
+    }
+	
+    .sidebar-mi {
+      width: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s ease;
 		overflow-y:auto;
 		scrollbar-width: thin;        /* auto | thin | none */
     }
-    .sidebar:hover {
+	
+    .sidebar-mi:hover {
 		overflow-y:auto;
 	}
 	
+	 div.aaa{
+	 text-align: left;
+	 }
 
     .sidebar h2 {
       font-size: 20px;
@@ -69,10 +83,10 @@
     }
 
     /* Navigation Links */
-    .sidebar .aaa a {
+    .sidebar-mi a {
       color: white;
       text-decoration: none;
-      padding: 12px 15px;
+      padding: 12px;
       background: rgba(255, 255, 255, 0.15);
       border-radius: 8px;
       font-weight: bold;
@@ -80,8 +94,8 @@
       text-align: center;
     }
 
-    .sidebar .aaa a:hover {
-      background: rgba(255, 255, 255, 0.3);
+    .sidebar-mi a:hover {
+      background: rgba(255, 50, 10, 0.5);
     }
 
     /* Center Main Content Area */
@@ -92,10 +106,10 @@
       height: 100vh;
       width: 100%;
     }
-
     .main-content {
       flex: 1;
       padding: 10px;
+
     }
 
     /* Center Iframe */
@@ -104,8 +118,12 @@
       height: 100%;
       border: 2px solid #e5e7eb;
       border-radius: 10px;
-      background: white;
+      _background: white;
     }
+	
+	body{
+	   background: linear-gradient(168deg,rgba(140, 17, 17, 1) 0%, rgba(12, 99, 48, 1) 71%, rgba(235, 212, 9, 1) 100%);
+	}
 
     /* ======================================= */
     /* Mobile Screen Responsive CSS Rules      */
@@ -147,7 +165,7 @@
   <div class="sidebar" id="sidebar">
     <h5>Nitin Enterprises</h5>
     <!-- Link click hone par link center frame me khulega aur mobile menu auto-close ho jayega -->
-	<div class="aaa" id="sidebar-menus"></div>
+	<div class="sidebar-mi" id="sidebar-menus"></div>
   </div>
 
   <!-- Main Content Wrapper -->
@@ -161,7 +179,7 @@
 
     <!-- Center Viewing Area -->
     <div class="main-content">
-      <iframe name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
+      <iframe id="center-iframe" name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
     </div>
 
   </div>
@@ -193,16 +211,15 @@
 	  
   // menu links and all...
   var TAB = [
-//	{id:"def", url:FULL_URL("/customer/welcome.html"), name:"Welcome", inMenu:false },
-	{id:"def", url:FULL_URL("/shop/welcome-page.html"), name:"Welcome", inMenu:false },
-	{id:"dhanteras", url:FULL_URL("/2K6/offer_261004.html"), name:"Latest Offer", inMenu:true },
+//	{id:"def", url:"/customer/welcome.html", name:"Welcome", inMenu:false },
+	{id:"def", url:"/shop/welcome-page.html", name:"Welcome", inMenu:false },
+	{id:"dhanteras", url:"/2K6/offer_261004.html", name:"Latest Offer", inMenu:true },
 	{name:"%separator%", inMenu:true},
-	{id:"", url:FULL_URL("/resources/bajaj-finanace.html"), name:"Bajaj Finance", inMenu:true},
-	{id:"navratre", url:FULL_URL("/2K6/offer-2610-navratre.html"), name:"Navratre", show_default:true , inMenu:true},
+	{id:"", url:"/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
+	{id:"navratre", url:"/2K6/offer-2610-navratre.html", name:"Navratre", inMenu:true},
 	{name:"%separator%", inMenu:true},
-	{id:"header", url:FULL_URL("/resources/header.html"), name:"del-header", inMenu:true},
-	{id:"location-us", url:FULL_URL("/resources/location-ne.html"), name:"Google Location", inMenu:true},
-	{id:"conatct-us", url:FULL_URL("/resources/contact-us.html"), name:"Contact Us", inMenu:true}
+	{id:"location-us", url:"/resources/location-ne.html", name:"Location", inMenu:true},
+	{id:"conatct-us", url:"/resources/contact-us.html", name:"Contact Us", inMenu:true}
   ];
   
   function getObjectById(ID, start=0){
@@ -214,12 +231,21 @@
 	}
  }
   
-  function setIframeURLByID(ID){
-	var p = ID?getObjectById(ID):null;
-	setIframeURL(p?p.url:"");
+ function showPageById(ID){
+	console.log("showPageById(ID) : "+ID);
+	var p = getObjectById(ID);
+	showPageByURL(p?(p.url):"");
   }
+  
+  function showPageByURL(URL){
+	console.log("showPageByURL(URL) : "+URL);
+	setIframeURL(HOMR_URL+URL);
+  }  
+ 
   function setIframeURL(URL){
 	closeSidebar();
+		console.log("setIframeURL(URL) : "+URL);
+
 	document.getElementById("center-iframe").src=URL;
 	try{
 		document.getElementById("asd").innerHTML=URL;
@@ -237,7 +263,7 @@
 				// below all 3 are working fine..
 				//sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="closeSidebar()">${p.name}</a>`;
 				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
-				sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
+				sidebar_menu_html += `<a href="javascript:void(0);" onclick="showPageByURL('${p.url}')" > ${p.name}</a>`;
 			}
 		}
   }
@@ -246,10 +272,7 @@
 function load_final_page(){
 	var x = UrlKeyMap.get('id');
 	x = x?x:"def";
-	if(x){
-		var p = getObjectById(x);
-		setIframeURL(p.url);
-	}
+	showPageById(x);
 }
 	  
   </script>
