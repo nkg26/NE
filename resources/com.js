@@ -5,7 +5,29 @@ var shop_img_ne_01=shop_img_ne;
 
 
 
+const WEB_HOME = "https://nkg26.github.io/NE";
+function FULL_PATH(path){
+  if(path.startsWith(WEB_HOME)) return path;
 
+  var pre_key = "https://github.com/nkg26/NE";
+  var _key = pre_key+"/blob/main";
+  if(path.startsWith(_key)) {
+    var post = path.substring(_key.length, path.length-(_key.length));
+    return WEB_HOME+post;
+  }
+  _key = pre_key+"/edit/main";
+  if(path.startsWith(_key)) {
+    var post = path.substring(_key.length, path.length-(_key.length));
+    return WEB_HOME+post;
+  }
+  if(path.startsWith("https://")) return path;
+  if(path.startsWith("http://")) return path;
+  if(path.startsWith("/")) return WEB_HOME+path;
+
+  //https://github.com/nkg26/NE/blob/main/resources/bajaj-finanace.html
+
+
+}
 
 
 // Date Schedule List
