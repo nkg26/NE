@@ -1,0 +1,374 @@
+<!-- LUXURY CATALOGUE & TRUST COMPONENT START -->
+<div class="nitin-luxury-wrapper">
+  <style>
+    .nitin-luxury-wrapper {
+      max-width: 600px;
+      width: 100%;
+      margin: 20px auto;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #f8fafc;
+      box-sizing: border-box;
+      background: #090d16;
+      border-radius: 24px;
+      padding: 24px 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(234, 88, 12, 0.15);
+      border: 1px solid rgba(251, 146, 60, 0.2);
+    }
+
+    /* 1. LEGACY BRAND HEADER */
+    .nitin-luxury-wrapper .brand-header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .nitin-luxury-wrapper .legacy-tag {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 30px;
+      display: inline-block;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(217, 119, 6, 0.4);
+      margin-bottom: 14px;
+    }
+
+    .nitin-luxury-wrapper .brand-title {
+      font-size: 26px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .nitin-luxury-wrapper .alias-badge-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin: 12px 0 16px 0;
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .nitin-luxury-wrapper .alias-badge-box span {
+      color: #fde047;
+      font-weight: 800;
+    }
+
+    .nitin-luxury-wrapper .legacy-text {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* 2. BONDING & STORE VISIT CARD */
+    .nitin-luxury-wrapper .bonding-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid rgba(234, 88, 12, 0.3);
+      border-radius: 16px;
+      padding: 18px;
+      margin: 20px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nitin-luxury-wrapper .bonding-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #f97316;
+    }
+
+    .nitin-luxury-wrapper .bonding-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f97316;
+      margin-bottom: 6px;
+    }
+
+    .nitin-luxury-wrapper .bonding-desc {
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .nitin-luxury-wrapper .online-note {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* 3. BUMPER OFFER BANNER */
+    .nitin-luxury-wrapper .hero-offer-card {
+      background: linear-gradient(135deg, #c2410c 0%, #991b1b 100%);
+      border-radius: 16px;
+      padding: 18px 16px;
+      text-align: center;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 25px rgba(194, 65, 12, 0.35);
+      border: 1px solid rgba(254, 215, 170, 0.3);
+    }
+
+    .nitin-luxury-wrapper .slogan-line {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fef08a;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .nitin-luxury-wrapper .hero-offer-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .nitin-luxury-wrapper .hero-offer-highlight {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fde047;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      display: block;
+    }
+
+    /* 4. CATALOGUE GRID ITEMS */
+    .nitin-luxury-wrapper .catalogue-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nitin-luxury-wrapper .catalogue-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .nitin-luxury-wrapper .catalogue-item {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .nitin-luxury-wrapper .catalogue-item:hover {
+      border-color: rgba(249, 115, 22, 0.5);
+      background: rgba(30, 41, 59, 0.8);
+      transform: translateY(-2px);
+    }
+
+    .nitin-luxury-wrapper .item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nitin-luxury-wrapper .item-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .nitin-luxury-wrapper .item-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 3px;
+    }
+
+    .nitin-luxury-wrapper .item-desc {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .nitin-luxury-wrapper .item-price {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.2) 100%);
+      color: #fb923c;
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* 5. ACTION BUTTONS */
+    .nitin-luxury-wrapper .btn-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nitin-luxury-wrapper .btn-store {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 15px;
+      border-radius: 14px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    .nitin-luxury-wrapper .btn-store:hover {
+      box-shadow: 0 8px 25px rgba(249, 115, 22, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .nitin-luxury-wrapper .btn-online {
+      display: block;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      text-align: center;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    .nitin-luxury-wrapper .btn-online:hover {
+      background: rgba(56, 189, 248, 0.1);
+    }
+  </style>
+
+  <!-- BRAND HEADER -->
+  <div class="brand-header">
+    <div class="legacy-tag">⭐ 35+ वर्षों का अटूट विश्वास ⭐</div>
+    <div class="brand-title">नितिन एंटरप्राइजेज</div>
+    
+    <div class="alias-badge-box">
+      बाढड़ा क्षेत्र में आपकी अपनी पुरानी पहचान:<br>
+      <span>"झोझू वाले सेठ"</span> एवं <span>"गर्ग बैटरी वाले"</span>
+    </div>
+
+    <p class="legacy-text">
+      पिछले 35-40 वर्षों से बाढड़ा और आसपास के क्षेत्र में केवल असली व ब्रांडेड सामान देने की हमारी परंपरा रही है। अब उसी विश्वास के साथ पेश है नए जमाने के होम एप्लायंसेज!
+    </p>
+  </div>
+
+  <!-- STORE VISIT BONDING CARD -->
+  <div class="bonding-card">
+    <div class="bonding-title">☕ ऑनलाइन देखें, पर पधारें अपनी दुकान पर! 🤝</div>
+    <div class="bonding-desc">
+      ऑनलाइन कैटलॉग से सामान पसंद करें, पर असली संतुष्टि के लिए शोरूम पर आएं। साथ बैठकर चाय पिएं, प्रोडक्ट को खुद परखें और पारिवारिक रिश्ते के साथ बेस्ट डिस्काउंट पाएं!
+    </div>
+    <div class="online-note">(घर बैठे ऑनलाइन पेमेंट व डिलीवरी की सुविधा भी उपलब्ध है)</div>
+  </div>
+
+  <!-- BUMPER OFFER BANNER -->
+  <div class="hero-offer-card">
+    <div class="slogan-line">⚡ "दाम ऐसे जो दिल खुश कर दें, वारंटी ऐसी जो बेफिक्र कर दे!" ⚡</div>
+    <div class="hero-offer-title">🎉 बंपर वारंटी ऑफर!</div>
+    <span class="hero-offer-highlight">फुल्ली ऑटोमैटिक वॉशिंग मशीन पर 4.5 साल (4Y 6M) की गारंटी!</span>
+  </div>
+
+  <!-- CATALOGUE LIST -->
+  <div class="catalogue-title">🛒 ऑनलाइन कैटलॉग & स्पेशल रेट्स</div>
+
+  <div class="catalogue-list">
+    <!-- Item 1 -->
+    <div class="catalogue-item">
+      <div class="item-left">
+        <div class="item-icon">📺</div>
+        <div>
+          <div class="item-name">स्मार्ट LED TVs (32" से 85")</div>
+          <div class="item-desc">सिनेमा जैसा मज़ा, सबसे कम दाम में</div>
+        </div>
+      </div>
+      <div class="item-price">₹11,999 से शुरू</div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="catalogue-item">
+      <div class="item-left">
+        <div class="item-icon">🧺</div>
+        <div>
+          <div class="item-name">सेमी-ऑटोमैटिक वॉशिंग मशीन</div>
+          <div class="item-desc">धुलाई आसान, कपड़ों की चमक हमेशा जवान</div>
+        </div>
+      </div>
+      <div class="item-price">₹9,999  से शुरू</div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="catalogue-item">
+      <div class="item-left">
+        <div class="item-icon">❄️</div>
+        <div>
+          <div class="item-name">ब्रांडेड फ्रिज (Refrigerators)</div>
+          <div class="item-desc">सिंगल व डबल डोर मॉडल्स उपलब्ध</div>
+        </div>
+      </div>
+      <div class="item-price">₹13,499 से शुरू</div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="catalogue-item">
+      <div class="item-left">
+        <div class="item-icon">🍲</div>
+        <div>
+          <div class="item-name">IFB माइक्रोवेव ओवन</div>
+          <div class="item-desc">झटपट कुकिंग और सेहतमंद खाना</div>
+        </div>
+      </div>
+      <div class="item-price">₹6,999 से शुरू</div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="btn-stack">
+    <a href="LOCATION_MAP_LINK" class="btn-store" target="_blank">
+      🏬 दुकान पर आएं & स्पेशल डिस्काउंट पाएं (Location Map)
+    </a>
+
+    <a href="WHATSAPP_OR_PHONE_LINK" class="btn-online" target="_blank">
+      💳 ऑनलाइन पेमेंट / होम डिलीवरी के लिए संपर्क करें
+    </a>
+  </div>
+
+</div>
+<!-- LUXURY CATALOGUE & TRUST COMPONENT END -->
