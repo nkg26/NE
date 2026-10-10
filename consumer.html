@@ -41,7 +41,7 @@
     }
 
     /* Left Sidebar Styling */
-    .sidebar {
+    .sidebar, .aaa  {
       width: 20%;
       min-width: 200px;
       max-width: 250px;
@@ -69,7 +69,7 @@
     }
 
     /* Navigation Links */
-    .sidebar a {
+    .sidebar .aaa a {
       color: white;
       text-decoration: none;
       padding: 12px 15px;
@@ -80,7 +80,7 @@
       text-align: center;
     }
 
-    .sidebar a:hover {
+    .sidebar .aaa a:hover {
       background: rgba(255, 255, 255, 0.3);
     }
 
@@ -147,13 +147,7 @@
   <div class="sidebar" id="sidebar">
     <h5>Nitin Enterprises</h5>
     <!-- Link click hone par link center frame me khulega aur mobile menu auto-close ho jayega -->
-    <a href="https://nkg26.github.io/NE/2K6/offer_261004.html" target="center-frame" onclick="closeSidebar()">Latest Offer</a>
-	  
-	<br/><br/><br/>
-  
-    <a href="https://nkg26.github.io/NE/ocassion/fest-oct-2.html" target="center-frame" onclick="closeSidebar()">Oct 02</a>
-    <a href="https://nkg26.github.io/NE/resources/bajaj-finanace.html" target="center-frame" onclick="closeSidebar()">Bajaj Finance</a>
-    <a href="https://nkg26.github.io/NE/resources/contact-us.html" target="center-frame" onclick="closeSidebar()">Contact Us</a>
+	<div class="aaa" id="sidebar-menus"></div>
   </div>
 
   <!-- Main Content Wrapper -->
@@ -185,6 +179,79 @@
         document.getElementById('sidebar').classList.remove('active');
       }
     }
+
+
+
+
+  var UrlKeyMap;
+  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search); load_final_page()});
+
+  var HOMR_URL = "https://nkg26.github.io/NE";
+  function FULL_URL(path){
+	  return HOMR_URL+path;
+  }
+	  
+  // menu links and all...
+  var TAB = [
+//	{id:"def", url:FULL_URL("/customer/welcome.html"), name:"Welcome", inMenu:false },
+	{id:"def", url:FULL_URL("/shop/welcome-page.html"), name:"Welcome", inMenu:false },
+	{id:"dhanteras", url:FULL_URL("/2K6/offer_261004.html)", name:"Latest Offer", inMenu:true },
+	{name:"%separator%", inMenu:true},
+	{id:"", url:FULL_URL("/resources/bajaj-finanace.html"), name:"Bajaj Finance", inMenu:true},
+	{id:"navratre", url:FULL_URL("/2K6/offer-2610-navratre.html"), name:"Navratre", show_default:true , inMenu:true},
+	{name:"%separator%", inMenu:true},
+	{id:"header", url:FULL_URL("/resources/header.html"), name:"del-header", inMenu:true},
+	{id:"location-us", url:FULL_URL("/resources/location-ne.html"), name:"Google Location", inMenu:true},
+	{id:"conatct-us", url:FULL_URL("/resources/contact-us.html"), name:"Contact Us", inMenu:true}
+  ];
+  
+  function getObjectById(ID, start=0){
+	for(var i=(start<0?0:start); i<TAB.length; i++){
+	  var p = TAB[i];
+	  if(p!==null && p.id === ID){
+		return p;
+	  }
+	}
+ }
+  
+  function setIframeURLByID(ID){
+	var p = ID?getObjectById(ID):null;
+	setIframeURL(p?p.url:"");
+  }
+  function setIframeURL(URL){
+	closeSidebar();
+	document.getElementById("center-iframe").src=URL;
+	try{
+		document.getElementById("asd").innerHTML=URL;
+		//document.getElementById("asd").style.display='none';
+	}catch{}
+ }
+  
+  var sidebar_menu_html = '';
+  for(var i=0;i<TAB.length;i++){
+	  var p = TAB[i];
+	  if(p.inMenu === true){
+		  if(p.name==='%separator%'){
+				sidebar_menu_html += `<br/>`;
+			} else {
+				// below all 3 are working fine..
+				//sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="closeSidebar()">${p.name}</a>`;
+				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
+				sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
+			}
+		}
+  }
+  document.getElementById("sidebar-menus").innerHTML = sidebar_menu_html;
+
+function load_final_page(){
+	var x = UrlKeyMap.get('id');
+	x = x?x:"navratre";
+	if(x){
+		var p = getObjectById(x);
+		setIframeURL(p.url);
+	}
+}
+	  
   </script>
 
 </body>
