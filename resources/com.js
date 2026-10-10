@@ -6,7 +6,7 @@ var shop_img_ne_01=shop_img_ne;
 
 
 const WEB_HOME = "https://nkg26.github.io/NE";
-function FULL_PATH(path){
+function FULL_URL(path){
   if(path.startsWith(WEB_HOME)) return path;
 
   var pre_key = "https://github.com/nkg26/NE";
