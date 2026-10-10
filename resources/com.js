@@ -3,6 +3,19 @@ var gmap_ne_ifb="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8853
 var shop_img_ne="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkl8TkuMdyM1wAMzNcE4a6aDsJb108WHfisCit7gZ6TGv3hfyhP4bfOGqmylJE8ou5lnwVBnwZ_BVUC4QqXdw_gxe8YgL4fFIROSVJkRksvsHKhLABt5Y9gtGeP_9YV7LpIiDwiG7A_AXS-=w408-h356-k-no";
 var shop_img_ne_01=shop_img_ne;
 
+/*
+    use in html..
+    <script src="https://nkg26.github.io/NE/resources/com.js"></script>
+    <script src="https://nkg26.github.io/NE/resources/default.js"></script>
+    <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>	
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>	
+
+*/
+
+
 
 
 const WEB_HOME = "https://nkg26.github.io/NE";
