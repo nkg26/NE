@@ -1,0 +1,201 @@
+<div class="navratre-body" id="navratre-div">
+    <h1>🌸 नवरात्र के पावन 9 दिन (11 - 19 अक्टूबर) 🌸</h1>
+
+    <div class="container">
+        <!-- Din 1 -->
+        <div class="navratra-card" id="navratra-card-1">
+            <div class="date-badge">11 अक्टूबर</div>
+            <div class="day-title">पहला दिन: माँ शैलपुत्री</div>
+            <div class="tithi-war">प्रतिपदा तिथि</div>
+            <div class="story">पर्वत राज हिमालय की पुत्री के रूप में जन्म लेने के कारण इनका नाम शैलपुत्री पड़ा। यह नंदी की सवारी करती हैं और इनके हाथ में त्रिशूल और कमल होता है।</div>
+        </div>
+
+        <!-- Din 2 -->
+        <div class="navratra-card" id="navratra-card-2">
+            <div class="date-badge">12 अक्टूबर</div>
+            <div class="day-title">दूसरा दिन: माँ ब्रह्मचारिणी</div>
+            <div class="tithi-war">द्वितीया तिथि</div>
+            <div class="story">ब्रह्मा का अर्थ तपस्या है और चारिणी का अर्थ आचरण करने वाली। इन्होंने भगवान शिव को पति के रूप में पाने के लिए कठिन तपस्या की थी।</div>
+        </div>
+
+        <!-- Din 3 -->
+        <div class="navratra-card" id="navratra-card-3">
+            <div class="date-badge">13 अक्टूबर</div>
+            <div class="day-title">तीसरा दिन: माँ चंद्रघंटा</div>
+            <div class="tithi-war">तृतीया तिथि</div>
+            <div class="story">इनके मस्तक पर घंटे के आकार का अर्ध-चंद्रमा सुसज्जित है, इसलिए इन्हें चंद्रघंटा कहा जाता है। यह दुश्मनों का नाश करने वाली हैं।</div>
+        </div>
+
+        <!-- Din 4 -->
+        <div class="navratra-card" id="navratra-card-4">
+            <div class="date-badge">14 अक्टूबर</div>
+            <div class="day-title">चौथा दिन: माँ कूष्मांडा</div>
+            <div class="tithi-war">चतुर्थी तिथि</div>
+            <div class="story">अपनी मंद हंसी से ब्रह्मांड (सृष्टि) की रचना करने के कारण इनका नाम कूष्मांडा पड़ा। इन्हें सृष्टि की आदि स्वरूपा माना जाता है।</div>
+        </div>
+
+        <!-- Din 5 -->
+        <div class="navratra-card" id="navratra-card-5">
+            <div class="date-badge">15 अक्टूबर</div>
+            <div class="day-title">पाँचवा दिन: माँ स्कंदमाता</div>
+            <div class="tithi-war">पंचमी तिथि</div>
+            <div class="story">भगवान कार्तिकेय (जिन्हें स्कंद भी कहते हैं) की माता होने के कारण इन्हें स्कंदमाता कहा जाता है। यह अपनी गोद में बालक कार्तिकेय को बैठाये रहती हैं।</div>
+        </div>
+
+        <!-- Din 6 -->
+        <div class="navratra-card" id="navratra-card-6">
+            <div class="date-badge">16 अक्टूबर</div>
+            <div class="day-title">छठा दिन: माँ कात्यायनी</div>
+            <div class="tithi-war">षष्ठी तिथि</div>
+            <div class="story">महर्षि कात्यायन की कठिन तपस्या से प्रसन्न होकर माता ने उनके घर पुत्री के रूप में जन्म लिया था, इसलिए इनका नाम कात्यायनी पड़ा।</div>
+        </div>
+
+        <!-- Din 7 -->
+        <div class="navratra-card" id="navratra-card-7">
+            <div class="date-badge">17 अक्टूबर</div>
+            <div class="day-title">सातवाँ दिन: माँ कालरात्रि</div>
+            <div class="tithi-war">सप्तमी तिथि</div>
+            <div class="story">यह माँ दुर्गा का सबसे भयंकर और रूपवान रूप है जो अंधकार और बुराई का नाश करती हैं। इनका वर्ण रात की तरह काला और स्वरूप बेहद तेजस्वी है।</div>
+        </div>
+
+        <!-- Din 8 -->
+        <div class="navratra-card" id="navratra-card-8">
+            <div class="date-badge">18 अक्टूबर</div>
+            <div class="day-title">आठवाँ दिन: माँ महागौरी</div>
+            <div class="tithi-war">अष्टमी तिथि</div>
+            <div class="story">इनका रंग गौर (सफेद) और अत्यंत स्वच्छ है। भगवान शिव को पाने की तपस्या के दौरान इनका शरीर काला पड़ गया था, जिसे शिव जी ने गंगा जल से पवित्र किया था।</div>
+        </div>
+
+        <!-- Din 9 -->
+        <div class="navratra-card" id="navratra-card-9">
+            <div class="date-badge">19 अक्टूबर</div>
+            <div class="day-title">नवाँ दिन: माँ सिद्धिदात्री</div>
+            <div class="tithi-war">नवमी तिथि</div>
+            <div class="story">यह सभी प्रकार की सिद्धियाँ (मोक्ष, ज्ञान और बल) प्रदान करने वाली हैं। इस दिन नवरात्र का पावन व्रत समाप्त होता है और कन्या पूजन किया जाता है।</div>
+        </div>
+    </div>
+
+    <script>
+	function reset_all_cards(){
+		for(var i=1;i<=9;i++) {
+			let activeCard = document.getElementById('navratra-card-' + i);
+			if (activeCard) {
+				activeCard.classList.remove('highlight-today');
+				//let badge = activeCard.querySelector('.date-badge');
+				//badge.innerText += "";
+			}
+		}
+	}
+	
+	function show_all_cards(){
+		for(var i=1;i<=9;i++) document.getElementById('navratra-card-' + i).style.display='block';
+	}
+	
+	function hide_all_cards(){
+		for(var i=1;i<=9;i++) document.getElementById('navratra-card-' + i).style.display='none';
+	}
+	
+	function deleteElement(cardID){
+	try{
+		var E = document.getElementById(cardID);
+		E.innerHTML='';
+//		E.style.class='';
+		E.style.display='none';
+		}catch{}
+	}
+	
+	function highlight_today_card(){
+        // Automatic current date check karke aaj ke din ko highlight karne ka script
+        const today = new Date();
+	console.log(today);
+        // Agar October mahina hai aur date 11 se 19 ke beech hai
+        if (today.getMonth() === 9) { // 9 matlab October (0-indexed hota hai)
+            let day = today.getDate()-10; // first day is 11 October (so -10)
+            if (day >= 1 && day <= 9) {
+                let activeCard = document.getElementById('navratra-card-' + day);
+                if (activeCard) {
+                    activeCard.classList.add('highlight-today');
+                    // Optional: Aaj ke din ke badge par "(आज)" likh dena
+                    let badge = activeCard.querySelector('.date-badge');
+                    badge.innerText += " (आज)";
+				}
+                activeCard.style.display='block';
+				document.getElementById('navratre-div').style.display="block";
+			}
+        }
+   	}
+	
+	
+	setTimeout(function (){
+//	setInterval(function (){
+		document.getElementById('navratre-div').style.display="none";
+		hide_all_cards();
+		highlight_today_card();
+	},100);
+	
+ </script>
+ 
+    <style>
+        .navratre-body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .navratre-body h1 {
+            text-align: center;
+            color: #d9534f;
+        }
+        .navratre-body .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .navratra-card {
+            background-color: #ffffff;
+            border: 2px solid #ffeb3b;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .navratra-card:hover {
+            transform: translateY(-5px);
+        }
+        /* Aaj ke din ke liye special highlight style */
+        .highlight-today {
+            border: 3px solid #d9534f !important;
+            background-color: #fff3f2 !important;
+            box-shadow: 0 6px 12px rgba(217, 83, 79, 0.3);
+        }
+        .date-badge {
+            display: inline-block;
+            background-color: #d9534f;
+            color: white;
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .day-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #c0392b;
+            margin-bottom: 5px;
+        }
+        .tithi-war {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .story {
+            font-size: 14px;
+            color: #333333;
+            line-height: 1.5;
+        }
+    </style>
+</div>
