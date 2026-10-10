@@ -3,8 +3,19 @@
     <script src="https://nkg26.github.io/NE/resources/com.js"></script>
     <script src="https://nkg26.github.io/NE/resources/default.js"></script>
     <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
+
+
     <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>	
     <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>	
     <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>	
     <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>	
 
+
+
+  <script>
+        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
+        loadHTML('footer-placeholder', 'https://nkg26.github.io/NE/resources/footer.html');
+
+
+0
+	</script>
