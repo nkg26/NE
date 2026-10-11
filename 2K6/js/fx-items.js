@@ -159,9 +159,9 @@ function getnerateSimpleTable(filtered) {
 	</style>`;
 	
 	var mydata = ""+css;			
-	mydata += `<table border=true cellspacing=0 class="items_table" > <theader>`;
+	mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
 	mydata += `<tr> <th>Category</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
-	mydata += `</theader> <tbody>`;
+	mydata += `</thead> <tbody>`;
 	// ₹
 	filtered.forEach(p => {
 		//const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${p.offerPrice.toLocaleString('en-IN')}. \nPlease confirm 30% advance booking procedure.`);
