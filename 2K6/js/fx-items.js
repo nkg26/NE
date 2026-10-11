@@ -81,6 +81,12 @@ function safeNumber(value, defaultValue=0) {
 	return defaultValue;
 }
 
+function safeVal(value, defaultValue='') {
+	return (value!==null && value !== undefined)?value:defaultValue;
+	//     return value ?? defaultValue; // shorter expression..
+
+}
+
 // रनटाइम सर्च फंक्शन
 function dynamicFilterString(list, searchKey, searchValue) {
 	var search__Test = searchValue.toLowerCase;
@@ -168,10 +174,10 @@ function getnerateSimpleTable(filtered) {
 		//const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
 
 		mydata += `<tr> 
-		<td class='col1'>${p.category}</td>
-		<td class='col2'>${p.capacity}</td>
-		<td class='col3'>${p.name}</td>
-		<td class='col4'>${p.color}</td>
+		<td class='col1'>${safeVal(p.category)}</td>
+		<td class='col2'>${safeVal(p.capacity)}</td>
+		<td class='col3'>${safeVal(p.name)}</td>
+		<td class='col4'>${safeVal(p.color)}</td>
 		<td class='col5'>${safeLocaleString(p.mrp)}</td>
 		<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
 		<td class='col7'>${safeLocaleString(p.advance)}</td>
