@@ -194,6 +194,11 @@
     <a id="img-button-1" href="" class="btn-gallery" target="_blank">🖼️ शोरूम & फर्म की Photos देखें</a>
   </div>
 
+<div class="image-view">
+	Shop Image <br/>
+	<img class="firm-img" id="firm-img-1" /> <br/>
+	<span class="ref-address" >नजदीक सर्व हरियाणा ग्रामीण बैंक</span>
+</div>
 
 Google Location : <br/>
 
@@ -208,11 +213,6 @@ Google Location : <br/>
   <iframe id="gmap-frame-2"  allowfullscreen="true" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
 </div>
 
-<div class="image-view">
-	Shop Image <br/>
-	<img class="firm-img" id="firm-img-1" /> <br/>
-	<span class="ref-address" >नजदीक सर्व हरियाणा ग्रामीण बैंक</span>
-</div>
 
 <br/>
 
@@ -261,15 +261,16 @@ var gmap2="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.8853226607
 var f_img1="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWkl8TkuMdyM1wAMzNcE4a6aDsJb108WHfisCit7gZ6TGv3hfyhP4bfOGqmylJE8ou5lnwVBnwZ_BVUC4QqXdw_gxe8YgL4fFIROSVJkRksvsHKhLABt5Y9gtGeP_9YV7LpIiDwiG7A_AXS-=w408-h356-k-no";
 
 document.getElementById("gmap-button-1").innerHTML = "🗺️"+"Nitin Enterprises";
-document.getElementById("gmap-button-2").innerHTML = "🗺️"+"IFB Point";
-
 document.getElementById("gmap-button-1").src = gmap1;
-document.getElementById("gmap-button-2").src = gmap2;
-
+document.getElementById("gmap-button-1").href = gmap1;
 document.getElementById("gmap-frame-1").src = gmap1;
-document.getElementById("gmap-frame-2").src = gmap2;
-document.getElementById("firm-img-1").src = f_img1;
 
+document.getElementById("gmap-button-2").innerHTML = "🗺️"+"IFB Point";
+document.getElementById("gmap-button-2").src = gmap2;
+document.getElementById("gmap-button-2").href = gmap2;
+document.getElementById("gmap-frame-2").src = gmap2;
+
+document.getElementById("firm-img-1").src = f_img1;
 document.getElementById("img-button-1").href= f_img1;
 
 
