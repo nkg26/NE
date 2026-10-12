@@ -24,7 +24,7 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 				<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
 					<div class="flex justify-between text-xs text-slate-500 mb-1">
 						<span>MRP: <del>₹${safeLocaleString(p.mrp)}</del></span>
-						<span class="text-emerald-600 font-semibold">Special Diwali Pass</span>
+						<span class="text-emerald-600 font-semibold">Special Offer</span>
 					</div>
 					<div class="text-2xl font-extrabold text-amber-600"> ₹${safeLocaleString(p.offerPrice)}</div>
 					<div class="mt-2 text-xs text-slate-600 pt-2 border-t border-slate-200 flex justify-between">
