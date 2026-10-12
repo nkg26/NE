@@ -143,6 +143,21 @@ function getProducts(category, searchVal) {
 }
 */
 
+
+
+/*
+	div-id or class--#productGrid{
+		max-height:500px;
+		overflow:auto;
+	}
+	under div >> table.items_table thead tr{
+		position: sticky; 
+		top: 0;
+		background-color: #333; color: white; padding: 10px;
+	}
+
+
+*/
 // override for tabular format...
 
 function getnerateSimpleTable(filtered) {
