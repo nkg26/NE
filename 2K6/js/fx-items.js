@@ -170,13 +170,17 @@ function getnerateSimpleTable(filtered) {
 	}
 	
 	var css = `<style> 
-	.productGrid table{
-		border:2px dotted cyan;
+	.productGrid, #productGrid{
+		border:2px solid gray;
+		max-height:80%;
+		overflow:auto;
 	}
-	.productGrid table tr{
-		border:1px solid red;
-		padding:3px;
+ 	
+	table.items_table thead tr{
+		position: sticky; top: 0;
+		background-color: #333; color: white; padding: 10px;
 	}
+	
 	</style>`;
 	
 	var mydata = ""+css;			
