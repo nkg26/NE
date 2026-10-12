@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <!-- Mobile responsiveness ke liye critical viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NK</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f6f9;
+      overflow: hidden;
+    }
+
+    /* Mobile Header (Mobile screen par show hoga) */
+    .mobile-header {
+      background: #4f46e5;
+      color: white;
+      padding: 12px 15px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+
+    /* Center Main Content Area */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* Center Iframe */
+    .center-iframe {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: white;
+    }
+
+    /* ======================================= */
+    /* Mobile Screen Responsive CSS Rules      */
+    /* ======================================= */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      /* Mobile header show hoga */
+      .mobile-header {
+        display: flex;
+      }
+
+      .main-wrapper {
+        height: calc(100vh - 50px);
+      }
+    }
+  </style>
+</head>
+<body>
+<style>div#main-links a{display: inline-block; padding:15px; margin:4px; border-radius:8px; color:black; width:250px; background:linear-gradient(90deg,rgba(207, 62, 14, 0.8) 0%, rgba(20, 9, 121, 0.4) 50%, rgba(27, 194, 194, 0.8) 100%);}</style>
+<style>body{background:radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%); }</style>
+<style>.mobile-header{background:linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%); }</style>
+
+  <div class="main-wrapper">
+    <!-- Mobile Header Bar -->
+    <div class="mobile-header">
+      <button id="b1" onclick="showLinks()">☰ L </button>
+      <button id="b2" onclick="showFrame()">☰ F </button>
+      <span style="font-weight: bold;">NK</span>
+    </div>
+
+  <div id="asd"></div>
+    <div class="main-content">
+		<div id="main-links"></div>
+		<iframe id="center-iframe" name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
+    </div>
+  </div>
+
+  <script>
+	
+  var UrlKeyMap;
+  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search); load_final_page()});
+  
+  // menu links and all...
+  var TAB = [
+	{id:"dhanteras", url:"https://nkg26.github.io/NE/2K6/offer_261004.html", name:"off - 1004", inMenu:true },
+	{name:"%separator%", inMenu:true},
+	{id:"", url:"https://nkg26.github.io/NE", name:"Home", inMenu:true},
+	{id:"", url:"https://nkg26.github.io/NE/consumer.html", name:"Customer", inMenu:true},
+	{id:"", url:"https://nkg26.github.io/NE/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
+	{id:"navratre", url:"https://nkg26.github.io/NE/2K6/offer-2610-navratre.html", name:"Navratre", show_default:true , inMenu:true},
+	{id:"", url:"", name:""},
+	{id:"", url:"", name:""},
+	{id:"", url:"", name:""},
+	{name:"%separator%", inMenu:true},
+	{name:"%separator%", inMenu:true},
+	{id:"header", url:"https://nkg26.github.io/NE/resources/header.html", name:"del-header", inMenu:true},
+	{id:"location-us", url:"https://nkg26.github.io/NE/resources/location-ne.html", name:"Google Location", inMenu:true},
+	{id:"conatct-us", url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us", inMenu:true}
+  ];
+  
+  function showLinks(){
+	  document.getElementById("b2").style.display='inline';
+	  document.getElementById("b1").style.display='none';
+	  document.getElementById("center-iframe").style.display='none';
+	  document.getElementById("main-links").style.display='block';
+  }
+  function showFrame(){
+	  document.getElementById("b1").style.display='inline';
+	  document.getElementById("b2").style.display='none';
+	  
+		document.getElementById("center-iframe").style.display='block';
+		document.getElementById("main-links").style.display='none';
+  }
+  
+  
+  function getObjectById(ID, start=0){
+	for(var i=(start<0?0:start); i<TAB.length; i++){
+	  var p = TAB[i];
+	  if(p!==null && p.id === ID){
+		return p;
+	  }
+	}
+ }
+  
+  function setIframeURLByID(ID){
+	var p = ID?getObjectById(ID):null;
+	setIframeURL(p?p.url:"");
+  }
+  function setIframeURL(URL){
+	closeSidebar();
+	document.getElementById("center-iframe").src=URL;
+	try{
+		document.getElementById("asd").innerHTML=URL;
+		//document.getElementById("asd").style.display='none';
+	}catch{}
+ }
+  
+  var sidebar_menu_html = '';
+  for(var i=0;i<TAB.length;i++){
+	  var p = TAB[i];
+	  if(p.inMenu === true){
+		  if(p.name==='%separator%'){
+				sidebar_menu_html += `<br/>`;
+			} else {
+				// below all 3 are working fine..
+				sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="showFrame()">${p.name}</a>`;
+				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
+				//sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
+				sidebar_menu_html += `<br/>`;
+			}
+		}
+  }
+  
+  
+  document.getElementById("main-links").innerHTML = sidebar_menu_html;
+  showLinks();
+
+function load_final_page(){
+	var x = UrlKeyMap.get('id');
+	x = x?x:"navratre";
+	if(x){
+		var p = getObjectById(x);
+//		setIframeURL(p.url);
+	}
+}
+
+</script>
+
+
+
+</body>
+
+</html>
