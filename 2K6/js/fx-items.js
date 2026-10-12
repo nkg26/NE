@@ -172,7 +172,7 @@ function getnerateSimpleTable(filtered) {
 	var css = `<style> 
 	.productGrid, #productGrid{
 		border:2px solid gray;
-		max-height:80%;
+		max-height:800px;
 		overflow:auto;
 	}
  	
