@@ -92,7 +92,8 @@
     <div class="mobile-header">
       <button id="b1" onclick="showLinks()">☰ L </button>
       <button id="b2" onclick="showFrame()">☰ F </button>
-      <span style="font-weight: bold;">NK</span>
+      <span style="font-weight: bold;"> &nbsp; NK &nbsp; </span>
+      <span id='cust-link'></span>
     </div>
 
   <div id="asd"></div>
@@ -112,7 +113,7 @@
 	{id:"dhanteras", url:"https://nkg26.github.io/NE/2K6/offer_261004.html", name:"off - 1004", inMenu:true },
 	{name:"%separator%", inMenu:true},
 	{id:"", url:"https://nkg26.github.io/NE", name:"Home", inMenu:true},
-	{id:"", url:"https://nkg26.github.io/NE/consumer.html", name:"Customer", inMenu:true},
+	{id:"cust", url:"https://nkg26.github.io/NE/consumer.html", name:"Customer", inMenu:true},
 	{id:"", url:"https://nkg26.github.io/NE/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
 	{id:"navratre", url:"https://nkg26.github.io/NE/2K6/offer-2610-navratre.html", name:"Navratre", show_default:true , inMenu:true},
 	{id:"", url:"", name:""},
@@ -124,7 +125,10 @@
 	{id:"location-us", url:"https://nkg26.github.io/NE/resources/location-ne.html", name:"Google Location", inMenu:true},
 	{id:"conatct-us", url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us", inMenu:true}
   ];
-  
+
+  var link = getObjectById('cust');
+  document.getElementById('cust-link').innerHTML=`<a href="${link}"> Customer </a>`;
+	  
   function showLinks(){
 	  document.getElementById("b2").style.display='inline';
 	  document.getElementById("b1").style.display='none';
