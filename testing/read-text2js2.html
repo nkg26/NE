@@ -132,6 +132,7 @@ function convertOutput(raw_text) {
 			if(finalCellValue !== null){
 				this_row += (cnt>0?", ":"");
 				this_row += finalCellValue;
+				cnt++;
 			}
 		}			
 		output += (cnt==0?"":"{"+this_row+"}");
