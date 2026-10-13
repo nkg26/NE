@@ -56,37 +56,30 @@
 //        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
         loadHTML('footer-placeholder', 'https://nkg26.github.io/NE/resources/footer.html');
 				
-	function init_my_script(){
-	
-		var data = items_table_ifb;
+	function _to_item_map_list(data){
 		var indx = findHeaderIndex(data,"n-category");
 		if(indx >=0) data[0][indx] = "category";
-		var P1 = (convertTableToScriptArrayObject(data));
-	
-		data = items_table_mix;
-		indx = findHeaderIndex(data,"n-category");
-		if(indx >=0) data[0][indx] = "category";
-		var P2 = (convertTableToScriptArrayObject(data));
+		return (convertTableToScriptArrayObject(data));
+	}
 		
+	function init_item_data(){
+		var P1 = _to_item_map_list(items_table_ifb);
+		var P2 = _to_item_map_list(items_table_mix);
+		var P3 = _to_item_map_list(items_table_other);
 		
-		data = items_table_other;
-		indx = findHeaderIndex(data,"n-category");
-		if(indx >=0) data[0][indx] = "category";
-		var P3 = (convertTableToScriptArrayObject(data));
-		
-		products = P1.concat(P2).concat(P3);
-		
-		// now add mrp in products...
-		var mrps = (convertTableToScriptArrayObject(items_tabl_price));
-		merge_data_mapArray(products, mrps, 'nsap');
+		P1 = P1.concat(P2).concat(P3);
+		var MRP = _to_item_map_list(items_tabl_price);
+		merge_data_mapArray(P1, MRP, 'nsap');
+
+		products = P1;
 	}
 	
-	init_my_script();
-	setTimeout(init_item_style_script,100);
+	init_item_data();
+	setTimeout(init_item_category,100);
 	
 	// most comman use to generate single item view.
-	function create_HTML_VIEW_OF_ITEM(p){ return create_HTML_VIEW_OF_ITEM_STYLE_01(p);}
-	function init_item_style_script(){
+		
+	function init_item_category(){
 		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
 		setTimeout(render_and_show_items,1000);  
 	}
@@ -108,9 +101,9 @@
 		}catch{}
 		return '';
 	}		
-
+	
 // @override
-function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
+function create_HTML_VIEW_OF_ITEM(p){
 	// safeLocaleString(...) from fx-item.js
 	
 	return `
@@ -121,7 +114,7 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 					<span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
 				<h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
 				<p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
-				${getImage(p)}
+				${getItemImage(p)}
 				<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
 					<div class="flex justify-between text-xL text-slate-1000 mb-1">
 						<span>MRP: ₹${safeLocaleString(p.mrp)}</span>
