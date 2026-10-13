@@ -20,7 +20,7 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 				</div>
 				<h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
 				<p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
-				
+				${_get_item_image(p)}
 				<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
 					<div class="flex justify-between text-xs text-slate-500 mb-1">
 						<span>MRP: <del>₹${safeLocaleString(p.mrp)}</del></span>
@@ -39,3 +39,12 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 		</div>
 	`;
 }
+
+function _get_item_image(p){
+	try{
+	return getProductImage(p);
+	}catch(){}
+	return '';
+}		
+
+
