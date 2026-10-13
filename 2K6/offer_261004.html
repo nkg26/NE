@@ -80,6 +80,12 @@
     <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>	
 	<script src="https://nkg26.github.io/NE/brands/tab-items-fx.js"></script>	
 
+    <script src="https://nkg26.github.io/NE/brands/tab-items-fx.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_ifb.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_mix.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_oth.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/itm-prs.js"></script>	
+	
 	
     <script>
 //        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
@@ -93,6 +99,34 @@
 
 /*   other overrided functions...*/
 
+			function init_my_script(){
+
+				var data = items_table_ifb;
+				var indx = findHeaderIndex(data,"n-category");
+				if(indx >=0) data[0][indx] = "category";
+				var P1 = (convertTableToScriptArrayObject(data));
+
+				data = items_table_mix;
+				indx = findHeaderIndex(data,"n-category");
+				if(indx >=0) data[0][indx] = "category";
+				var P2 = (convertTableToScriptArrayObject(data));
+				
+				
+				data = items_table_other;
+				indx = findHeaderIndex(data,"n-category");
+				if(indx >=0) data[0][indx] = "category";
+				var P3 = (convertTableToScriptArrayObject(data));
+				
+				P1 = P1.concat(P2);
+				P1 = P1.concat(P3);
+				products = P1;
+				
+				// now add mrp in products...
+				var mrps = (convertTableToScriptArrayObject(items_tabl_price));
+				merge_data_mapArray(products, mrps, 'nsap');
+			}
+		
+		init_my_script();
 		
 		function init_item_style_script(){
 			cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
