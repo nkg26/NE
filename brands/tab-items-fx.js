@@ -16,6 +16,19 @@ function convertTableToScriptArrayObject(data){
     return out;
 }
 
+/* 2 map-array objects ke data ko kisi attribute-key ki condition se merge karna..*/
+/* data MAIN_DATA me add hoga.. */
+function merge_data_mapArray(MAIN_DATA, ADD_DATA, KEY_NAME='nsap'){
+	for(var i=0; i<MAIN_DATA.length; i++){
+		var VAL = MAIN_DATA[i][KEY_NAME];
+		for(var j=0; j<ADD_DATA.length; j++){
+			if(VAL === ADD_DATA[j][KEY_NAME]){
+				Object.assign(MAIN_DATA[i], ADD_DATA[j]);
+				break;
+			}
+		}
+	}
+}
 
 function getProductImage(p){
 	var cat = p.category;
