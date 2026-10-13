@@ -11,6 +11,13 @@ function findHeaderIndex(TABLE, FIND){
 
 /* convert tableuler data into array of [{h1:v1, h2:v2, ...}, {...}, ...]*/
 function convertTableToScriptArrayObject(data){
+	const [headers, ...rows] = data;
+	  if (!headers) return [];
+	  return rows.map(row => Object.fromEntries(headers.map((header, i) => [header, row[i]])));
+}
+
+/* convert tableuler data into array of [{h1:v1, h2:v2, ...}, {...}, ...]*/
+function convertTableToScriptArrayObject_old(data){
     var out = [];
     for(var i=1;i<data.length;i++) out.push(Object.fromEntries(data[0].map((key, j) => [key, data[i][j]])));
     return out;
