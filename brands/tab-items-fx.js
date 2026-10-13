@@ -8,3 +8,12 @@ function findHeaderIndex(TABLE, FIND){
   }catch(e){console.log(e);}
   return -1;
 }
+
+/* convert tableuler data into array of [{h1:v1, h2:v2, ...}, {...}, ...]*/
+function convertTableToScriptArrayObject(data){
+    var out = [];
+    for(var i=1;i<data.length;i++) out.push(Object.fromEntries(data[0].map((key, j) => [key, data[i][j]])));
+    return out;
+}
+
+
