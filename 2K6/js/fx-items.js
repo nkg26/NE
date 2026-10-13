@@ -6,7 +6,9 @@ function getItemsAll() {
 	return products;
 }
 
+/*only image path*/
 function getItemImage(p) {return null;}
+/*only image path*/
 function getItemImages(p) {return null;}
 function getItemRemark(p) {return p.remark;}
 function getItemColors(p) {return p.color;}
