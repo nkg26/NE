@@ -126,8 +126,8 @@
 	{id:"conatct-us", url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us", inMenu:true}
   ];
 
-  var link = getObjectById('cust');
-  document.getElementById('cust-link').innerHTML=`<a href="${link}"> Customer </a>`;
+  var p = getObjectById('cust');
+  document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> Customer </a>`:"";
 	  
   function showLinks(){
 	  document.getElementById("b2").style.display='inline';
