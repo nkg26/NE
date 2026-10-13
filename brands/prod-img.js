@@ -1,4 +1,11 @@
+/* this will be deleted.. use*/
 function getProductImage(p){
+	console.log('use function get_item_img_tag(p)... instead of getProductImage(p).');
+	return get_item_img_tag(p);
+}
+
+
+function get_item_img_tag(p){
 	var cat = p.category;
 	var path = 'https://nkg26.github.io/NE/product-images/';
 	var name = '';
