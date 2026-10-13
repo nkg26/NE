@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVT (Table)</title>
+    <link href="https://nkg26.github.io/NE/resources/default.css" rel="stylesheet">
+    <script src="https://nkg26.github.io/NE/resources/default.js"></script>
+    <script src="https://nkg26.github.io/NE/resources/redirect.js"></script>
+</head>
+<body>
+	<style>body{background: linear-gradient(90deg,rgba(207, 62, 14, 0.2) 0%, rgba(20, 9, 121, 0.2) 50%, rgba(27, 194, 194, 0.2) 100%);}</style>
+	<style>input#searchInput{width:98%; margin:5px; padding:5px;}</style>
+	<style>.selected_cat_button{background-color:cyan;} </style>
+	<style>.cat-btn{background-color:yellow; border:1px solid red; padding:2px 3px; margin:3px 5px; border-radius:10px; min-width:35px;} </style>
+
+    <div id="header-placeholder"></div>
+    <div id="module-items">
+		<main id="items-bag">
+		    <!-- Search and Filter Bar -->
+		    <div id="search-div">
+		        <div id="search-box">
+		            <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search by model name or category (e.g. Elena, 8 Kg)...">
+		        </div>
+		        <div id="search-category"></div>
+		    </div>
+		    <!-- Product Cards Container -->
+		    <div id="productGrid"></div>
+		</main>
+		
+	</div>
+    <div id="footer-placeholder"></div>
+
+
+    <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>
+	
+    <script>  
+
+	function init_item_style_script(){
+		cat_btn_cls_selected   = "selected_cat_button"; // example
+		cat_btn_cls_unselected = "cat-btn";
+		cat_btn_cls = "selected_cat_button";
+		
+		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+		
+		setCategory(null); //auto set default..
+		setTimeout(show_items_table,1000); 
+	}
+	
+	function __generate_HTML_VIEW_OF_ITEMs(itemList) {
+		return getnerateSimpleTable(itemList);
+	}
+
+	// extract unique categories ...
+	init_item_style_script(); // this should be call first..
+
+
+function getnerateSimpleTable(filtered) {
+	if(filtered === null) {
+		return `<div> null data lisr....</div>`;
+	}
+	
+	if(filtered.length === 0) {
+		return `<div>No appliances found matching your criteria.</div>`;
+	}
+	
+	var css = `<style> 
+	div.items-div table.items_table td{
+		border:1px solid gray;
+		padding:3px;
+	}
+		/* Odd rows: 1st, 3rd, 5th... */
+		tbody tr:nth-child(odd) {
+		  background-color: #fff2f25;
+		}
+
+		/* Even rows: 2nd, 4th, 6th... */
+		tbody tr:nth-child(even) {
+		  background-color: #fff7;
+		}
+	div.items-div table.items_table thead tr th{
+		  position: sticky;   top: 0; background:pink;
+			padding:3px;
+	}
+	div.items-div{
+		max-height: 85vh; /* viewport ki height ka 50% */ 
+		overflow:auto; 
+		border:1px solid seagreen;
+	}
+	</style>`;
+	
+	var mydata = ""+css;			
+	mydata += `<div class="items-div">`;
+	mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
+	mydata += `<tr> <th>Cat</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
+	mydata += `</thead> <tbody>`;
+	// ₹
+	filtered.forEach(p => {
+		mydata += `<tr> 
+		<td class='col1'>${safeVal(p.category)}</td>
+		<td class='col2'>${safeVal(p.capacity)}</td>
+		<td class='col3'>${safeVal(p.name)}</td>
+		<td class='col4'>${safeVal(p.color)}</td>
+		<td class='col5'>${safeLocaleString(p.mrp)}</td>
+		<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
+		<td class='col7'>${safeLocaleString(p.advance)}</td>
+		</tr>`;
+	});
+
+	mydata += `</tbody></table> </div>`;
+	return mydata;
+}
+
+	</script>
+  
+</body></html>
