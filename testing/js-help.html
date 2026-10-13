@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <!-- Mobile responsiveness ke liye critical viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NK</title>
+  <style>
+    /* Mobile Header (Mobile screen par show hoga) */
+    .mobile-header {
+      background: #4f46e5;
+      color: white;
+      padding: 12px 15px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+
+    /* Center Main Content Area */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* Center Iframe */
+    .center-iframe {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: white;
+    }
+
+    /* ======================================= */
+    /* Mobile Screen Responsive CSS Rules      */
+    /* ======================================= */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      /* Mobile header show hoga */
+      .mobile-header {
+        display: flex;
+      }
+
+      .main-wrapper {
+        height: calc(100vh - 50px);
+      }
+    }
+  </style>
+</head>
+<body>
+<style>div#main-links a{text-align:center; display: inline-block; padding:2px 10px; margin:2px 5px; border-radius:8px; color:black; width:50px; background-color:cyan;}</style>
+<style>body{background:radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%); }</style>
+<style>.mobile-header{background:linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%); }</style>
+
+  <div class="main-wrapper">
+java script help...
+  <div id="asd"></div>
+    <div class="main-content">
+		<div id="main-links"></div>
+		<iframe id="center-iframe" name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
+    </div>
+  </div>
+
+  <script>
+	
+  var UrlKeyMap;
+  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search); load_final_page()});
+  
+  // menu links and all...
+  var TAB = [
+	{id:"01", url:"https://nkg26.github.io/NE/testing/js-help-01.html", name:"01", inMenu:true },
+	{id:"02", url:"https://nkg26.github.io/NE/testing/js-help-02.html", name:"02", inMenu:true },
+	{id:"03", url:"https://nkg26.github.io/NE/testing/js-help-03.html", name:"03", inMenu:true },
+	{id:"04", url:"https://nkg26.github.io/NE/testing/js-help-04.html", name:"04", inMenu:true },
+	
+	{id:"", url:"", name:""},
+	{id:"", url:"", name:""},
+	{id:"", url:"", name:""},
+	{name:"%separator%", inMenu:true},
+	{name:"%separator%", inMenu:true}
+	
+  ];
+  
+  function getObjectById(ID, start=0){
+	for(var i=(start<0?0:start); i<TAB.length; i++){
+	  var p = TAB[i];
+	  if(p!==null && p.id === ID){
+		return p;
+	  }
+	}
+ }
+  
+  function setIframeURLByID(ID){
+	var p = ID?getObjectById(ID):null;
+	setIframeURL(p?p.url:"");
+  }
+  
+  function setIframeURL(URL){
+	try{
+		document.getElementById("center-iframe").src=URL;
+		document.getElementById("asd").innerHTML=URL;
+		//document.getElementById("asd").style.display='none';
+	}catch{}
+ }
+  
+  var sidebar_menu_html = '';
+  for(var i=0;i<TAB.length;i++){
+	  var p = TAB[i];
+	  if(p.inMenu === true){
+		  if(p.name==='%separator%'){
+				sidebar_menu_html += ``;
+			} else {
+				sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
+			}
+		}
+  }
+  
+  
+  document.getElementById("main-links").innerHTML = sidebar_menu_html;
+  showLinks();
+
+function load_final_page(){
+	var x = UrlKeyMap.get('id');
+	x = x?x:"def";
+	if(x){
+		var p = getObjectById(x);
+//		setIframeURL(p.url);
+	}
+}
+
+</script>
+
+
+
+</body>
+
+</html>
