@@ -33,8 +33,9 @@ function get_item_img_tag(p){
   
 	else if((cat === "MG") && STR.includes("JUICER MIXER")) name="mg.webp";
 	else if((cat === "MG")) name = "mg.webp";
-	else if((cat === "JMG") && STR.includes("JMG")) name="jmg.webp";
 	else if((cat === "JMG") && STR.includes("SUJATA")) name="jmg-sujata.webp";
+	else if((cat === "JMG") && STR.includes("JMG")) name="jmg.webp";
+	else if((cat === "JMG") && STR.includes("JUCER MIXER GRINDER")) name="jmg.webp";
 	
 	else if((cat === "LED") || (cat === "LED-TV")) name="led-tv.webp";
 	
