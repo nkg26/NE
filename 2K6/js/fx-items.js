@@ -86,7 +86,6 @@ function safeNumber(value, defaultValue=0) {
 function safeVal(value, defaultValue='') {
 	return (value!==null && value !== undefined)?value:defaultValue;
 	//     return value ?? defaultValue; // shorter expression..
-
 }
 
 // रनटाइम सर्च फंक्शन
@@ -145,67 +144,4 @@ function getProducts(category, searchVal) {
 }
 */
 
-
-
-/*
-	div-id or class--#productGrid{
-		max-height:500px;
-		overflow:auto;
-	}
-	under div >> table.items_table thead tr{
-		position: sticky; 
-		top: 0;
-		background-color: #333; color: white; padding: 10px;
-	}
-
-
-*/
-// override for tabular format...
-
-function getnerateSimpleTable(filtered) {
-	if(filtered === null) {
-		return `<div> null data lisr....</div>`;
-	}
-	
-	if(filtered.length === 0) {
-		return `<div>No appliances found matching your criteria.</div>`;
-	}
-	
-	var css = `<style> 
-	.productGrid, #productGrid{
-		border:2px solid gray;
-		max-height:550px;
-		overflow:auto;
-	}
- 	
-	table.items_table thead tr{
-		position: sticky; top: 0;
-		background-color: #333; color: white; padding: 10px;
-	}
-	
-	</style>`;
-	
-	var mydata = ""+css;			
-	mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
-	mydata += `<tr> <th>Category</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
-	mydata += `</thead> <tbody>`;
-	// ₹
-	filtered.forEach(p => {
-		//const waMessage = encodeURIComponent(`Hi, \n\nI want to book ${p.name} (${p.capacity}) at Diwali Deal Price ₹${p.offerPrice.toLocaleString('en-IN')}. \nPlease confirm 30% advance booking procedure.`);
-		//const waUrl = `https://wa.me/917056715458?text=${waMessage}`;
-
-		mydata += `<tr> 
-		<td class='col1'>${safeVal(p.category)}</td>
-		<td class='col2'>${safeVal(p.capacity)}</td>
-		<td class='col3'>${safeVal(p.name)}</td>
-		<td class='col4'>${safeVal(p.color)}</td>
-		<td class='col5'>${safeLocaleString(p.mrp)}</td>
-		<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
-		<td class='col7'>${safeLocaleString(p.advance)}</td>
-		</tr>`;
-	});
-
-	mydata += `</tbody></table>`;
-	return mydata;
-}
 
