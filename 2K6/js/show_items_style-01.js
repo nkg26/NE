@@ -41,9 +41,7 @@ function create_HTML_VIEW_OF_ITEM_STYLE_01(p){
 }
 
 function _get_item_image(p){
-	try{
-	return getProductImage(p);
-	}catch(){}
+	try{ return getProductImage(p);	}catch(e){}
 	return '';
 }		
 
