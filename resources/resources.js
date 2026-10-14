@@ -1,6 +1,6 @@
 var URL_MAP;
 // jab bhi page load hoga url me jo bhi key value pair honge save ho jayenge.
-window.addEventListener('DOMContentLoaded', () => {URL_MAP = new URLSearchParams(window.location.search); load_final_page()});
+window.addEventListener('DOMContentLoaded', () => {URL_MAP = new URLSearchParams(window.location.search);});
 
 function getUrlValue(KEY){
 	return URL_MAP.get(KEY);
