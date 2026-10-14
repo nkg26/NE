@@ -4,9 +4,24 @@ var URL_HTML_HEADER = FULL_URL("/resources/header.html");
 var URL_HTML_FOOTER = FULL_URL("/resources/footer.html"); 
 var URL_HTML_LOCATION_NE = FULL_URL("/resources/location-ne.html"); 
 var URL_HTML_BAJAJ_FINANCE = FULL_URL("/resources/bajaj-finance.html"); 
-var URL_HTML_HOME = FULL_URL("/"); 
+var ROOT = "https://nkg26.github.io/NE";
+var URL_HTML_HOME = ROOT; 
 
+function FULL_URL(path){
+  if(path.startsWith(ROOT)) return path;
 
+  var pre_key = "https://github.com/nkg26/NE";
+  var _key = '';
+  
+  if (path.startsWith(_key = pre_key+"/blob/main")) return ROOT + path.substring(_key.length);
+  if (path.startsWith(_key = pre_key+"/edit/main")) return ROOT + path.substring(_key.length);
+  if (path.startsWith(_key = "/NE/")) return ROOT + path.substring(_key.length-1);
+  if (path.startsWith("/")) return ROOT + path;
+  if (path.startsWith("https://")) return path;
+  if (path.startsWith("http://")) return path;
+
+    return null;
+}
 
 
 function loadHeaderHTML(){
