@@ -64,6 +64,7 @@
 		var cat = getUrlValue("category");
 		cat = cat===undefined?null:cat;
 		cat = cat===''?null:cat;
+		console.log("initial category = "+cat);
 		setCategory(cat);
 		//setTimeout(render_and_show_items,1000);  
 	}
