@@ -16,27 +16,6 @@ var shop_img_ne_01=shop_img_ne;
 */
 
 
-
-
-const WEB_HOME = "https://nkg26.github.io/NE";
-function FULL_URL(path){
-  if(path.startsWith(WEB_HOME)) return path;
-
-  var pre_key = "https://github.com/nkg26/NE";
-  var _key = '';
-  
-  if (path.startsWith(_key = pre_key+"/blob/main")) return WEB_HOME + path.substring(_key.length);
-  if (path.startsWith(_key = pre_key+"/edit/main")) return WEB_HOME + path.substring(_key.length);
-  if (path.startsWith(_key = "/NE/")) return WEB_HOME + path.substring(_key.length-1);
-  if (path.startsWith("/")) return WEB_HOME+path;
-  if (path.startsWith("https://")) return path;
-  if (path.startsWith("http://")) return path;
-
-    return null;
-}
-
-
-
 // Date Schedule List
 const dynamic_page_schedule = {
   "2026-10-15": "navratri-day1.html",
