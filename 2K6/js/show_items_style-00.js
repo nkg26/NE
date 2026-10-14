@@ -55,8 +55,12 @@ function render_and_show_items() {
 		if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
 	}
 }
+//just for updates
+function message_generating_all_items_HTML_VIEW(itemList) {
+}
 // if we want to show items as an simple table we should override this function...
 function generate_all_items_HTML_VIEW(itemList) {
+	message_generating_all_items_HTML_VIEW(itemList);
 	var output_html = "";
 	itemList.forEach(p => { output_html += generate_one_item_HTML_VIEW(p);});
 	return output_html;
