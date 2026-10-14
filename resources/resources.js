@@ -22,6 +22,23 @@ function loadFooterHTML(){
 }
 
 function read_and_insert_html(ID, FILE_PATH){
-  document.getElementById(ID).innerHTML = readHTML(FILE_PATH);
+  document.getElementById(ID).innerHTML = readHTML(FILE_PATH); /* from resources.js*/
 }
 
+function getDefaultScripts(){
+  var root = "https://nkg26.github.io/NE";
+  return `
+    <script src="${root}/resources/default.js"></script>
+    <script src="${root}/resources/redirect.js"></script>
+    <script src="${root}/2K6/js/fx-items.js"></script>	
+    <script src="${root}/2K6/js/products.js"></script>	
+    <script src="${root}/2K6/js/show_items_style-00.js"></script>	
+	
+    <script src="${root}/brands/tab-items-fx.js"></script>	
+    <script src="${root}/brands/items_ifb.js"></script>	
+    <script src="${root}/brands/items_mix.js"></script>	
+    <script src="${root}/brands/items_oth.js"></script>	
+    <script src="${root}/brands/itm-prs.js"></script>	
+
+  `;
+}
