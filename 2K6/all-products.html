@@ -49,12 +49,22 @@
     <script src="https://nkg26.github.io/NE/brands/prod-img.js"></script>	
 	
     <script>
-			cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
-			cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
-			cat_btn_cls = "cat-btn";
-      
 //        loadHTML('header-placeholder', 'https://nkg26.github.io/NE/resources/header.html');
 //       loadHTML('footer-placeholder', 'https://nkg26.github.io/NE/resources/footer.html');
+
+	setTimeout(_start_this,100);
+	function _start_this(){
+		cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+		cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+		cat_btn_cls = "cat-btn";
+		init_item_data(); // initialize items...
+		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+		var cat = getUrlValue("category");
+		cat = cat===undefined?null:cat;
+		cat = cat===''?null:cat;
+		setCategory(cat);
+		//setTimeout(render_and_show_items,1000);  
+	}
 				
 	function _to_item_map_list(data){
 		var indx = findHeaderIndex(data,"n-category");
@@ -73,17 +83,6 @@
 
 		products = P1;
 	}
-	
-	init_item_data();
-	setTimeout(init_item_category,100);
-	
-	// most comman use to generate single item view.
-		
-	function init_item_category(){
-		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
-		setTimeout(render_and_show_items,1000);  
-	}
-
 
 	function getItemCategory(p){
 		var cat = p.category;
@@ -102,11 +101,9 @@
 		return '';
 	}		
 	
-// @override
-function create_HTML_VIEW_OF_ITEM(p){
-	// safeLocaleString(...) from fx-item.js
-	
-	return `
+	// @override
+	function create_HTML_VIEW_OF_ITEM(p){
+		return `
 		<div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
 			<div> <div class="flex justify-between items-start mb-2">
 					<span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${getItemCategory(p)}</span>
@@ -122,7 +119,7 @@ function create_HTML_VIEW_OF_ITEM(p){
 				</div>
 			</div>
 		</div>`;
-}
+	}
 	</script>
 </body></html>
 
