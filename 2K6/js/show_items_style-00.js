@@ -4,30 +4,21 @@ getUniqueCategory(getItemsAll());
 
 */
 
-var this_selectedCategory = null;
-var this_filter_text = null;
-var this_filtered_items_cat = null;
+var CATEGORY_SELECTED = null;
+var FILTER_TEXT = null;
+var FILTERED_ITEMS = null;
 
 var cat_btn_cls_selected   = "cat-btn selected"; // example
 var cat_btn_cls_unselected = "cat-btn uns";  // example
 var cat_btn_cls = cat_btn_cls_unselected;
 
-/*  
-function getProducts() {
-  console.log(" >> getProducts() is not implemented... show_item_style-00.js");
-}
-*/
-
-// help in initializing data...
-function init_item_style_script(){
-}
 
 // invoked by text field on keyup...
 function show_filtered_products() {
   //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
 	var box = document.getElementById('searchInput');
 	if(box !== null){
-		this_filter_text = box.value.toLowerCase();
+		FILTER_TEXT = box.value.toLowerCase();
 		render_and_show_items();
 	} else 
 		console.log(" no input search box found having id 'searchInput'.");
@@ -36,11 +27,11 @@ function show_filtered_products() {
 // return final showing items list.
 function get_final_filtered_items() {
   //console.log(" >> get_final_filtered_items() is not implemented... show_item_style-00.js");
-	if(this_selectedCategory === null){ setCategory(null); }
-	if(this_filtered_items_cat === null){ setCategory(null); }
+	if(CATEGORY_SELECTED === null){ setCategory(null); }
+	if(FILTERED_ITEMS === null){ setCategory(null); }
 	
-	var filtered = this_filtered_items_cat;
-	filtered = (this_filter_text !== null)?filterItems_byText(filtered, this_filter_text):filtered;
+	var filtered = FILTERED_ITEMS;
+	filtered = (FILTER_TEXT !== null)?filterItems_byText(filtered, FILTER_TEXT):filtered;
 	filtered = (filtered !== null)?filtered:[];
 	return filtered;
 }
@@ -59,21 +50,20 @@ function render_and_show_items() {
 		grid.innerHTML = text;
 		grid.innerHTML = (filtered.length === 0) 
 						? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
-						: __generate_HTML_VIEW_OF_ITEMs(filtered);
+						: generate_all_items_HTML_VIEW(filtered);
 		
 		if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
 	}
 }
-
 // if we want to show items as an simple table we should override this function...
-function __generate_HTML_VIEW_OF_ITEMs(itemList) {
+function generate_all_items_HTML_VIEW(itemList) {
 	var output_html = "";
-	itemList.forEach(p => { output_html += create_HTML_VIEW_OF_ITEM(p);});
+	itemList.forEach(p => { output_html += generate_one_item_HTML_VIEW(p);});
 	return output_html;
 }
 
 // most comman use to generate single item view.
-function create_HTML_VIEW_OF_ITEM(p){
+function generate_one_item_HTML_VIEW(p){
   console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
   return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
 }
@@ -106,13 +96,13 @@ function setCategory(cat) {
   try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
     
   var ALL_ITEMS = getItemsAll(); // from another js
-  this_selectedCategory = cat===null?"ALL":cat; // set default value...
+  CATEGORY_SELECTED = cat===null?"ALL":cat; // set default value...
     
   console.log(" ALL_ITEMS_COUNT = "+ALL_ITEMS.length);
-  console.log("\t selected Category = "+this_selectedCategory);
+  console.log("\t selected Category = "+CATEGORY_SELECTED);
     
-  this_filtered_items_cat = filterItemsByCategory(ALL_ITEMS, this_selectedCategory); // from another js
-  console.log(" this_filtered_items_cat = "+this_filtered_items_cat.length);
+  FILTERED_ITEMS = filterItemsByCategory(ALL_ITEMS, CATEGORY_SELECTED); // from another js
+  console.log(" FILTERED_ITEMS = "+FILTERED_ITEMS.length);
     
   // show items...
   render_and_show_items();
