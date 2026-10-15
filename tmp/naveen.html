@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <!-- Mobile responsiveness ke liye critical viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NE - Naveen</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f6f9;
+      overflow: hidden;
+    }
+
+    /* Mobile Header (Mobile screen par show hoga) */
+    .mobile-header {
+      display: none;
+      background: #4f46e5;
+      color: white;
+      padding: 12px 15px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-header button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* Left Sidebar Styling */
+    .sidebar {
+      width: 20%;
+      min-width: 200px;
+      max-width: 250px;
+      padding: 20px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+	
+    .sidebar-mi {
+      width: 100%;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s ease;
+		overflow-y:auto;
+		scrollbar-width: thin;        /* auto | thin | none */
+    }
+	
+    .sidebar-mi:hover {
+		overflow-y:auto;
+	}
+	
+	 div.aaa{
+	 text-align: left;
+	 }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* Navigation Links */
+    .sidebar-mi a {
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+      text-align: center;
+    }
+
+    .sidebar-mi a:hover {
+      background: rgba(255, 50, 10, 0.9);
+    }
+
+    /* Center Main Content Area */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+    }
+    .main-content {
+      flex: 1;
+      padding: 10px;
+
+    }
+
+    /* Center Iframe */
+    .center-iframe {
+      width: 100%;
+      height: 98%;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background: white;
+    }
+	
+
+
+    /* ======================================= */
+    /* Mobile Screen Responsive CSS Rules      */
+    /* ======================================= */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      /* Mobile header show hoga */
+      .mobile-header {
+        display: flex;
+      }
+
+      /* Sidebar ko mobile par side me hide rakhein */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%); /* Screen ke bahar rakhega */
+        box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      }
+
+      /* Jab toggle class add hogi tab sidebar slide hokar samne aayega */
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-wrapper {
+        height: calc(100vh - 50px);
+      }
+    }
+
+
+
+	
+	.center-iframe {
+	  background: transparent;
+	}
+	body{
+		background: linear-gradient(123deg,rgba(227, 65, 11, 0.91) 0%, rgba(9, 9, 121, 0.85) 57%, rgba(5, 133, 50, 1) 100%);
+	}
+	.sidebar {
+		background: linear-gradient(123deg,rgba(227, 65, 11, 0.91) 0%, rgba(9, 9, 121, 0.85) 57%, rgba(5, 133, 50, 1) 100%);
+	}
+	.mobile-header {
+		background: linear-gradient(90deg,rgba(227, 65, 11, 0.78) 0%, rgba(9, 9, 121, 1) 57%, rgba(5, 133, 50, 0.73) 100%);
+	}
+  </style>
+</head>
+<body>
+
+  <!-- Left Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <h5>Naveen CSR</h5>
+    <!-- Link click hone par link center frame me khulega aur mobile menu auto-close ho jayega -->
+	<div class="sidebar-mi" id="sidebar-menus"></div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    
+    <!-- Mobile Header Bar -->
+    <div class="mobile-header">
+      <span style="font-weight: bold;">Nitin Enterprises</span>
+      <button onclick="toggleSidebar()">☰ Menu</button>
+    </div>
+
+    <!-- Center Viewing Area -->
+    <div class="main-content">
+      <iframe id="center-iframe" name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    // Sidebar toggle karne ke liye simple vanilla JS
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+
+    // Link par click hote hi mobile menu close ho jaye
+    function closeSidebar() {
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.remove('active');
+      }
+    }
+
+
+
+  var HOMR_URL = "https://nkg26.github.io/NE";
+  function FULL_URL(path){
+	  return HOMR_URL+path;
+  }
+	  
+  // menu links and all...
+  var TAB = [
+	{id:"all", url:"/2K6/all-products.html", name:"All Products", inMenu:true },
+	{id:"cust", url:"/consumer.html", name:"Customer", inMenu:true },
+	{id:"dhanteras", url:"/2K6/offer_latest.html", name:"Latest Offer", inMenu:true },
+	{name:"%separator%", inMenu:true},
+	{id:"", url:"/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
+	{name:"%separator%", inMenu:true},
+	{id:"location-us", url:"/resources/location-ne.html", name:"Location", inMenu:true},
+	{id:"conatct-us", url:"/resources/_pvt-all-qr.html", name:"QR", inMenu:true}
+  ];
+  
+  function getObjectById(ID, start=0){
+	for(var i=(start<0?0:start); i<TAB.length; i++){
+	  var p = TAB[i];
+	  if(p!==null && p.id === ID){
+		return p;
+	  }
+	}
+ }
+  
+ function showPageById(ID){
+	console.log("showPageById(ID) : "+ID);
+	var p = getObjectById(ID);
+	showPageByURL(p?(p.url):"");
+  }
+  
+  function showPageByURL(URL){
+	console.log("showPageByURL(URL) : "+URL);
+	setIframeURL(HOMR_URL+URL);
+  }  
+ 
+  function setIframeURL(URL){
+	closeSidebar();
+		console.log("setIframeURL(URL) : "+URL);
+
+	document.getElementById("center-iframe").src=URL;
+	try{
+		document.getElementById("asd").innerHTML=URL;
+		//document.getElementById("asd").style.display='none';
+	}catch{}
+ }
+  
+  var sidebar_menu_html = '';
+  for(var i=0;i<TAB.length;i++){
+	  var p = TAB[i];
+	  if(p.inMenu === true){
+		  if(p.name==='%separator%'){
+				sidebar_menu_html += `<br/>`;
+			} else {
+				// below all 3 are working fine..
+				//sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="closeSidebar()">${p.name}</a>`;
+				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
+				sidebar_menu_html += `<a href="javascript:void(0);" onclick="showPageByURL('${p.url}')" > ${p.name}</a>`;
+			}
+		}
+  }
+  document.getElementById("sidebar-menus").innerHTML = sidebar_menu_html;
+	  
+  </script>
+
+	<div>
+		<br/>
+	</div>
+</body>
+</html>
