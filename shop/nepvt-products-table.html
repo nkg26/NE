@@ -16,7 +16,7 @@
 	<style>.cat-btn{background-color:yellow; border:1px solid red; padding:2px 3px; margin:3px 5px; border-radius:10px; min-width:35px;} </style>
 	<style>.cat-btn:hover, .selected_cat_button:hover{background-color:orange; } </style>
 
-    <div id="header-placeholder"></div>
+    <div id="header-placeholder">nepvt-products-table.html</div>
     <div id="module-items">
 		<main id="items-bag">
 		    <!-- Search and Filter Bar -->
@@ -26,6 +26,7 @@
 		        </div>
 		        <div id="search-category"></div>
 		    </div>
+		    <div id="message"></div> 
 		    <!-- Product Cards Container -->
 		    <div id="productGrid"></div>
 		</main>
@@ -82,54 +83,53 @@
 		products = P1;
 	}
 
-function generate_all_items_HTML_VIEW(filtered) {
-	if(filtered === null) {
-		return `<div> null data lisr....</div>`;
-	}
-	
-	if(filtered.length === 0) {
-		return `<div>No appliances found matching your criteria.</div>`;
-	}
-	
-	var css = `<style> 
-		div.items-div table.items_table td{
-			border:1px solid gray; padding:3px;
-		}
-		tbody tr:nth-child(odd) { background-color: #fff2f25; }
-		tbody tr:nth-child(even) { background-color: #fff7; }
-		div.items-div table.items_table thead tr th{
-			  position: sticky;   top: 0; background:pink;			padding:3px;
-		}
-		div.items-div{
-			max-height: 85vh; /* viewport ki height ka 50% */ 
-			overflow:auto; border:1px solid seagreen;
-		}
-	</style>	`;
-	
-	var mydata = ""+css;			
-	mydata += `<div class="items-div">`;
-	mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
-	mydata += `<tr> <th>#</th> <th>Cat</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
-	mydata += `</thead> <tbody>`;
-	// ₹
-	var cnt = 0;
-	filtered.forEach(p => {
-		mydata += `<tr> 
-		<td class='col0'>${++cnt}</td>
-		<td class='col1'>${safeVal(p.category)}</td>
-		<td class='col2'>${safeVal(p.capacity)}</td>
-		<td class='col3'>${safeVal(p.name)}</td>
-		<td class='col4'>${safeVal(p.color)}</td>
-		<td class='col5'>${safeLocaleString(p.mrp)}</td>
-		<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
-		<td class='col7'>${safeLocaleString(p.advance)}</td>
-		</tr>`;
-	});
+	function generate_all_items_HTML_VIEW(filtered) {
+		document.getElementById('message').innerHTML = "";
+		if(filtered === null) 	return `<div> null data lisr....</div>`;
+		if(filtered.length === 0) return `<div>No appliances found matching your criteria.</div>`;
+		
+		document.getElementById('message').innerHTML = " > > " + filtered.length + " items found.";
+		
+		var css = `<style> 
+			div.items-div table.items_table td{
+				border:1px solid gray; padding:3px;
+			}
+			tbody tr:nth-child(odd) { background-color: #fff2f25; }
+			tbody tr:nth-child(even) { background-color: #fff7; }
+			div.items-div table.items_table thead tr th{
+				  position: sticky;   top: 0; background:pink;			padding:3px;
+			}
+			div.items-div{
+				max-height: 85vh; /* viewport ki height ka 50% */ 
+				overflow:auto; border:1px solid seagreen;
+			}
+		</style>	`;
+		
+		var mydata = ""+css;			
+		mydata += `<div class="items-div">`;
+		mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
+		mydata += `<tr> <th>#</th> <th>Brand</th> <th>Cat</th> <th>Size/Cap</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
+		mydata += `</thead> <tbody>`;
+		// ₹
+		var cnt = 0;
+		filtered.forEach(p => {
+			mydata += `<tr> 
+			<td class='col0'>${++cnt}</td>
+			<td class='col1'>${safeVal(p.brand)}</td>
+			<td class='col1'>${safeVal(p.category)}</td>
+			<td class='col2'>${safeVal(p.capacity)}</td>
+			<td class='col3'>${safeVal(p.name)}</td>
+			<td class='col4'>${safeVal(p.color)}</td>
+			<td class='col5'>${safeLocaleString(p.mrp)}</td>
+			<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
+			<td class='col7'>${safeLocaleString(p.advance)}</td>
+			</tr>`;
+		});
 
-	mydata += `</tbody></table> </div>`;
-	return mydata;
-}
+		mydata += `</tbody></table> </div>`;
+		return mydata;
+	}
 
-	</script>
-  
+		</script>
+	  
 </body></html>
