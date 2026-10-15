@@ -1,8 +1,60 @@
-<html>
-  <body>
-nothing to display... 
-    
-  </body>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <!-- Mobile responsiveness ke liye critical viewport tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR's</title>
+</head>
+<body>
+<style> .mobile-header{ background-color:seagreen; color:white; padding:15px; border-radius:20px; margin:10px;}</style>
+<style> .main-content div{ max-width:300px; margin:20px; padding:10px; border:2px solid green; border-radius:10px; text-align:center; display:inline-block;}</style>
+<style> .main-content img{ max-width:100%;}</style>
+<style> .main-content span{ 
+				0background: linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+				background-color:#f85;
+				width: 85%; display:block; padding:10px; margin:10px; font-weight:bold; font-size:1.2em; color:white; border-radius:8px;
+}</style>
+
+  <div class="main-wrapper">
+    <div class="mobile-header">
+      <span style="font-weight: bold;">All QR's</span>
+    </div>
+    <div class="main-content" id="main-content"></div>
+  </div>
+  
+
+
+  <script>
+  var HOME = "https://nkg26.github.io/NE/resources/qrs";
+	  
+  // menu links and all...
+  var TAB = [
+	{url:"/ne-hdfc-phonepe.webp", name:"1. Nitin Enterprises (HDFC)" },
+	{url:"/usha-hdfc-phonepe.webp", name:"2. USHA (PNB) - PhonePe" },
+	{url:"/rajesh-hdfc-phonepe.webp", name:"3. Rajesh (HDFC) - PhonePe" },
+	{url:"/ne-amazon.webp", name:"4. Amazon - NE" },
+	{url:"/ne-qr-bajaj-finance.webp", name:"Customer Scan - Bajaj Finance" },
+	
+	{url:"/gps-hdfc-gpay.webp", name:"9. GPS (HDFC) - GPay" },
+  ];
+  
+  
+  
+  var html = '';
+  
+  for(var i=0;i<TAB.length;i++){
+	  var p = TAB[i];
+	  if(p){
+			html += `<div> <img src="${HOME}${p.url}" /> <span>${p.name}</span> </div>`;
+		}
+  }
+  document.getElementById("main-content").innerHTML = html;
+	  
+  </script>
+
+	<div>
+		<br/>
+	</div>
+</body>
 </html>
-
-
