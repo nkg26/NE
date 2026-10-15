@@ -14,6 +14,7 @@
 	<style>input#searchInput{width:98%; margin:5px; padding:5px;}</style>
 	<style>.selected_cat_button{background-color:cyan;} </style>
 	<style>.cat-btn{background-color:yellow; border:1px solid red; padding:2px 3px; margin:3px 5px; border-radius:10px; min-width:35px;} </style>
+	<style>.cat-btn:hover, .selected_cat_button:hover{background-color:orange; } </style>
 
     <div id="header-placeholder"></div>
     <div id="module-items">
@@ -34,32 +35,54 @@
 
 
     <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/js/products.js"></script>
     <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-01.js"></script>
+	
+	<script src="https://nkg26.github.io/NE/brands/tab-items-fx.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_ifb.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_mix.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/items_oth.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/itm-prs.js"></script>	
+    <script src="https://nkg26.github.io/NE/brands/prod-img.js"></script>	
 	
     <script>  
-
-	function init_item_style_script(){
+	var products = [];
+	
+	setTimeout(_start_this,100);
+	function _start_this(){
 		cat_btn_cls_selected   = "selected_cat_button"; // example
 		cat_btn_cls_unselected = "cat-btn";
 		cat_btn_cls = "selected_cat_button";
-		
+
+		init_item_data(); // initialize items...
 		document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+		//var cat = getUrlValue("category");
+		//cat = cat===undefined?null:cat;
+		//cat = cat===''?null:cat;
+		//console.log("initial url key,     category = "+cat);
+		//setCategory(cat);
+		setCategory(null);
+		//setTimeout(render_and_show_items,1000);  
+	}
+				
+	function _to_item_map_list(data){
+		var indx = findHeaderIndex(data,"n-category");
+		if(indx >=0) data[0][indx] = "category";
+		return (convertTableToScriptArrayObject(data));
+	}
 		
-		setCategory(null); //auto set default..
-		setTimeout(show_items_table,1000); 
+	function init_item_data(){
+		var P1 = _to_item_map_list(items_table_ifb);
+		var P2 = _to_item_map_list(items_table_mix);
+		var P3 = _to_item_map_list(items_table_other);
+		
+		P1 = P1.concat(P2).concat(P3);
+		var MRP = _to_item_map_list(items_tabl_price);
+		merge_data_mapArray(P1, MRP, 'nsap');
+
+		products = P1;
 	}
-	
-	function __generate_HTML_VIEW_OF_ITEMs(itemList) {
-		return getnerateSimpleTable(itemList);
-	}
 
-	// extract unique categories ...
-	init_item_style_script(); // this should be call first..
-
-
-function getnerateSimpleTable(filtered) {
+function generate_all_items_HTML_VIEW(filtered) {
 	if(filtered === null) {
 		return `<div> null data lisr....</div>`;
 	}
@@ -69,38 +92,30 @@ function getnerateSimpleTable(filtered) {
 	}
 	
 	var css = `<style> 
-	div.items-div table.items_table td{
-		border:1px solid gray;
-		padding:3px;
-	}
-		/* Odd rows: 1st, 3rd, 5th... */
-		tbody tr:nth-child(odd) {
-		  background-color: #fff2f25;
+		div.items-div table.items_table td{
+			border:1px solid gray; padding:3px;
 		}
-
-		/* Even rows: 2nd, 4th, 6th... */
-		tbody tr:nth-child(even) {
-		  background-color: #fff7;
+		tbody tr:nth-child(odd) { background-color: #fff2f25; }
+		tbody tr:nth-child(even) { background-color: #fff7; }
+		div.items-div table.items_table thead tr th{
+			  position: sticky;   top: 0; background:pink;			padding:3px;
 		}
-	div.items-div table.items_table thead tr th{
-		  position: sticky;   top: 0; background:pink;
-			padding:3px;
-	}
-	div.items-div{
-		max-height: 85vh; /* viewport ki height ka 50% */ 
-		overflow:auto; 
-		border:1px solid seagreen;
-	}
-	</style>`;
+		div.items-div{
+			max-height: 85vh; /* viewport ki height ka 50% */ 
+			overflow:auto; border:1px solid seagreen;
+		}
+	</style>	`;
 	
 	var mydata = ""+css;			
 	mydata += `<div class="items-div">`;
 	mydata += `<table border=true cellspacing=0 class="items_table" > <thead>`;
-	mydata += `<tr> <th>Cat</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
+	mydata += `<tr> <th>#</th> <th>Cat</th> <th>Capicity</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>`;
 	mydata += `</thead> <tbody>`;
 	// ₹
+	var cnt = 0;
 	filtered.forEach(p => {
 		mydata += `<tr> 
+		<td class='col0'>${++cnt}</td>
 		<td class='col1'>${safeVal(p.category)}</td>
 		<td class='col2'>${safeVal(p.capacity)}</td>
 		<td class='col3'>${safeVal(p.name)}</td>
