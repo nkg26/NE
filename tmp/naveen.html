@@ -160,18 +160,17 @@
 	  background: transparent;
 	}
 	body{
-		background: linear-gradient(123deg,rgba(227, 65, 11, 0.91) 0%, rgba(9, 9, 121, 0.85) 57%, rgba(5, 133, 50, 1) 100%);
+		background: linear-gradient(123deg,rgba(227, 65, 11, 0.91) 0%);
 	}
 	.sidebar {
-		background: linear-gradient(123deg,rgba(227, 65, 11, 0.91) 0%, rgba(9, 9, 121, 0.85) 57%, rgba(5, 133, 50, 1) 100%);
+		background: linear-gradient(123deg,rgba(55, 55, 11, 1)  100%);
 	}
 	.mobile-header {
-		background: linear-gradient(90deg,rgba(227, 65, 11, 0.78) 0%, rgba(9, 9, 121, 1) 57%, rgba(5, 133, 50, 0.73) 100%);
+		background-color: black;
 	}
   </style>
 </head>
 <body>
-
   <!-- Left Sidebar Navigation -->
   <div class="sidebar" id="sidebar">
     <h5>Naveen CSR</h5>
@@ -184,7 +183,7 @@
     
     <!-- Mobile Header Bar -->
     <div class="mobile-header">
-      <span style="font-weight: bold;">Nitin Enterprises</span>
+      <span style="font-weight: bold;">Naveen Goel</span>
       <button onclick="toggleSidebar()">☰ Menu</button>
     </div>
 
@@ -194,7 +193,18 @@
     </div>
 
   </div>
+<script>
+function deleteCookies(){
+try{
+	  //const frame = document.querySelector("iframe");
+	  const frame = document.getElementById("center-iframe");
+	  frame.contentWindow.document.cookie ="userToken=; Max-Age=0; path=/";
+	  console.log("cookie deleted...");
+}catch(e){	  console.log("cookie deleted error : "+e);}
+}
+deleteCookies();
 
+</script>
   <script>
     // Sidebar toggle karne ke liye simple vanilla JS
     function toggleSidebar() {
@@ -225,7 +235,7 @@
 	{id:"", url:"/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
 	{name:"%separator%", inMenu:true},
 	{id:"location-us", url:"/resources/location-ne.html", name:"Location", inMenu:true},
-	{id:"conatct-us", url:"/resources/_pvt-all-qr.html", name:"QR", inMenu:true}
+	{id:"conatct-us", url:"/resources/pvt-all-qr.html", name:"QR", inMenu:true}
   ];
   
   function getObjectById(ID, start=0){
@@ -250,13 +260,14 @@
  
   function setIframeURL(URL){
 	closeSidebar();
-		console.log("setIframeURL(URL) : "+URL);
-
+	console.log("setIframeURL(URL) : "+URL);
 	document.getElementById("center-iframe").src=URL;
 	try{
 		document.getElementById("asd").innerHTML=URL;
 		//document.getElementById("asd").style.display='none';
 	}catch{}
+	
+	deleteCookies();
  }
   
   var sidebar_menu_html = '';
