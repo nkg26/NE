@@ -114,7 +114,24 @@ function deleteCookie(cookieName) {
   // location.reload();
 }
 
+/*
+	window.frames Array ka Use Karein
+	Browser aapke page par maujood sabhi frames/iframes ka ek array-like object window.frames mein rakhta hai:
+	
+	JavaScript
+	// Pehle iframe ke window object ko access karein (index 0)
+	if (window.frames.length > 0) {
+	  try {
+	    window.frames[0].document.cookie = "userToken=; Max-Age=0; path=/;";
+	  } catch (e) {
+	    console.warn("Cross-origin blocked:", e.message);
+	  }
+	}
 
+⚠️ Dhyan Rakhne Yogya Baat:
+Same-Origin Policy yahan bhi lagu hoti hai. Iframe chahe id se select ho ya bina id ke, agar iframe kisi alag domain ka hai, to JavaScript security restrictions ki wajah se aap uske document.cookie ko edit nahi kar payenge.
+
+*/
 
 
 
