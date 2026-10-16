@@ -73,3 +73,48 @@ function getDefaultScripts(){
 
   `;
 }
+
+function deleteAllCookies() {
+  // Current document ki sabhi cookies ko get karke array banayein
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i];
+    const eqPos = cookie.indexOf("=");
+    const name = eqPos > -1 ? cookie.substring(0, eqPos).trim() : cookie.trim();
+    // Domain aur Path ke sath delete karein
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+  }
+  console.log("Saari cookies delete ho gayi hain! - "+window.location.hostname);
+}
+
+
+function deleteCookie(cookieName) {
+  //const cookieName = "userToken"; // Yahan apni cookie ka naam likhein
+
+  // 1. Current page ki cookie delete karein
+  document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+
+	const iframes = document.getElementsByTagName("iframe");
+	for (let i = 0; i < iframes.length; i++) {
+		var frame = iframes[i];
+	  try {
+		 if (frame && frame.contentWindow && frame.contentWindow.document) {
+		      frame.contentWindow.document.cookie = cookieName + "=; Max-Age=0; path=/;";
+		    }	  
+	  } catch (e) {
+	    // Agar koi iframe cross-domain hoga to baki code crash nahi hoga
+	    console.warn(`Frame ${i} access blocked: Cross-origin or iframe restriction:`, e.message);
+	  }
+	}	
+  // User ko confirm karne ke liye message
+  console.log("Cookie successfully delete ho gayi hai!");
+  // Optionally, page ko reload karne ke liye:
+  // location.reload();
+}
+
+
+
+
+
