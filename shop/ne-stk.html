@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stk</title>
+</head>
+<body>
+	<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
+  <div id="header-placeholder"></div>
+	<div id="dynamic-content" class="dynamic-content"> <span> Showing All Products </span></div>
+
+    <div id="module-items">
+	    <main>
+	        <div>
+	            <div>
+	                <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+	            </div>
+	            <div id="search-category"></div>
+	        </div>
+	        <!-- Product Cards Container -->
+	        <div id="productGrid"> <!-- Dynamic JS Injected Cards --> </div>	
+      </main>
+    </div>
+
+
+
+
+  
+</body>
+</html>
