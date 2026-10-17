@@ -1,6 +1,6 @@
-console.log(' tab-items-fx.js  is depricated....');
-console.log('   use script   resources/js/fx-file.js  to read text file..');
-console.log('   use script   resources/js/fx-table.js  to fx of table');
+console.error(' tab-items-fx.js  is depricated....');
+console.error('   use script   resources/js/fx-file.js  to read text file..');
+console.error('   use script   resources/js/fx-table.js  to fx of table');
 
 
 /* function findHeaderIndex(TABLE, FIND){
