@@ -2,7 +2,7 @@ class FileHandler {
     // 1. Constructor: Jaise Java mein hota hai, variables initialize karne ke liye
     constructor(filePath) {
         this.filePath = filePath;
-        this.fileContent = ""; // Yeh variable file ka data store karega
+        this.fileContent = null; // Yeh variable file ka data store karega
         this.dataLoaded = false;
         this.dataError = null;
     }
@@ -19,7 +19,8 @@ class FileHandler {
             console.log("Class variable mein data save ho gaya!");
         } catch (error) {
             console.error("Error:", error);
-            dataError = error;
+            this.dataError = error;
+            this.dataLoaded = true;
         }
     }
 
