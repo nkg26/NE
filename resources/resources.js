@@ -61,9 +61,9 @@ function loadFooterHTML(){
 
 function read_and_insert_html(ID, FILE_PATH){
   document.getElementById(ID).innerHTML = readHTML(FILE_PATH); /* from resources.js*/
-}
+/*}
 
-/*function getDefaultScripts(){
+function getDefaultScripts(){
   var root = "https://nkg26.github.io/NE";
   return `
     <script src="${root}/resources/default.js"></script>
