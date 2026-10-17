@@ -22,6 +22,7 @@ async function readFileFromURL(uid, url) {
     }
 }
 
+// currently getting some error...
 async function readFileContent(uid, filePath) {
     // 2. Fetch API ka use karke file ko load karein
     fetch(filePath).then(response => {
@@ -34,3 +35,51 @@ async function readFileContent(uid, filePath) {
         console.error("Error loading file:", error);
       });
 }
+
+// convert text into 2D array
+function splitTextToTable(content, trim=false){
+	//console.log('   ---   convertToTableObject(content)');
+	const lines = content.split('\n').filter(line => line.trim() !== '');
+  // अगर कोई line नहीं तो बाहर निकलो
+  if (lines.length === 0)   return null;
+  // पहली line header मान लो (अगर comma separated है)
+  const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+  //const headers = lines[0].split(delimiter).map(h => h.trim());
+  var TABLE = [];
+  for(var i=0;i<lines.length;i++){
+    TABLE = TABLE.concat([lines[i].split(delimiter)]);
+  }
+  return TABLE;
+}
+	
+// Delimiter पहचानने का सरल तरीका
+function detectDelimiter(firstLine) {
+  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
+  if (firstLine.includes('	')) return '	';
+  if (firstLine.includes('|')) return '|';
+  return ','; // डिफ़ॉल्ट कॉमा
+}
+	
+function generateBasicHtmlTable(TABULAR_DATA){
+  var TABLE = TABULAR_DATA;
+  var html = '';
+  html +="<table>";
+    for(var r=0; r<TABLE.length; r++){
+      var row = '';
+      for(var c=0; c<TABLE[r].length; c++) row += ('<td>'+TABLE[r][c]+'</td>');
+      html += row=='' ? '' : ("<tr>"+row+"</tr>");
+    }
+  html +="</table>";
+  return html;
+}
+	
+
+
+
+
+
+/*   
+
+
+*/
+
