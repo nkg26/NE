@@ -1,0 +1,40 @@
+<html>
+  <body>
+    <pre id='out'>
+      this is pre tag...
+    </pre>
+
+    <script>
+      document.getElementById('out').innerHTML = readFileContent('https://nkg26.github.io/NE/res/lists/ifb-items-names.txt');
+		function readFileContent(filePath) {
+		
+		        // 1. Apni file ka relative ya absolute path yahan dein
+        // Note: Yeh file aapke project folder ke andar honi chahiye
+        //const filePath = 'mydata.txt'; 
+
+  var output = 'no-output';
+        // 2. Fetch API ka use karke file ko load karein
+        fetch(filePath).then(response => {
+                // Agar file nahi mili ya koi error aaya
+                if (!response.ok) {
+                    throw new Error("File nahi mili ya network issue hai.");
+                }
+                return output=response.text(); // File ko text format mein convert karein
+            })
+            .then(data => {
+                // 3. HTML ke andar file ka data display karein
+                output= data;
+            })
+            .catch(error => {
+                // Agar koi error aata hai toh yahan handle hoga
+                console.error("Error loading file:", error);
+				output = error;
+            });
+			return output;
+		}
+
+      
+    </script>
+    
+  </body>
+</html>
