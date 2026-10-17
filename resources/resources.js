@@ -1,3 +1,10 @@
+console.log(' NE/resources/resources.js  is renamed to NE/abc-xyz.js  ');
+alert('update your js..');
+
+
+
+/*
+
 var URL_MAP = null;
 // jab bhi page load hoga url me jo bhi key value pair honge save ho jayenge.
 //window.addEventListener('DOMContentLoaded', () => {URL_MAP = new URLSearchParams(window.location.search);});
@@ -56,7 +63,7 @@ function read_and_insert_html(ID, FILE_PATH){
   document.getElementById(ID).innerHTML = readHTML(FILE_PATH); /* from resources.js*/
 }
 
-function getDefaultScripts(){
+/*function getDefaultScripts(){
   var root = "https://nkg26.github.io/NE";
   return `
     <script src="${root}/resources/default.js"></script>
