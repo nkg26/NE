@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stk-table</title>
+</head>
+<body>
+	<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
+  <div id="header-placeholder"></div>
+	<div id="dynamic-content" class="dynamic-content"> <span> Showing File Items </span></div>
+
+    <div id="module-items">
+	    <main>
+	        <div>
+	            <div>
+	                <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+	            </div>
+	            <div id="search-category"></div>
+	        </div>
+	        <div id="message">  </div>	
+	        <!-- Product Cards Container -->
+	        <div id="productGrid"> <!-- Dynamic JS Injected Cards --> </div>	
+      </main>
+    </div>
+
+  <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>
+    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>
+	    
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+	
+	<style> 
+	table{ border:1px solid red;}
+	table td { border:1px solid gray;}
+	</style>
+    <script>  
+	
+	class MyItems{
+			products = null;
+			FX_TABLE = new MyTable();
+			
+			
+			async handlerRawFileData(fileContent) {
+				let TAB = FX_TABLE.splitToTable(fileContent);
+				let H = TAB[0];
+				console.error(" >> HEADER = "+H);
+				this.products = FX_TABLE.toKeyMapObjectList(TAB);
+				setTimeout(_start_this,100);
+		}
+			
+	}
+	
+	
+		var products = [];
+		const FX_TABLE = new MyTable();
+					
+		// Delimiter पहचानने का सरल तरीका (class wala abhi kaam nahi kar rha hai)
+		function detectDelimiter(firstLine) {
+			  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
+			  if (firstLine.includes('	')) return '	';
+			  if (firstLine.includes('|')) return '|';
+			  return ','; // डिफ़ॉल्ट कॉमा
+		}
+					
+						
+						
+		const file = new MyFile("https://nkg26.github.io/NE/res/lists/stk-ifb-261017.txt");
+		
+		file.loadFile().then(() => {
+			const finalData = file.getFinalOutput();
+			handler_FileReadDone('',finalData);
+//			console.log("Final Output:", finalData);
+		});
+
+		// ye 1 handler function hai, jab bhi file read krenge to 1 uid pass krenge and is function me wo uid se file k bare me pta lgega..
+		async function handler_FileReadDone(uid, fileContent) {
+			console.log(">>>>> handler_FileReadDone - uid = "+uid);
+			var TAB = FX_TABLE.splitToTable(fileContent);
+			H = TAB[0];
+			console.error(" >> HEADER = "+H);
+			products = FX_TABLE.toKeyMapObjectList(TAB);
+			setTimeout(_start_this,100);
+		}
+		
+		var H;
+		function _start_this(){
+			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+			setCategory(null);
+		}
+	
+		function s(myItems){
+			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
+			setCategory(null);
+		}
+	
+	function show_filtered_products() {
+	  //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
+		var box = document.getElementById('searchInput');
+		if(box !== null){
+			var text = box.value.toLowerCase();
+			if(text === FILTER_TEXT){
+			console.log(" skpil due to same text--- "+text);
+				return;
+			}
+			FILTER_TEXT = text;
+			render_and_show_items();
+		} else 
+			console.log(" no input search box found having id 'searchInput'.");
+	}
+	
+	function toComplexRegxPattern(queryString) {
+        let query = queryString.trim();
+		query = query.replace(/\(([^)]+)\)/g, (match, groupContent) => {
+            let words = groupContent.split('&&').map(w => w.trim());
+            return '(' + words.map(w => `(?=.*${w})`).join('') + ')';
+        });
+        query = query.replace(/\|\|/g, '|');
+        return'^(?:'+query+')';
+    }
+
+
+
+	function filter_by_text(itemList, text) {
+		return itemList.filter(p => {
+			return (p.name.toLowerCase().includes(text) || p.category.toLowerCase().includes(text));
+		});
+	}
+	
+	function filter_by_regx(itemList, regx) {
+		return itemList.filter(p => {return (regx.test(p.name) || regx.test(p.category));});
+	}
+	
+	function filterItems_byText(itemList, searchVal) {
+		if(searchVal === null || searchVal === '' || itemList === null) itemList;
+		searchVal = searchVal.toLowerCase().trim();
+		console.log(" ================== ");
+		console.log("A = "+searchVal);
+		
+		const RGX = new MyRegx();
+		var rx = RGX.toRegxAuto(searchVal);
+		if(rx !== null){
+			return filter_by_regx(itemList, new RegExp(rx,'i') );
+		}
+		var nx = RGX.toNormalAuto(searchVal);
+		if(nx !== null){
+			return filter_by_text(itemList, nx);
+		}
+		return filter_by_text(itemList, searchVal);			
+	}
+	
+	function generate_all_items_HTML_VIEW(filtered) {
+			document.getElementById('message').innerHTML = "";
+		if(filtered === null) 	return "<div> null data lisr....</div>";
+		if(filtered.length === 0) return "<div>No appliances found matching your criteria.</div>";
+		
+		document.getElementById('message').innerHTML = " > > " + filtered.length + " items found.";
+				
+		var mydata = ""+css;			
+		mydata += '<div class="items-div"><table border=true cellspacing=0 class="items_table" > <thead>';
+		
+		mydata += "<tr>";
+		for(var i=0; i<H.length; i++)	mydata += "<th>"+H[i]+"</th>";
+		mydata += "</tr> </thead> <tbody>";
+		
+		var cnt = 0;
+		filtered.forEach(p => {
+			var row = '';
+			for(var i=0; i<H.length; i++)	row += "<td class='col"+i+"'>"+p[H[i]]+"</td>";
+			mydata += "<tr>"+row+"</tr>"; 
+		});
+
+		mydata += '</tbody></table> </div>';
+		return mydata;
+	}
+	
+	
+	
+	function generate_all_items_HTML_VIEW_old(filtered) {
+		document.getElementById('message').innerHTML = "";
+		if(filtered === null) 	return "<div> null data lisr....</div>";
+		if(filtered.length === 0) return "<div>No appliances found matching your criteria.</div>";
+		
+		document.getElementById('message').innerHTML = " > > " + filtered.length + " items found.";
+				
+		var mydata = ""+css;			
+		mydata += `
+			<div class="items-div">
+			<table border=true cellspacing=0 class="items_table" > <thead>
+			<tr> <th>#</th> <th>Brand</th> <th>Cat</th> <th>Size/Cap</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>
+			</thead> <tbody>
+		`;
+		
+		// ₹
+		var cnt = 0;
+		filtered.forEach(p => {
+			mydata += `<tr> 
+			<td class='col0'>${++cnt}</td>
+			<td class='col1'>${safeVal(p.brand)}</td>
+			<td class='col1'>${safeVal(p.category)}</td>
+			<td class='col2'>${safeVal(p.capacity)}</td>
+			<td class='col3'>${safeVal(p.name)}</td>
+			<td class='col4'>${safeVal(p.color)}</td>
+			<td class='col5'>${safeLocaleString(p.mrp)}</td>
+			<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
+			<td class='col7'>${safeLocaleString(p.advance)}</td>
+			</tr>`;
+		});
+
+		mydata += `</tbody></table> </div>`;
+		return mydata;
+	}
+	
+			var css = `<style> 
+			div.items-div table.items_table td{
+				border:1px solid gray; padding:3px;
+			}
+			tbody tr:nth-child(odd) { background-color: #fff2f25; }
+			tbody tr:nth-child(even) { background-color: #fff7; }
+			div.items-div table.items_table thead tr th{
+				  position: sticky;   top: 0; background:pink;			padding:3px;
+			}
+			div.items-div{
+				max-height: 85vh; /* viewport ki height ka 50% */ 
+				overflow:auto; border:1px solid seagreen;
+			}</style>	`;
+
+
+
+
+	</script>
+
+
+  
+</body>
+</html>
