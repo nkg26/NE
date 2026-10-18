@@ -1,4 +1,4 @@
-class FileHandler {
+class MyFile {
     // 1. Constructor: Jaise Java mein hota hai, variables initialize karne ke liye
     constructor(filePath) {
         this.filePath = filePath;
