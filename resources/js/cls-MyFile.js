@@ -34,6 +34,15 @@ class MyFile {
     }
 }
 
+async loadAndCallback(filePath, callbackFunction) {
+    let response = await fetch(filePath);
+    let data = await response.text();
+    
+    // Kaam khatam hone par runtime function call karein
+    if (typeof callbackFunction === 'function') {
+        callbackFunction(data);
+    }
+}
 
 /*
 
