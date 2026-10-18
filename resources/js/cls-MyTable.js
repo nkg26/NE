@@ -59,7 +59,7 @@ class MyTable{
 
 	/* convert tabuler data into array of [{h1:v1, h2:v2, ...}, {...}, ...]*/
 	toKeyMapObjectList(TABULAR_DATA){
-		const [headers, ...rows] = data;
+		const [headers, ...rows] = TABULAR_DATA;
 		  if (!headers) return [];
 		  return rows.map(row => Object.fromEntries(headers.map((header, i) => [header, row[i]])));
 	}
