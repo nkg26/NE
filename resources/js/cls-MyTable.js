@@ -3,7 +3,7 @@ class MyTable{
 	findIndex(ARRAY, FIND){
 	  try{
 		  if(FIND !== null && FIND !== '' && ARRAY !== null && ARRAY !== undefined&& FIND !== undefined){
-			for(var i=0;i<ARRAY.length;i++){
+			for(let i=0;i<ARRAY.length;i++){
 			  if(FIND === ARRAY[i]) return i;
 			}
 		  }
@@ -27,11 +27,11 @@ class MyTable{
 		// पहली line header मान लो (अगर comma separated है)
 		const delimiter = this.detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
 		//const headers = lines[0].split(delimiter).map(h => h.trim());
-		var TABLE = [];
+		let TABLE = [];
 		if(trim) 
-			for(var i=0;i<lines.length;i++)	TABLE = TABLE.concat([lines[i].split(delimiter).map(h => h.trim())]);
+			for(let i=0;i<lines.length;i++)	TABLE = TABLE.concat([lines[i].split(delimiter).map(h => h.trim())]);
 		else 
-			for(var i=0;i<lines.length;i++)	TABLE = TABLE.concat([lines[i].split(delimiter)]);
+			for(let i=0;i<lines.length;i++)	TABLE = TABLE.concat([lines[i].split(delimiter)]);
 		return TABLE;
 	}
 		
@@ -45,12 +45,12 @@ class MyTable{
 
 	// create simplest html table data.
 	generateBasicHtmlTable(TABULAR_DATA){
-	  var TABLE = TABULAR_DATA;
-	  var html = '';
+	  let TABLE = TABULAR_DATA;
+	  let html = '';
 	  html +="<table>";
-		for(var r=0; r<TABLE.length; r++){
-		  var row = '';
-		  for(var c=0; c<TABLE[r].length; c++) row += ('<td>'+TABLE[r][c]+'</td>');
+		for(let r=0; r<TABLE.length; r++){
+		  let row = '';
+		  for(let c=0; c<TABLE[r].length; c++) row += ('<td>'+TABLE[r][c]+'</td>');
 		  html += row=='' ? '' : ("<tr>"+row+"</tr>");
 		}
 	  html +="</table>";
@@ -66,8 +66,8 @@ class MyTable{
 
 	/* convert tabuler data into array of [{h1:v1, h2:v2, ...}, {...}, ...]*/
 	convertTableToScriptArrayObject_old(data){
-		var out = [];
-		for(var i=1;i<data.length;i++) out.push(Object.fromEntries(data[0].map((key, j) => [key, data[i][j]])));
+		let out = [];
+		for(let i=1;i<data.length;i++) out.push(Object.fromEntries(data[0].map((key, j) => [key, data[i][j]])));
 		return out;
 	}
 
@@ -80,9 +80,9 @@ class MyTable{
 	  }
 	  const A = MAIN_LIST;
 	  const B = ADD_DATA;
-		for(var i=0; i<A.length; i++){
-			var VAL = A[i][KEY_NAME];
-			for(var j=0; j<B.length; j++){
+		for(let i=0; i<A.length; i++){
+			let VAL = A[i][KEY_NAME];
+			for(let j=0; j<B.length; j++){
 				if(VAL === B[j][KEY_NAME]){
 					Object.assign(A[i], B[j]); // merge both data and assign to A.
 					break;
