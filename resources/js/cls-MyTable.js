@@ -13,7 +13,7 @@ class MyTable{
 
 	findHeaderIndex(TABLE, FIND){
 	  try{
-		  return findIndex(TABLE[0],FIND);
+		  return this.findIndex(TABLE[0],FIND);
 	  }catch(e){console.log(e);}
 	  return -1;
 	}
@@ -25,7 +25,7 @@ class MyTable{
 		// अगर कोई line नहीं तो बाहर निकलो
 		if (lines.length === 0)   return null;
 		// पहली line header मान लो (अगर comma separated है)
-		const delimiter = detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
+		const delimiter = this.detectDelimiter(lines[0]); // कॉमा, टैब, या पाइप
 		//const headers = lines[0].split(delimiter).map(h => h.trim());
 		var TABLE = [];
 		if(trim) 
