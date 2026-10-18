@@ -2,7 +2,7 @@ class MyRegx {
 
 // return value only if 'searchVal' has regular expression as like java..
 // else return null;
-	function toRegxAuto(searchVal) {
+	toRegxAuto(searchVal) {
 		if(searchVal === null || searchVal === '' || searchVal === undefined) null;
 		searchVal = searchVal.toLowerCase().trim();
 		
@@ -41,7 +41,7 @@ class MyRegx {
 	}
 	
 	// this will remove only OR operator at the end and starting.
-	function toNormalAuto(searchVal) {
+	toNormalAuto(searchVal) {
 		if(searchVal === null || searchVal === '' || searchVal === undefined) null;
 		
 		// agar humne pehle se he regx di hai..
@@ -60,7 +60,7 @@ class MyRegx {
 	}
 	
 	// bcoz OR regx is simple..
-	function normRegxOR(A){
+	normRegxOR(A){
 		A = A.replaceAll("||","|").trim();
 		A = A.includes(" |")?A.replaceAll(" |","|"):A;
 		A = A.includes("| ")?A.replaceAll("| ","|"):A;
@@ -74,7 +74,7 @@ class MyRegx {
 
 
     /**
-     * Yeh function user ki logical string ko RegEx Pattern mein convert karta hai
+     * Yeh user ki logical string ko RegEx Pattern mein convert karta hai
      * Input Example: "(Anil && Kumar) || (sunil && sharma)"
      */
     toComplexRegxPattern(queryString) {
@@ -150,7 +150,7 @@ let text2 = "Mujhe sirf Python aati hai.";
 // Pattern: JavaScript AND Python dono hone chahiye
 let regexAND = /(?=.*JavaScript)(?=.*Python)/i;
 
-// test() function true/false return karta hai
+// test() true/false return karta hai
 console.log(regexAND.test(text1)); // Output: true  (Kyuki dono hain)
 console.log(regexAND.test(text2)); // Output: false (Kyuki JavaScript nahi hai)
 
@@ -162,7 +162,7 @@ let text = "Mujhe Python aur JavaScript seekhna pasand hai.";
 // 'i' ka matlab Case-Insensitive (small/capital farq nahi padega)
 let regexOR = /Java|JavaScript|Python/gi; 
 
-// match() function matching words ki array return karta hai
+// match() matching words ki array return karta hai
 let result = text.match(regexOR); 
 console.log(result); // Output: ['Python', 'JavaScript']
 
