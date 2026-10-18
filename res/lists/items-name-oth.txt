@@ -1,0 +1,87 @@
+brand	cat	category	name	capacity
+Godrej	AC	AC-SPLIT	1.5T 3Star 5050 CC	
+Lloyd	AC	AC-SPLIT	1.5T 3Star 5050 CC	
+Godrej	AC	AC-SPLIT	1.5T 3Star 5050 CC - Wifi	
+Godrej	AC	AC-SPLIT	1.5T 5Star 5050 CC	
+Godrej	AC	AC-SPLIT		
+Godrej	AC	AC-SPLIT		
+Usha	MIX	Air-Frier	Usha Smart Airfrer iChef	4.5L, 1350W
+Anchor	MIX	Fan-Ceiling	Anchor Ceiling Fan	1200 MM
+VGuard	MIX	Fan-Ceiling	VGuard Celling Fan	1200 MM
+RR	MIX	Fan-Ceiling-BLDC	RR Celling Fan LUXE - BLDC	1200 mm
+VGuard	MIX	Fan-Ceiling-BLDC	VGuard Celling Fan (BLDC)	1200 MM
+RR	MIX	Fan-Vent-Metal	RR Vent Fan - 12 inch	12 inch, 40W
+RR	MIX	Fan-Vent-PVC	RR Vent Fan - Oxybreez LDBX	9 inch, 35W
+VGuard	MIX	Fan-Wall	VGuard Wall-Fan - GLADO STD (1330)	40cm
+Relaxo	Geyser	Geyser-GAS	Relaxo Gas Geyser - Virat	7 LTR
+Hindware	Geyser	Geyser-GAS	Hindware Gas Geyser 6L	6 Ltr
+Orient	Geyser	Geyser-GAS	Orient Gas Geyser 6L	6 Ltr
+VGuard	Geyser	Geyser-GAS	VGuard Gas Geyser 6L	6 Ltr
+Hindware	Geyser	Geyser-Instant	Hindware Electric Geyser 5L	5 Ltr
+Orient	Geyser	Geyser-Instant	Orient Electric Geyser 3L	3 Ltr
+Orient	Geyser	Geyser-Instant	Orient Electric Geyser 5.5 L	5.5Ltr
+VGuard	Geyser	Geyser-Instant	VGuard Electric Geyser 3L	3 Ltr
+Orient	Geyser	Geyser-Storage	Electric Geyser - Aquanova NXT 25L	25 LTR
+VGuard	Geyser	Geyser-Storage	VGuard Electric Geyser - EC Pro 25	25 LTR
+Hindware	Geyser	Geyser-Storage	Hindware Electric Geyser 15 L	15 Ltr
+Hindware	Geyser	Geyser-Storage	Hindware Electric Geyser 25 L	25 Ltr
+Orient	Geyser	Geyser-Storage	Orient Electric Geyser 15 L	15 Ltr
+VGuard	Geyser	Geyser-Storage	VGuard Electric Geyser 15 L	15 Ltr
+VGuard	Geyser	Geyser-Storage	VGuard Electric Geyser 25 L	25 Ltr
+Orient	Geyser	Geyser-Storage	Orient Electric Geyser 25L	25 Ltr
+VGuard	MIX	Induction	VGuard Induction - 1200W	1200 W
+VGuard	MIX	Induction	VGuard Induction - VIC 02 (V2)	1400 W
+VGuard	MIX	Induction	VGuard Induction - VIC 06	1600 W
+RR	MIX	Infrared	RR Cooktop Infrared - 2200W	2200 W
+Usha	MIX	JMG	Usha Juicer Mixer Grinder	450 W
+Sujata	MIX	JMG	Sujata JMG - 900W	900 W
+BPL	MIX	Jug	Electric Kettle BPL - 1.5 L	1.5 Liter
+Wybor	LED	LED-TV	Wybor LED TV 32" Cloud - HD	32 QLED
+Wybor	LED	LED-TV	Wybor LED TV 43"  Cloud - FHD	43 QLED
+Techcon	LED	LED-TV	Techcon T322AG5CB	32 SMART CLOUD
+Techcon	LED	LED-TV	Techcon T322D10 QL	32 QLED
+Techcon	LED	LED-TV	Techcon T322D10VC QL	32 VOICE QLED
+Techcon	LED	LED-TV	Techcon T402G5B	40 SMART
+Techcon	LED	LED-TV	Techcon T431AG5CB (1 YEAR)	43 SMART
+Techcon	LED	LED-TV	Techcon T432AG5CB	43 SMART CLOUD
+Techcon	LED	LED-TV	Techcon T432D10QL	43 QLED
+Techcon	LED	LED-TV	Techcon T432AG10BTVC	43 VOICE BT
+Techcon	LED	LED-TV	Techcon T432D10VC QL	43 VOICE QLED
+Techcon	LED	LED-TV	Techcon T432AG40W	43 4K WEBOS
+Techcon	LED	LED-TV	Techcon T502G40	50 4K WEBOS
+Techcon	LED	LED-TV	Techcon T552G40	55 4K WEBOS
+BPL	LED	LED-TV	LED TV BPL - 32HF7300	32 Inch
+BPL	LED	LED-TV	LED TV BPL - 32QF3200	32 Inch QLED
+BPL	LED	LED-TV	LED TV BPL - 40FF2340	40 Inch
+BPL	LED	LED-TV	LED TV BPL - 43FG220	43 Inch
+Wybor	LED	LED-TV	Wybor LED TV 50"  - 4K	50 Inch
+Wybor	LED	LED-TV	Wybor LED TV 55"  - 4K	55 Inch
+Wybor	LED	LED-TV	Wybor LED TV 65" mini  - 8K	65 Inch
+Techcon	LED	LED-TV	Techcon T321AG5CB (1 YEAR)	32 SMART
+RR	MIX	MG	RR - Mixer Grinder	
+Aquaguard	MIX	RO	Aquaguard Enhance RO	
+Aquaguard	MIX	RO	Aquasure Elegant RO	
+BPL	WM	WM-SEMI	BPL N1000PXPN 10 KG TF	10.0 KG
+BPL	WM	WM-SEMI	BPL N12ETWKG 12 KG	12.0 KG
+BPL	WM	WM-SEMI	BPL N80EASMD 8 KG	8.0 KG
+BPL	WM	WM-SEMI	BPL N80EFWKD 8 KG FTF	8.0 KG
+BPL	WM	WM-SEMI	BPL N80ETBKD 8 KG HTF	8.0 KG
+Kelvinator	WM	WM-SEMI	Kelvinator KWD- N90ETBKP 9 KG TF	9.0 KG
+Kelvinator	WM	WM-SEMI	Kelvinator KWS- N70ERSKD 7 KG	7.0 KG
+LG	WM	WM-SEMI	LG Washing Machine 8.5 KG	8.5 KG
+Kelvinator	WM	WM-SEMI	Kelvinator KWS- N75ERSKD 7.5 KG	7.5 KG
+Kelvinator	WM	WM-SEMI	Kelvinator KWS- A800CR 8 KG	8.0 KG
+Kelvinator	WM	WM-SEMI	Kelvinator KWS- N14ETBPK 14 KG TF	14.0 KG
+LG	WM	WM-SEMI	LG Washing Machine 10.0 KG	10.0 KG
+LG	WM	WM-SEMI	LG Washing Machine 11.5 KG	11.5 KG
+LG	WM	WM-SEMI	LG Washing Machine 7.0 KG	7.0 KG
+LG	WM	WM-SEMI	LG Washing Machine 7.5 KG	7.5 KG
+LG	WM	WM-SEMI	LG Washing Machine 8.0 KG	8.0 KG
+LG	WM	WM-SEMI	LG Washing Machine 8.5 KG(Toughn)	8.5 KG
+LG	WM	WM-SEMI	LG Washing Machine 9.0 KG	9.0 KG
+Techcon	WM	WM-SEMI	Techcon T1010 HALF GLASS	10 KG
+Techcon	WM	WM-SEMI	Techcon T1110 FULL GLASS	11 KG
+Techcon	WM	WM-SEMI	Techcon T1210 FULL GLASS	12 KG
+Techcon	WM	WM-SEMI	Techcon T7010 PLASTIC LID	7.0KG
+Techcon	WM	WM-SEMI	Techcon T7510 HALF GLASS	7.5KG
+Techcon	WM	WM-SEMI	Techcon T8010 FULL GLASS	8.0KG
