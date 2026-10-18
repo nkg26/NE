@@ -37,63 +37,29 @@
 	</style>
     <script>  
 	
-	class MyItems{
-			products = null;
-			FX_TABLE = new MyTable();
-			
-			
-			async handlerRawFileData(fileContent) {
-				let TAB = FX_TABLE.splitToTable(fileContent);
-				let H = TAB[0];
-				console.error(" >> HEADER = "+H);
-				this.products = FX_TABLE.toKeyMapObjectList(TAB);
-				setTimeout(_start_this,100);
-		}
-			
-	}
-	
-	
+
+		let H;
 		var products = [];
 		const FX_TABLE = new MyTable();
+		const FX_REGX = new MyRegx();
 					
-		// Delimiter पहचानने का सरल तरीका (class wala abhi kaam nahi kar rha hai)
-		function detectDelimiter(firstLine) {
-			  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
-			  if (firstLine.includes('	')) return '	';
-			  if (firstLine.includes('|')) return '|';
-			  return ','; // डिफ़ॉल्ट कॉमा
-		}
-					
-						
-						
 		const file = new MyFile("https://nkg26.github.io/NE/res/lists/stk-ifb-261017.txt");
 		
 		file.loadFile().then(() => {
 			const finalData = file.getFinalOutput();
-			handler_FileReadDone('',finalData);
-//			console.log("Final Output:", finalData);
+			showFileContent(finalData);
 		});
-
-		// ye 1 handler function hai, jab bhi file read krenge to 1 uid pass krenge and is function me wo uid se file k bare me pta lgega..
-		async function handler_FileReadDone(uid, fileContent) {
-			console.log(">>>>> handler_FileReadDone - uid = "+uid);
-			var TAB = FX_TABLE.splitToTable(fileContent);
+		
+		function showFileContent(fileContent){
+			let TAB = FX_TABLE.splitToTable(fileContent);
 			H = TAB[0];
 			console.error(" >> HEADER = "+H);
 			products = FX_TABLE.toKeyMapObjectList(TAB);
-			setTimeout(_start_this,100);
-		}
-		
-		var H;
-		function _start_this(){
+			
 			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
 			setCategory(null);
 		}
-	
-		function s(myItems){
-			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
-			setCategory(null);
-		}
+
 	
 	function show_filtered_products() {
 	  //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
@@ -109,17 +75,19 @@
 		} else 
 			console.log(" no input search box found having id 'searchInput'.");
 	}
-	
-	function toComplexRegxPattern(queryString) {
-        let query = queryString.trim();
-		query = query.replace(/\(([^)]+)\)/g, (match, groupContent) => {
-            let words = groupContent.split('&&').map(w => w.trim());
-            return '(' + words.map(w => `(?=.*${w})`).join('') + ')';
-        });
-        query = query.replace(/\|\|/g, '|');
-        return'^(?:'+query+')';
-    }
 
+
+
+
+		
+	// Delimiter पहचानने का सरल तरीका (class wala abhi kaam nahi kar rha hai)
+	function detectDelimiter(firstLine) {
+		  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
+		  if (firstLine.includes('	')) return '	';
+		  if (firstLine.includes('|')) return '|';
+		  return ','; // डिफ़ॉल्ट कॉमा
+	}
+				
 
 
 	function filter_by_text(itemList, text) {
@@ -138,12 +106,11 @@
 		console.log(" ================== ");
 		console.log("A = "+searchVal);
 		
-		const RGX = new MyRegx();
-		var rx = RGX.toRegxAuto(searchVal);
+		var rx = FX_REGX.toRegxAuto(searchVal);
 		if(rx !== null){
 			return filter_by_regx(itemList, new RegExp(rx,'i') );
 		}
-		var nx = RGX.toNormalAuto(searchVal);
+		var nx = FX_REGX.toNormalAuto(searchVal);
 		if(nx !== null){
 			return filter_by_text(itemList, nx);
 		}
@@ -151,7 +118,7 @@
 	}
 	
 	function generate_all_items_HTML_VIEW(filtered) {
-			document.getElementById('message').innerHTML = "";
+		document.getElementById('message').innerHTML = "";
 		if(filtered === null) 	return "<div> null data lisr....</div>";
 		if(filtered.length === 0) return "<div>No appliances found matching your criteria.</div>";
 		
