@@ -14,7 +14,6 @@ class MyItem{
 	setCategory(cat) {
 		this.CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
 		this.CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
-		
 		this.CATEGORY_ITEMS = this.filter_itemByCategory(this.ALL_ITEMS, this.CATEGORY_NAME); 
 		if(this.BOOL_AUTO_UPDATE_ON_CAT === true) this.showItems();
 	}
@@ -38,9 +37,17 @@ class MyItem{
 	
 
 	getFinalFilteredItems(){
+		console.log(" ALL_ITEMS_COUNT     len="+this.ALL_ITEMS.length);
+		
 		let items = (this.CATEGORY_ITEMS === null)?this.ALL_ITEMS : this.CATEGORY_ITEMS;
-		items = (items===null)? [] : items;
+		items = (items===null || items===undefined)? [] : items;
+		
+		console.log("\t selected Category     len="+items.length);
+		
 		items = (this.FILTER_TEXT===null || this.FILTER_TEXT === '')? items : this.filter_itemByText(items, this.FILTER_TEXT);
+		
+		console.log("\t filterd FILTER_TEXT="+FILTER_TEXT+", len="+items.length);
+		
 		this.showItems(items);
 	}
 	
