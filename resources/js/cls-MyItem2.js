@@ -26,7 +26,7 @@ class MyItem2 extends MyItem{
 
 // this will show items in html..
 	showItems_onPage(ITEMS) {
-		ITEMS = (ITEMS !== null || ITEMS !== undefined)? ITEMS : [];
+		ITEMS = (ITEMS !== null && ITEMS !== undefined)? ITEMS : [];
 	  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
 		const grid = document.getElementById('productGrid');
 		if(grid === null) console.log(" no item show area found of id 'productGrid'.");
