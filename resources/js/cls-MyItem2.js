@@ -7,7 +7,7 @@ class MyItem2 extends MyItem{
 	update_textFilter(){
 		let text = document.getElementById('searchInput').value;
 		if(text !== this.FILTER_TEXT){
-			console.log('\t filter text updated.. >>'+this.FILTER_TEXT+"<<   >>"+text+"<<");
+			console.log('\t filter text updated.. >>'+this.FILTER_TEXT+"<<  to  >>"+text+"<<");
 			this.FILTER_TEXT = text;
 			this.showItemsAuto();
 		}
@@ -20,6 +20,8 @@ class MyItem2 extends MyItem{
 		document.querySelectorAll('.'+this.cat_btn_cls).forEach(btn => {btn.className = this.cat_btn_cls_unselected;});
 		try{event.target.className = this.cat_btn_cls_selected; }catch{}  // update seleced class
 		super.setCategory(cat);
+		console.log('\t category updated.. >>'+cat+"<<  to  >>"+this.CATEGORY_NAME+"<<");
+		
 		console.log(" ALL_ITEMS.length = "+this.ALL_ITEMS.length);
 		console.log("\t CATEGORY_NAME = "+this.CATEGORY_NAME);
 		console.log("\t CATEGORY_ITEMS.length = "+this.CATEGORY_ITEMS.length);
