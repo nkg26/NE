@@ -11,6 +11,7 @@ cat_btn_cls = "cat-btn uns";
 	ALL_ITEMS = [];
 	CATEGORY_ITEMS = null;
 	CATEGORY_NAME = null;
+	FILTER_TEXT = null;
 	
 	BOOL_AUTO_UPDATE_ON_CAT = true;
 
@@ -30,18 +31,30 @@ cat_btn_cls = "cat-btn uns";
 		CATEGORY_ITEMS = filterItemsByCategory(ALL_ITEMS, CATEGORY_NAME); // from another js
 		console.log(" CATEGORY_ITEMS len = "+CATEGORY_ITEMS.length);
 		
-		if(BOOL_AUTO_UPDATE_ON_CAT === true) render_and_show_items();
+		if(BOOL_AUTO_UPDATE_ON_CAT === true) showItems();
 	}
 
+	getFinalFilteredItems(){
+		let items = (CATEGORY_ITEMS === null)?this.ALL_ITEMS : CATEGORY_ITEMS;
+		items = (FILTER_TEXT !== null)?filterItems_byText(items, FILTER_TEXT):items;
+		items = (items !== null)?items:[];
+	}
+
+	showItems() {
+		let items = this.getFinalFilteredItems();
+		this.showItems_onPage(items);
+	}
+	
+
 	// this will show items in html..
-showItems() {
+showItems_onPage(ITEMS) {
   //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
 	const grid = document.getElementById('productGrid');
 	if(grid === null) console.log(" no item show area found of id 'productGrid'.");
 
 	if(grid !== null){
 		const srch = document.getElementById("search-msg");
-		var filtered = get_final_filtered_items();
+		const filtered = ITEMS;
 		var text = " searching.. in " + filtered.length + " items.";
 
 		if(srch !== null) srch.innerHTML = text;
@@ -54,9 +67,6 @@ showItems() {
 	}
 }
 
-	showItems(){
-		
-	}
 // if we want to show items as an simple table we should override this function...
 function generate_all_items_HTML_VIEW(itemList) {
 	message_generating_all_items_HTML_VIEW(itemList);
