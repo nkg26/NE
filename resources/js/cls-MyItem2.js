@@ -20,7 +20,7 @@ class MyItem2 extends MyItem{
 		try{event.target.className = this.cat_btn_cls_selected; }catch{}  // update seleced class
 		super.setCategory(cat);
 		console.log(" ALL_ITEMS.length = "+this.ALL_ITEMS.length);
-		console.log("\t CATEGORY_SELECTED = "+this.CATEGORY_SELECTED);
+		console.log("\t CATEGORY_NAME = "+this.CATEGORY_NAME);
 		console.log("\t CATEGORY_ITEMS.length = "+this.CATEGORY_ITEMS.length);
 	}	
 
