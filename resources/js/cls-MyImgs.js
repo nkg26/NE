@@ -1,50 +1,44 @@
-class MyItem{
+class MyImgs{
+
+	getImageTagAuto(p){
+	  	let path = 'https://nkg26.github.io/NE/product-images/';
+			let name = this.getImagePathAuto(p);
+		  return name === null?'':`<img src='${path}${name}' alt='${name.replace(".webp","")}' />`;
+	}
 
 
-
-
-
-
-
-getImageTagAuto(p){
-  	let path = 'https://nkg26.github.io/NE/product-images/';
-		let name = this.getImagePathAuto(p);
-	  return name === null?'':`<img src='${path}${name}' alt='${name.replace(".webp","")}' />`;
-}
-
-
-getImagePathAuto(p){
-	let cat = p.category;
-	let name = '';
-	
-	let STR = p.name;
-	STR = (STR===undefined)?null:STR;
-	STR = (STR===null)?'':STR.trim().toUpperCase();
-	
-	cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['n-category']):cat;
-	cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['brand-category']):cat;
-	cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['category']):cat; // initial value..
-	
-	cat = ((cat===null)||(cat===undefined))?'':cat.toUpperCase(); 
-	
-	if(cat === "CD") name = "cd.webp";
-	else if(cat === "DW") name = "dw.webp";
-	else if(cat === "AC") name = "ac-split.webp";
-	
-	else if(cat === "OVEN") name = "oven.webp";
-	else if(cat === "LED TV") name = "led-tv.webp";
-  
-	else if(cat === "GEYSER-STORAGE") name = "gyser-electric.webp";
-	else if(cat === "GEYSER-GAS") name = "gyser-gas.webp";
-	else if(cat === "GEYSER-INSTANT") name = "gyser-instant.webp";
-  
-	else if((cat === "MG") && STR.includes("JUICER MIXER")) name="mg.webp";
-	else if((cat === "MG")) name = "mg.webp";
-	else if((cat === "JMG") && STR.includes("SUJATA")) name="jmg-sujata.webp";
-	else if((cat === "JMG") && STR.includes("JMG")) name="jmg.webp";
-	else if((cat === "JMG") && STR.includes("JUCER MIXER GRINDER")) name="jmg.webp";
-	
-	else if((cat === "LED") || (cat === "LED-TV")) name="led-tv.webp";
+	getImagePathAuto(p){
+		let cat = p.category;
+		let name = '';
+		
+		let STR = p.name;
+		STR = (STR===undefined)?null:STR;
+		STR = (STR===null)?'':STR.trim().toUpperCase();
+		
+		cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['n-category']):cat;
+		cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['brand-category']):cat;
+		cat = ((cat === "MIX")||(cat===null)||(cat===undefined))?(p['category']):cat; // initial value..
+		
+		cat = ((cat===null)||(cat===undefined))?'':cat.toUpperCase(); 
+		
+		if(cat === "CD") name = "cd.webp";
+		else if(cat === "DW") name = "dw.webp";
+		else if(cat === "AC") name = "ac-split.webp";
+		
+		else if(cat === "OVEN") name = "oven.webp";
+		else if(cat === "LED TV") name = "led-tv.webp";
+	  
+		else if(cat === "GEYSER-STORAGE") name = "gyser-electric.webp";
+		else if(cat === "GEYSER-GAS") name = "gyser-gas.webp";
+		else if(cat === "GEYSER-INSTANT") name = "gyser-instant.webp";
+	  
+		else if((cat === "MG") && STR.includes("JUICER MIXER")) name="mg.webp";
+		else if((cat === "MG")) name = "mg.webp";
+		else if((cat === "JMG") && STR.includes("SUJATA")) name="jmg-sujata.webp";
+		else if((cat === "JMG") && STR.includes("JMG")) name="jmg.webp";
+		else if((cat === "JMG") && STR.includes("JUCER MIXER GRINDER")) name="jmg.webp";
+		
+		else if((cat === "LED") || (cat === "LED-TV")) name="led-tv.webp";
 	
 		else if(cat === "WDR") name="wm-wdr.webp";
 		else if(cat === "FL") name="wm-fl.webp";
@@ -90,8 +84,8 @@ getImagePathAuto(p){
 		if(STR.includes("FAN") && STR.includes("BLDC") ) name="fan-ceiling-bldc.webp";
 		if(STR.includes("WALL-FAN") ) name="fan-wall.webp";
   
-  	return name===''?null:name;
-}	
+  		return name===''?null:name;
+	}	
 
 
 }
