@@ -17,32 +17,35 @@ BOOL_AUTO_UPDATE_ON_CAT = true;
 
 	// this function is called by the buttons-click.
 	function setCategory(cat) {
-		// clear category buttons class value, elements having class name "selected_cat_button"
-		document.querySelectorAll('.'+cat_btn_cls).forEach(btn => {btn.className = cat_btn_cls_unselected;});
-		try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
-		
 		var ALL_ITEMS = this.ALL_ITEMS; // from another js
 		CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
 		CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
-		
-		console.log(" ALL_ITEMS_COUNT = "+ALL_ITEMS.length);
-		console.log("\t selected Category = "+CATEGORY_SELECTED);
-		
-		CATEGORY_ITEMS = filterItemsByCategory(ALL_ITEMS, CATEGORY_NAME); // from another js
-		console.log(" CATEGORY_ITEMS len = "+CATEGORY_ITEMS.length);
-		
+		CATEGORY_ITEMS = this.filter_itemByCategory(ALL_ITEMS, CATEGORY_NAME); 
 		if(BOOL_AUTO_UPDATE_ON_CAT === true) showItems();
 	}
 	
-	// filter by user text condition..
-	applyFilter_Text(items){
-		return (FILTER_TEXT !== null)?filterItems_byText(items, FILTER_TEXT):items;
+	filter_itemByCategory(ITEMS, CATEGORY_NAME){
+		return ITEMS.filter(p => {
+			return (CATEGORY_NAME === 'ALL' || p.category === CATEGORY_NAME);
+		});
 	}
 
+	boolHas(VAL, TXT){
+		return (VAL!==null && TXT!==null && VAL !== undefined && TXT !== undefined)
+		? VAL.includes(TXT) : false;
+	}
+	
+	filter_itemByText(ITEMS, TEXT){
+		return ITEMS.filter(p => {
+			return (this.boolHas(p.category,TEXT) || this.boolHas(p.name,TEXT));
+		});
+	}
+	
 
 	getFinalFilteredItems(){
 		let items = (CATEGORY_ITEMS === null)?this.ALL_ITEMS : CATEGORY_ITEMS;
-		items = applyFilter_Text(items);
+		items = (items===null)? [] : items;
+		items = (FILTER_TEXT===null || FILTER_TEXT === '')? items : this.filter_itemByText(items,FILTER_TEXT);
 		this.showItems(items);
 	}
 
