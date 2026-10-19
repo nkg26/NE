@@ -84,6 +84,16 @@ class MyItem{
 		console.log('no function overrided...   showItems_onPage(ITEMS).   to show output in browser.');
 	}
 
+	function safeVal(value, defaultValue='') {
+		return (value!==null && value !== undefined)?value:defaultValue;
+		//     return value ?? defaultValue; // shorter expression..
+	}
+	
+	function safeLocaleString(value, defaultValue='') {
+		if(value!==null){ try{return value.toLocaleString('en-IN');}catch{}	}
+		return defaultValue;
+	}
+	
 }
 
 
