@@ -7,70 +7,142 @@
     <title>File Read</title>
 </head>
 <body>
-	<style>body{background: linear-gradient(90deg,rgba(207, 62, 14, 0.2) 0%, rgba(20, 9, 121, 0.2) 50%, rgba(27, 194, 194, 0.2) 100%);}</style>
 	<style>input#searchInput{width:98%; margin:5px; padding:5px;}</style>
-	<style>.cat-btn selected{background-color:cyan;} </style>
-	<style>.cat-btn{background-color:yellow; border:1px solid red; padding:2px 3px; margin:3px 5px; border-radius:10px; min-width:35px;} </style>
-	<style>.cat-btn:hover, .cat-btn selected:hover{background-color:orange; } </style>
+	<style>body{background: linear-gradient(90deg,rgba(207, 62, 14, 0.2) 0%, rgba(20, 9, 121, 0.2) 50%, rgba(27, 194, 194, 0.2) 100%);}</style>
+	<style>body{background: linear-gradient(0deg,rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);}</style>
+	<style>body{background: radial-gradient(circle,rgba(209, 10, 93, 0.67) 0%, rgba(148, 187, 233, 1) 100%);}</style>
+	 
+	 <style>#productGrid{max-height:83vh; overflow:auto;}</style>
+	 
+	    <style>
+        /* 1. Table ke outer container ko scrollable banayein */
+        #productGrid {
+            0overflow-y: auto;   /* Sirf vertical scrollbar dikhega */
+            border: 1px solid #ccc; width: 100%;
+        }
 
-    <div id="header-placeholder">dynamic text file read</div>
-    <div id="module-items">
-		<main id="items-bag">
-		    <!-- Search and Filter Bar -->
-		    <div id="search-div">
-		        <div id="search-box">
-		            <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search...">
-		        </div>
-		        <div id="search-category"></div>
-		    </div>
-		    <div id="message"></div> 
-		    <div id="productGrid"></div>
-		</main>
-		
-	</div>
-    <div id="footer-placeholder"></div>
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyImgs.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem_table.js"></script>	
-	
-  <script>  
-  		const MY_ITEM = new MyItem_table();
-  		const FX_TABLE = MY_ITEM.FX_TABLE;
-  		function setCategory(CAT){MY_ITEM.setCategory(CAT);}
-  		function show_filtered_products(){ MY_ITEM.update_textFilter();}
+        #productGrid table {
+            width: 100%; border-collapse: collapse; /* Borders ko clean rakhne ke liye */
+        }
 
-      function showFile(path){
-    		var myfile = new MyFile(path);
-    		myfile.loadFile().then(() => {
-    			console.log(myfile.getFinalOutput());
-    			const finalData = myfile.getFinalOutput();
-    			let tabuler_data = FX_TABLE.splitToTable(finalData);
-    			let MAP_LIST = FX_TABLE.toKeyMapObjectList(tabuler_data);
-    			MY_ITEM.ALL_ITEMS = (MAP_LIST);
-    			MY_ITEM.setCategory(null);
-    		});
-      }
+        th, td {
+            padding: 3px 7px;	border: 1px solid #ddd;	text-align: left;
+        }
+
+        /* 🌟 2. HEADER KO FIX KARNE KA MAIN CSS LOGIC 🌟 */
+        th {
+            position: sticky;
+            top: 0;               /* Top par chipak jayega */
+            background-color: #333; /* Background color zaroori hai, varna rows piche se dikhengi */
+            color: white;
+            z-index: 1;           /* Baki data rows ke upar dikhne ke liye */
+        }
 		
-    	// all category in items
-    	function getUniqueCategory(itemsList) {
-    		const uniqueCategories = [...new Set(itemsList.map(item => item.category))];
-    		return uniqueCategories;
-    	}
+		/* Table ki saari EVEN (2, 4, 6...) rows ka background badalne ke liye */
+		tr:nth-child(even) {
+			background-color: #f2f2f2; /* Light Grey Color */
+		}
+
+		/* Table ki saari ODD (1, 3, 5...) rows ka background badalne ke liye (Optional) */
+		tr:nth-child(odd) {
+			background-color: #ffffff; /* White Color */
+		}		
+    </style>
+	 
+
+    <div id="header">Dynamic Text File Reading</div>
     
-    		
-    	function createHTML_CategoryButtons(){
-    	  // extract unique categories ...
-    	  var uniqueCategories = getUniqueCategory(MY_ITEM.ALL_ITEMS);
-    	  var _buttonsHtml = '';
-    	  _buttonsHtml = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
-    	  uniqueCategories.forEach(item =>{ _buttonsHtml += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;});
-    	  return _buttonsHtml;
-    	}
+	<select id="pageDropdown">
+        <option value="">-- -- -- -- -- --</option>
+        <option value="https://nkg26.github.io/NE/res/txt/prch.txt">Purchase</option>
+        <option value="https://nkg26.github.io/NE/res/lists/items-name-ifb.txt">IFB Names</option>
+    </select>
+    <button onclick="goToPage()">Go</button>
+	
+	<script>
+	function goToPage() {
+            const dropdown = document.getElementById("pageDropdown");
+            const selectedValue = dropdown.value;
+            if (selectedValue) {
+                //window.location.href = selectedValue; // Opens the link in the same tab
+                // window.open(selectedValue, '_blank'); // Use this instead if you want to open in a new tab:
+				
+				MY_ITEM.loadAndShowFileData(selectedValue);
+				
+				
+            } else {
+                alert("Please select a valid option first!");
+            }
+        }
+	</script>
+	
+	
+	<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search...">
+	<div id="message"></div> 
+	<div id="productGrid"></div>
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+  <script>  
 
-      showFile('https://nkg26.github.io/NE/res/lists/items-name-ifb.txt');
+		class PlainTable{
+			FX_TABLE = new MyTable();
+			table_data = [];
+			
+			getTabularData(){
+				return this.table_data;
+			}
+			
+			loadAndShowFileData(path){
+				var myfile = new MyFile(path);
+				myfile.loadFile().then(() => {
+					this.analyzeData(myfile.getFinalOutput());
+				});
+			}
+			
+			analyzeData(RAW_DATA){
+				this.table_data = this.FX_TABLE.splitToTable(RAW_DATA);
+				try{
+					showFinalData(this.getTabularData());
+				}catch{
+					console.log(' showFinalData(this.getTabularData()); is either not implemented or any other reasion..');
+				}
+			}
+			
+			filterByText(text){
+				return this.filterTabularDataByText(this.table_data, text);			
+			}
+		
+		// isme header always return hoga..
+			filterTabularDataByText(table_data, text){
+				text = text.toLowerCase();
+				return table_data.filter((row, rowIndex) => {
+				        if (rowIndex === 0) return true; // header always chaheye..
+						for(let i=0; i<row.length; i++){
+							if((row[i] === null || row[i] === undefined)?false:row[i].toLowerCase().includes(text)) return true;
+						}
+						
+					return false;
+				});			
+			}
+		
+		}
+  
+  const MY_ITEM = new PlainTable();
+	//      showFile('https://nkg26.github.io/NE/res/lists/items-name-ifb.txt');
+	//      MY_ITEM.loadAndShowFileData('https://nkg26.github.io/NE/res/txt/prch.txt');
+
+  		function show_filtered_products(){ 
+			var val = document.getElementById('searchInput').value;
+			let data = MY_ITEM.filterByText(val);
+			showFinalData(data);
+		}
+		
+		function showFinalData(table_data){
+		//console.log(" ------------------- ");
+		//console.log(table_data);
+			var html = MY_ITEM.FX_TABLE.generateBasicHtmlTable(table_data);
+			document.getElementById('productGrid').innerHTML = html;
+		}
   </script>
 	  
 </body></html>
