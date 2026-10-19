@@ -1,5 +1,14 @@
 class MyItem2 extends MyItem{
 
+	update_textFilter(){
+		let text = document.getElementById('searchInput').value;
+		if(text !== this.FILTER_TEXT){
+			this.FILTER_TEXT = text;
+			this.showItemsAuto();
+		}
+	}
+
+	
 	// this function is called by the buttons-click.
 	function setCategory(cat) {
 		// clear category buttons class value, elements having class name "selected_cat_button"
