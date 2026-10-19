@@ -43,6 +43,9 @@ class MyItem2 extends MyItem{
 	 	 	console.log(" >> grid.innerHTML \n "+grid.innerHTML);
 	 	 	console.log(" >> ---------------------------------------- << ");
 			if(srch !== null) srch.innerHTML = (" "+ ITEMS.length +" items found.");
+
+if(ITEMS.length === 0) console.error("test size...");
+			
 		}
 	}
 	
