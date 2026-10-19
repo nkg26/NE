@@ -37,7 +37,7 @@ class MyItem2 extends MyItem{
 			if(srch !== null) srch.innerHTML = text;
 			grid.innerHTML = text;
 			grid.innerHTML = (ITEMS.length === 0) 
-							? '<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>'
+							? '<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div> ITEMS.length = ' + ITEMS.length
 							: this.generate_all_items_HTML_VIEW(ITEMS);
 			
 	 	 	console.log(" >> grid.innerHTML \n "+grid.innerHTML);
