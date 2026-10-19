@@ -1,0 +1,39 @@
+class MyItem2 extends MyItem{
+
+
+// this will show items in html..
+	showItems_onPage(ITEMS) {
+		ITEMS = (ITEMS !== null)?ITEMS:[];
+	  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
+		const grid = document.getElementById('productGrid');
+		if(grid === null) console.log(" no item show area found of id 'productGrid'.");
+	
+		if(grid !== null){
+			const srch = document.getElementById("search-msg");
+			const filtered = ITEMS;
+			var text = " searching.. in " + filtered.length + " items.";
+	
+			if(srch !== null) srch.innerHTML = text;
+			grid.innerHTML = text;
+			grid.innerHTML = (filtered.length === 0) 
+							? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
+							: generate_all_items_HTML_VIEW(filtered);
+			
+			if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
+		}
+	}
+	
+	// if we want to show items as an simple table we should override this function...
+	function generate_all_items_HTML_VIEW(itemList) {
+		message_generating_all_items_HTML_VIEW(itemList);
+		var output_html = "";
+		itemList.forEach(p => { output_html += generate_one_item_HTML_VIEW(p);});
+		return output_html;
+	}
+	
+	// most comman use to generate single item view.
+	function generate_one_item_HTML_VIEW(p){
+	  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
+	  return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
+	}
+}
