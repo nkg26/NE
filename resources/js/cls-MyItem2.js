@@ -27,7 +27,6 @@ class MyItem2 extends MyItem{
 // this will show items in html..
 	showItems_onPage(ITEMS) {
 		ITEMS = (ITEMS !== null && ITEMS !== undefined)? ITEMS : [];
-	  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
 		const grid = document.getElementById('productGrid');
 		if(grid === null) console.log(" no item show area found of id 'productGrid'.");
 	
@@ -38,9 +37,11 @@ class MyItem2 extends MyItem{
 			if(srch !== null) srch.innerHTML = text;
 			grid.innerHTML = text;
 			grid.innerHTML = (ITEMS.length === 0) 
-							? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
+							? '<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>'
 							: this.generate_all_items_HTML_VIEW(ITEMS);
 			
+	 	 	console.log(" >> grid.innerHTML \n "+grid.innerHTML);
+	 	 	console.log(" >> ---------------------------------------- << ");
 			if(srch !== null) srch.innerHTML = (" "+ ITEMS.length +" items found.");
 		}
 	}
