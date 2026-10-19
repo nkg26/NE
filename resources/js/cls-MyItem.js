@@ -66,6 +66,15 @@ class MyItem{
 
 	showItems(ITEMS) {
 		console.log("\t function invoked... showItems(ITEMS)...");
+		console.log("\t     here... ....................................");
+		console.log("\t     here... ALL_ITEMS.length = "+this.ALL_ITEMS.length);
+		console.log("\t     here... CATEGORY_NAME = "+this.CATEGORY_NAME);
+		console.log("\t     here... CATEGORY_ITEMS.length = "+this.CATEGORY_ITEMS.length);
+		console.log("\t     here... FILTER_TEXT = "+this.FILTER_TEXT);
+		console.log("\t     here... this ITEMS.length = "+ITEMS.length);
+
+
+		
 		this.showItems_onPage(ITEMS);
 	}
 	
