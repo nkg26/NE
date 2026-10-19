@@ -54,14 +54,14 @@ class MyItem_table extends MyItem {
 	  		ITEMS.forEach(p => {
 	  			mydata += `<tr> 
 	  			<td class='col0'>${++cnt}</td>
-	  			<td class='col1'>${safeVal(p.brand)}</td>
-	  			<td class='col1'>${safeVal(p.category)}</td>
-	  			<td class='col2'>${safeVal(p.capacity)}</td>
-	  			<td class='col3'>${safeVal(p.name)}</td>
-	  			<td class='col4'>${safeVal(p.color)}</td>
-	  			<td class='col5'>${safeLocaleString(p.mrp)}</td>
-	  			<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
-	  			<td class='col7'>${safeLocaleString(p.advance)}</td>
+	  			<td class='col1'>${this.safeVal(p.brand)}</td>
+	  			<td class='col1'>${this.safeVal(p.category)}</td>
+	  			<td class='col2'>${this.safeVal(p.capacity)}</td>
+	  			<td class='col3'>${this.safeVal(p.name)}</td>
+	  			<td class='col4'>${this.safeVal(p.color)}</td>
+	  			<td class='col5'>${this.safeLocaleString(p.mrp)}</td>
+	  			<td class='col6'>${this.safeLocaleString(p.offerPrice)}</td>
+	  			<td class='col7'>${this.safeLocaleString(p.advance)}</td>
 	  			</tr>`;
 	  		});
 	      mydata += `</tbody></table> </div>`;
