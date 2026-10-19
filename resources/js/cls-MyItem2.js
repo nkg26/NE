@@ -10,7 +10,7 @@ class MyItem2 extends MyItem{
 
 	
 	// this function is called by the buttons-click.
-	function setCategory(cat) {
+	setCategory(cat) {
 		// clear category buttons class value, elements having class name "selected_cat_button"
 		document.querySelectorAll('.'+cat_btn_cls).forEach(btn => {btn.className = cat_btn_cls_unselected;});
 		try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
