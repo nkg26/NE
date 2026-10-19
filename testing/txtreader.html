@@ -53,7 +53,7 @@
     <div id="header">Dynamic Text File Reading</div>
     
 	<select id="pageDropdown">
-        <option value="">-- -- -- -- -- --</option>
+        <option value="">-- -- -- -- -- -- -- -- -- -- -- --</option>
         <option value="https://nkg26.github.io/NE/res/txt/prch.txt">Purchase</option>
         <option value="https://nkg26.github.io/NE/res/lists/items-name-ifb.txt">IFB Names</option>
     </select>
@@ -75,6 +75,39 @@
             }
         }
 	</script>
+	
+	&nbsp; &nbsp; &nbsp; 
+	<div class="btn-container" style="display:inline-block;">
+        <button class="font-btn" onclick="changeFontSize(1)">A+ </button>
+        <button class="font-btn" onclick="changeFontSize(-1)">A- </button>
+        <button class="font-btn" onclick="resetFontSize()">Reset</button>
+		<script>
+			// Default size store karne ke liye variable
+			const DEFAULT_SIZE = 16;
+			let currentSize = DEFAULT_SIZE;
+
+			function changeFontSize(action) {
+				// 1. Table element ko select kiya
+				const table = document.getElementById("productGrid");
+				
+				// 2. Font size ko increment ya decrement kiya
+				currentSize += action;
+
+				// Safe Limits: Font ko bohot chhota (10px) ya bohot bada (30px) hone se rokne ke liye
+				if (currentSize < 8) currentSize = 8;
+				if (currentSize > 30) currentSize = 30;
+
+				// 3. Style apply kiya ('px' ke sath)
+				table.style.fontSize = currentSize + "px";
+			}
+
+			function resetFontSize() {
+				const table = document.getElementById("productGrid");
+				currentSize = DEFAULT_SIZE;
+				table.style.fontSize = DEFAULT_SIZE + "px";
+			}
+		</script>
+    </div>
 	
 	
 	<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search...">
