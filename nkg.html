@@ -1,228 +1,181 @@
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <!-- Mobile responsiveness ke liye critical viewport tag -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PVT-NK</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      display: flex;
-      height: 100vh;
-      background-color: #f4f6f9;
-      overflow: hidden;
-    }
-
-    /* Mobile Header (Mobile screen par show hoga) */
-    .mobile-header {
-      background: #4f46e5;
-      color: white;
-      padding: 12px 15px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .mobile-header button {
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      padding: 8px 14px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-
-    /* Center Main Content Area */
-    .main-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      width: 100%;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 10px;
-    }
-
-    /* Center Iframe */
-    .center-iframe {
-      width: 100%;
-      height: 100%;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      background: white;
-    }
-
-    /* ======================================= */
-    /* Mobile Screen Responsive CSS Rules      */
-    /* ======================================= */
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      /* Mobile header show hoga */
-      .mobile-header {
-        display: flex;
-      }
-
-      .main-wrapper {
-        height: calc(100vh - 50px);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Read</title>
 </head>
 <body>
-<style>.main-content{border:0px solid red; max-height:100vh; overflow:auto;}</style>
-<style>
-	div#main-links a{
-			display: inline-block; padding:5px; margin:4px 10px; border-radius:8px; color:black; width:200px;
-				text-align:center; font-size:1.3em; color:black;
-			background:linear-gradient(90deg,rgba(207, 62, 14, 0.8) 0%, rgba(20, 9, 121, 0.4) 50%, rgba(27, 194, 194, 0.8) 100%);}
-			
-	div#main-links a:hover{background-color:black; color:white;}
-	
+	<style>input#searchInput{width:98%; margin:5px; padding:5px;}</style>
+	<style>body{background: linear-gradient(90deg,rgba(207, 62, 14, 0.2) 0%, rgba(20, 9, 121, 0.2) 50%, rgba(27, 194, 194, 0.2) 100%);}</style>
+	<style>body{background: linear-gradient(0deg,rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);}</style>
+	<style>body{background: radial-gradient(circle,rgba(209, 10, 93, 0.67) 0%, rgba(148, 187, 233, 1) 100%);}</style>
+	 
+	 <style>#productGrid{max-height:83vh; overflow:auto;}</style>
+	 
+	    <style>
+        /* 1. Table ke outer container ko scrollable banayein */
+        #productGrid {
+            0overflow-y: auto;   /* Sirf vertical scrollbar dikhega */
+            border: 1px solid #ccc; width: 100%;
+        }
 
-	#cust-link{
-						text-align:center; 	font-size:1.3em; 	padding: 2px 15px; margin:2px 5px; 
-						border:2px solid blue; 	border-radius:15px; 
-	}
-	#cust-link:hover{ background-color:cyan; }
-</style>
-<style>body{background:radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%); }</style>
-<style>.mobile-header{background:linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%); }</style>
-<style>.mobile-header{background:none; }</style>
-<style>.mobile-header{background-color:seagreen; }</style>
+        #productGrid table {
+            width: 100%; border-collapse: collapse; /* Borders ko clean rakhne ke liye */
+        }
 
-  <div class="main-wrapper">
-    <!-- Mobile Header Bar -->
-    <div class="mobile-header">
-      <button id="b1" onclick="showLinks()">☰ L </button>
-      <button id="b2" onclick="showFrame()">☰ F </button>
-      <span style="font-weight: bold;"> &nbsp; NK &nbsp; </span>
-      <span id='cust-link'></span>
-    </div>
+        th, td {
+            padding: 3px 7px;	border: 1px solid #ddd;	text-align: left;
+        }
 
-  <div id="asd"></div>
-    <div class="main-content">
-		<div class="my-links" id="main-links"></div>
-		<iframe id="center-iframe" name="center-frame" class="center-iframe" src="" target="_blank" ></iframe>
-    </div>
-  </div>
-
-  <script>
-	
-  var UrlKeyMap;
-  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search); load_final_page()});
-  
-  // menu links and all...
-  var TAB = [
-	{id:"", url:"https://nkg26.github.io/NE", name:"Home", inMenu:true},
-
-	{id:"", url:"https://nkg26.github.io/NE/testing/txtreader.html", name:"Dynamic File", inMenu:true},
-	  
-	{id:"", url:"https://nkg26.github.io/NE/shop/nepvt-products-table.html", name:"pvt-tab", inMenu:true},
-	{id:"all-items", url:"https://nkg26.github.io/NE/2K6/all-products.html", name:"All Products", inMenu:true},
-	{id:"all-items", url:"https://nkg26.github.io/NE/2K6/all-products-table.html", name:"Stock-tab", inMenu:true},
-	{id:"all-items", url:"https://nkg26.github.io/NE/2K6/all-products-card.html", name:"Stock-card", inMenu:true},
-	{name:"%separator%", inMenu:true},
-	
-	{id:"cust", url:"https://nkg26.github.io/NE/consumer.html", name:"Customer", inMenu:true},
-	{name:"%separator%", inMenu:true},
-
-	{id:"", url:"https://nkg26.github.io/NE/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
-	{id:"navratre", url:"https://nkg26.github.io/NE/2K6/offer-2610-navratre.html", name:"Navratre", inMenu:true},
-	{name:"%separator%", inMenu:true},
-
-	{id:"location-us", url:"https://nkg26.github.io/NE/resources/location-ne.html", name:"Google Location", inMenu:true},
-	{id:"conatct-us", url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us", inMenu:true},
-	{name:"%separator%", inMenu:true},
-	{id:"", url:"https://nkg26.github.io/NE/tmp/naveen.html", name:"Naveen", inMenu:true}
-  ];
-
-  var p = getObjectById('cust');
-  document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> Customer </a>`:"";
-	  
-  function showLinks(){
-	  document.getElementById("b2").style.display='inline';
-	  document.getElementById("b1").style.display='none';
-	  document.getElementById("center-iframe").style.display='none';
-	  document.getElementById("main-links").style.display='block';
-  }
-  function showFrame(){
-	  document.getElementById("b1").style.display='inline';
-	  document.getElementById("b2").style.display='none';
-	  
-		document.getElementById("center-iframe").style.display='block';
-		document.getElementById("main-links").style.display='none';
-  }
-  
-  
-  function getObjectById(ID, start=0){
-	for(var i=(start<0?0:start); i<TAB.length; i++){
-	  var p = TAB[i];
-	  if(p!==null && p.id === ID){
-		return p;
-	  }
-	}
- }
-  
-  function setIframeURLByID(ID){
-	var p = ID?getObjectById(ID):null;
-	setIframeURL(p?p.url:"");
-  }
-  function setIframeURL(URL){
-	closeSidebar();
-	document.getElementById("center-iframe").src=URL;
-	try{
-		document.getElementById("asd").innerHTML=URL;
-		//document.getElementById("asd").style.display='none';
-	}catch{}
- }
-  
-  var sidebar_menu_html = '';
-  for(var i=0;i<TAB.length;i++){
-	  var p = TAB[i];
-	  if(p.inMenu === true){
-		  if(p.name==='%separator%'){
-				//sidebar_menu_html += `<br/>`;
-			} else {
-				// below all 3 are working fine..
-				sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="showFrame()">${p.name}</a>`;
-				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
-				//sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
-				//sidebar_menu_html += `<br/>`;
-			}
+        /* 🌟 2. HEADER KO FIX KARNE KA MAIN CSS LOGIC 🌟 */
+        th {
+            position: sticky;
+            top: 0;               /* Top par chipak jayega */
+            background-color: #333; /* Background color zaroori hai, varna rows piche se dikhengi */
+            color: white;
+            z-index: 1;           /* Baki data rows ke upar dikhne ke liye */
+        }
+		
+		/* Table ki saari EVEN (2, 4, 6...) rows ka background badalne ke liye */
+		tr:nth-child(even) {
+			background-color: #f2f2f2; /* Light Grey Color */
 		}
-  }
+
+		/* Table ki saari ODD (1, 3, 5...) rows ka background badalne ke liye (Optional) */
+		tr:nth-child(odd) {
+			background-color: #ffffff; /* White Color */
+		}		
+    </style>
+	 
+
+    <div id="header">Dynamic Text File Reading</div>
+    
+	<select id="pageDropdown">
+        <option value="">-- -- -- -- -- -- -- -- -- -- -- --</option>
+        <option value="https://nkg26.github.io/NE/res/txt/prch.txt">Purchase</option>
+        <option value="https://nkg26.github.io/NE/res/lists/items-name-ifb.txt">IFB Names</option>
+    </select>
+    <button onclick="goToPage()">Go</button>
+	
+	<script>
+	function goToPage() {
+            const dropdown = document.getElementById("pageDropdown");
+            const selectedValue = dropdown.value;
+            if (selectedValue) {
+                //window.location.href = selectedValue; // Opens the link in the same tab
+                // window.open(selectedValue, '_blank'); // Use this instead if you want to open in a new tab:
+				
+				MY_ITEM.loadAndShowFileData(selectedValue);
+				
+				
+            } else {
+                alert("Please select a valid option first!");
+            }
+        }
+	</script>
+	
+	&nbsp; &nbsp; &nbsp; 
+	<div class="btn-container" style="display:inline-block;">
+        <button class="font-btn" onclick="changeFontSize(1)">A+ </button>
+        <button class="font-btn" onclick="changeFontSize(-1)">A- </button>
+        <button class="font-btn" onclick="resetFontSize()">Reset</button>
+		<script>
+			// Default size store karne ke liye variable
+			const DEFAULT_SIZE = 16;
+			let currentSize = DEFAULT_SIZE;
+
+			function changeFontSize(action) {
+				// 1. Table element ko select kiya
+				const table = document.getElementById("productGrid");
+				
+				// 2. Font size ko increment ya decrement kiya
+				currentSize += action;
+
+				// Safe Limits: Font ko bohot chhota (10px) ya bohot bada (30px) hone se rokne ke liye
+				if (currentSize < 8) currentSize = 8;
+				if (currentSize > 30) currentSize = 30;
+
+				// 3. Style apply kiya ('px' ke sath)
+				table.style.fontSize = currentSize + "px";
+			}
+
+			function resetFontSize() {
+				const table = document.getElementById("productGrid");
+				currentSize = DEFAULT_SIZE;
+				table.style.fontSize = DEFAULT_SIZE + "px";
+			}
+		</script>
+    </div>
+	
+	
+	<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search...">
+	<div id="message"></div> 
+	<div id="productGrid"></div>
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+  <script>  
+
+		class PlainTable{
+			FX_TABLE = new MyTable();
+			table_data = [];
+			
+			getTabularData(){
+				return this.table_data;
+			}
+			
+			loadAndShowFileData(path){
+				var myfile = new MyFile(path);
+				myfile.loadFile().then(() => {
+					this.analyzeData(myfile.getFinalOutput());
+				});
+			}
+			
+			analyzeData(RAW_DATA){
+				this.table_data = this.FX_TABLE.splitToTable(RAW_DATA);
+				try{
+					showFinalData(this.getTabularData());
+				}catch{
+					console.log(' showFinalData(this.getTabularData()); is either not implemented or any other reasion..');
+				}
+			}
+			
+			filterByText(text){
+				return this.filterTabularDataByText(this.table_data, text);			
+			}
+		
+		// isme header always return hoga..
+			filterTabularDataByText(table_data, text){
+				text = text.toLowerCase();
+				return table_data.filter((row, rowIndex) => {
+				        if (rowIndex === 0) return true; // header always chaheye..
+						for(let i=0; i<row.length; i++){
+							if((row[i] === null || row[i] === undefined)?false:row[i].toLowerCase().includes(text)) return true;
+						}
+						
+					return false;
+				});			
+			}
+		
+		}
   
-  
-  document.getElementById("main-links").innerHTML = sidebar_menu_html;
-  showLinks();
+  const MY_ITEM = new PlainTable();
+	//      showFile('https://nkg26.github.io/NE/res/lists/items-name-ifb.txt');
+	//      MY_ITEM.loadAndShowFileData('https://nkg26.github.io/NE/res/txt/prch.txt');
 
-function load_final_page(){
-	var x = UrlKeyMap.get('id');
-	x = x?x:"navratre";
-	if(x){
-		var p = getObjectById(x);
-//		setIframeURL(p.url);
-	}
-}
-
-</script>
-
-
-
-</body>
-
-</html>
+  		function show_filtered_products(){ 
+			var val = document.getElementById('searchInput').value;
+			let data = MY_ITEM.filterByText(val);
+			showFinalData(data);
+		}
+		
+		function showFinalData(table_data){
+		//console.log(" ------------------- ");
+		//console.log(table_data);
+			var html = MY_ITEM.FX_TABLE.generateBasicHtmlTable(table_data);
+			document.getElementById('productGrid').innerHTML = html;
+		}
+  </script>
+	  
+</body></html>
