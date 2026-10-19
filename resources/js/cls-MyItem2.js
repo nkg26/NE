@@ -16,12 +16,12 @@ class MyItem2 extends MyItem{
 	// this function is called by the buttons-click.
 	setCategory(cat) {
 		// clear category buttons class value, elements having class name "selected_cat_button"
-		document.querySelectorAll('.'+cat_btn_cls).forEach(btn => {btn.className = cat_btn_cls_unselected;});
-		try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
+		document.querySelectorAll('.'+this.cat_btn_cls).forEach(btn => {btn.className = this.cat_btn_cls_unselected;});
+		try{event.target.className = this.cat_btn_cls_selected; }catch{}  // update seleced class
 		super.setCategory(cat);
-		console.log(" ALL_ITEMS_COUNT = "+ALL_ITEMS.length);
-		console.log("\t selected Category = "+CATEGORY_SELECTED);
-		console.log(" CATEGORY_ITEMS len = "+CATEGORY_ITEMS.length);
+		console.log(" ALL_ITEMS_COUNT = "+this.ALL_ITEMS.length);
+		console.log("\t selected Category = "+this.CATEGORY_SELECTED);
+		console.log(" CATEGORY_ITEMS len = "+this.CATEGORY_ITEMS.length);
 	}	
 
 // this will show items in html..
@@ -33,16 +33,15 @@ class MyItem2 extends MyItem{
 	
 		if(grid !== null){
 			const srch = document.getElementById("search-msg");
-			const filtered = ITEMS;
-			var text = " searching.. in " + filtered.length + " items.";
+			let text = " searching.. in " + ITEMS.length + " items.";
 	
 			if(srch !== null) srch.innerHTML = text;
 			grid.innerHTML = text;
-			grid.innerHTML = (filtered.length === 0) 
+			grid.innerHTML = (ITEMS.length === 0) 
 							? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
-							: this.generate_all_items_HTML_VIEW(filtered);
+							: this.generate_all_items_HTML_VIEW(ITEMS);
 			
-			if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
+			if(srch !== null) srch.innerHTML = (" "+ ITEMS.length +" items found.");
 		}
 	}
 	
