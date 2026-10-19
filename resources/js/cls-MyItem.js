@@ -48,6 +48,10 @@ BOOL_AUTO_UPDATE_ON_CAT = true;
 		items = (FILTER_TEXT===null || FILTER_TEXT === '')? items : this.filter_itemByText(items,FILTER_TEXT);
 		this.showItems(items);
 	}
+	
+	showItemsAuto() {
+		this.showItems(getFinalFilteredItems());
+	}
 
 	showItems(ITEMS) {
 		this.showItems_onPage(ITEMS);
