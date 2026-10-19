@@ -2,6 +2,7 @@ class MyItem{
   FX_TABLE = new MyTable();
   FX_REGX = new MyRegx();
   FX_FILE = new MyFile();
+  FX_IMG = new MyImgs();
 
 
 cat_btn_cls_selected   = "cat-btn selected"; // example
