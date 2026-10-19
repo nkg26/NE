@@ -50,7 +50,7 @@ class MyTable{
 	  html +="<table cellspacing=0 border=true class='simple_table' id='simple_table'>";
 		if(TABLE.length>0){
 		  let row = '';
-		  for(let c=0; c<TABLE[r].length; c++) row += ('<th>'+TABLE[r][c]+'</th>');
+		  for(let c=0; c<TABLE[0].length; c++) row += ('<th>'+TABLE[0][c]+'</th>');
 		  html += row=='' ? '' : ("<thead><tr>"+row+"</tr></thead>");
 		}
 	  html +="<tbody>";
