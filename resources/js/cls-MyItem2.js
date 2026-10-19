@@ -1,5 +1,15 @@
 class MyItem2 extends MyItem{
 
+	// this function is called by the buttons-click.
+	function setCategory(cat) {
+		// clear category buttons class value, elements having class name "selected_cat_button"
+		document.querySelectorAll('.'+cat_btn_cls).forEach(btn => {btn.className = cat_btn_cls_unselected;});
+		try{event.target.className = cat_btn_cls_selected; }catch{}  // update seleced class
+		super.setCategory(cat);
+		console.log(" ALL_ITEMS_COUNT = "+ALL_ITEMS.length);
+		console.log("\t selected Category = "+CATEGORY_SELECTED);
+		console.log(" CATEGORY_ITEMS len = "+CATEGORY_ITEMS.length);
+	}	
 
 // this will show items in html..
 	showItems_onPage(ITEMS) {
