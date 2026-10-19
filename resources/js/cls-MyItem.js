@@ -7,13 +7,12 @@ class MyItem{
 cat_btn_cls_selected   = "cat-btn selected"; // example
 cat_btn_cls_unselected = "cat-btn uns";  // example
 cat_btn_cls = "cat-btn uns";
-	
-	ALL_ITEMS = [];
-	CATEGORY_ITEMS = null;
-	CATEGORY_NAME = null;
-	FILTER_TEXT = null;
-	
-	BOOL_AUTO_UPDATE_ON_CAT = true;
+
+ALL_ITEMS = [];
+CATEGORY_ITEMS = null;
+CATEGORY_NAME = null;
+FILTER_TEXT = null; // dynamic value may change every time...
+BOOL_AUTO_UPDATE_ON_CAT = true;
 
 	// this function is called by the buttons-click.
 	function setCategory(cat) {
@@ -33,61 +32,60 @@ cat_btn_cls = "cat-btn uns";
 		
 		if(BOOL_AUTO_UPDATE_ON_CAT === true) showItems();
 	}
+	
+	// filter by user text condition..
+	applyFilter_Text(items){
+		return (FILTER_TEXT !== null)?filterItems_byText(items, FILTER_TEXT):items;
+	}
+
 
 	getFinalFilteredItems(){
 		let items = (CATEGORY_ITEMS === null)?this.ALL_ITEMS : CATEGORY_ITEMS;
-		items = (FILTER_TEXT !== null)?filterItems_byText(items, FILTER_TEXT):items;
-		items = (items !== null)?items:[];
+		items = applyFilter_Text(items);
+		this.showItems(items);
 	}
 
-	showItems() {
-		let items = this.getFinalFilteredItems();
-		this.showItems_onPage(items);
+	showItems(ITEMS) {
+		this.showItems_onPage(ITEMS);
 	}
 	
-
-	// this will show items in html..
-showItems_onPage(ITEMS) {
-  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
-	const grid = document.getElementById('productGrid');
-	if(grid === null) console.log(" no item show area found of id 'productGrid'.");
-
-	if(grid !== null){
-		const srch = document.getElementById("search-msg");
-		const filtered = ITEMS;
-		var text = " searching.. in " + filtered.length + " items.";
-
-		if(srch !== null) srch.innerHTML = text;
-		grid.innerHTML = text;
-		grid.innerHTML = (filtered.length === 0) 
-						? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
-						: generate_all_items_HTML_VIEW(filtered);
-		
-		if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
-	}
-}
-
-// if we want to show items as an simple table we should override this function...
-function generate_all_items_HTML_VIEW(itemList) {
-	message_generating_all_items_HTML_VIEW(itemList);
-	var output_html = "";
-	itemList.forEach(p => { output_html += generate_one_item_HTML_VIEW(p);});
-	return output_html;
-}
-
-// most comman use to generate single item view.
-function generate_one_item_HTML_VIEW(p){
-  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
-  return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
-}
-
-
-
-
-
-
-
 	
+		// this will show items in html..
+	showItems_onPage(ITEMS) {
+		ITEMS = (ITEMS !== null)?ITEMS:[];
+	  //console.log(" >> show_filtered_products is not implemented... show_item_style-00.js");
+		const grid = document.getElementById('productGrid');
+		if(grid === null) console.log(" no item show area found of id 'productGrid'.");
+	
+		if(grid !== null){
+			const srch = document.getElementById("search-msg");
+			const filtered = ITEMS;
+			var text = " searching.. in " + filtered.length + " items.";
+	
+			if(srch !== null) srch.innerHTML = text;
+			grid.innerHTML = text;
+			grid.innerHTML = (filtered.length === 0) 
+							? `<div class="col-span-full text-center py-10 text-slate-500">No appliances found matching your criteria.</div>`
+							: generate_all_items_HTML_VIEW(filtered);
+			
+			if(srch !== null) srch.innerHTML = (" "+ filtered.length +" items found.");
+		}
+	}
+	
+	// if we want to show items as an simple table we should override this function...
+	function generate_all_items_HTML_VIEW(itemList) {
+		message_generating_all_items_HTML_VIEW(itemList);
+		var output_html = "";
+		itemList.forEach(p => { output_html += generate_one_item_HTML_VIEW(p);});
+		return output_html;
+	}
+	
+	// most comman use to generate single item view.
+	function generate_one_item_HTML_VIEW(p){
+	  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
+	  return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
+	}
+
 }
 
 
