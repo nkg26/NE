@@ -12,10 +12,10 @@ class MyItem{
 
 	// this function is called by the buttons-click.
 	setCategory(cat) {
-		var ALL_ITEMS = this.ALL_ITEMS; // from another js
 		this.CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
 		this.CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
-		this.CATEGORY_ITEMS = this.filter_itemByCategory(ALL_ITEMS, CATEGORY_NAME); 
+		
+		this.CATEGORY_ITEMS = this.filter_itemByCategory(this.ALL_ITEMS, this.CATEGORY_NAME); 
 		if(this.BOOL_AUTO_UPDATE_ON_CAT === true) this.showItems();
 	}
 	
