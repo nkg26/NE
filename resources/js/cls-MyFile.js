@@ -34,6 +34,7 @@ class MyFile {
     }
 }
 
+/*
 async loadAndCallback(filePath, callbackFunction) {
     let response = await fetch(filePath);
     let data = await response.text();
@@ -43,6 +44,9 @@ async loadAndCallback(filePath, callbackFunction) {
         callbackFunction(data);
     }
 }
+*/
+
+
 
 /*
 
