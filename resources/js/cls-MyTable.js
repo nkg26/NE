@@ -47,12 +47,19 @@ class MyTable{
 	generateBasicHtmlTable(TABULAR_DATA){
 	  let TABLE = TABULAR_DATA;
 	  let html = '';
-	  html +="<table>";
-		for(let r=0; r<TABLE.length; r++){
+	  html +="<table cellspacing=0 border=true class='simple_table' id='simple_table'>";
+		if(TABLE.length>0){
+		  let row = '';
+		  for(let c=0; c<TABLE[r].length; c++) row += ('<th>'+TABLE[r][c]+'</th>');
+		  html += row=='' ? '' : ("<thead><tr>"+row+"</tr></thead>");
+		}
+	  html +="<tbody>";
+		for(let r=1; r<TABLE.length; r++){
 		  let row = '';
 		  for(let c=0; c<TABLE[r].length; c++) row += ('<td>'+TABLE[r][c]+'</td>');
 		  html += row=='' ? '' : ("<tr>"+row+"</tr>");
 		}
+	  html +="<tbody>";
 	  html +="</table>";
 	  return html;
 	}
