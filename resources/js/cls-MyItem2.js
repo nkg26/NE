@@ -1,4 +1,8 @@
 class MyItem2 extends MyItem{
+	cat_btn_cls_selected   = "cat-btn selected"; // example
+	cat_btn_cls_unselected = "cat-btn uns";  // example
+	cat_btn_cls = "cat-btn";
+
 
 	update_textFilter(){
 		let text = document.getElementById('searchInput').value;
