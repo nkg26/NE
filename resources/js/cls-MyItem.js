@@ -39,7 +39,7 @@ class MyItem{
 	getFinalFilteredItems(){
 		console.log(" ALL_ITEMS_COUNT     len="+this.ALL_ITEMS.length);
 		
-		let items = (this.CATEGORY_ITEMS === null)?this.ALL_ITEMS : this.CATEGORY_ITEMS;
+		let items = (this.CATEGORY_ITEMS === null || this.CATEGORY_ITEMS === undefined)?this.ALL_ITEMS : this.CATEGORY_ITEMS;
 		items = (items===null || items===undefined)? [] : items;
 		
 		console.log("\t selected Category     len="+items.length);
