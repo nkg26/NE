@@ -12,6 +12,8 @@ class MyItem{
 
 	// this function is called by the buttons-click.
 	setCategory(cat) {
+		console.log("\t function invoked... setCategory(cat)...cat="+cat);
+		
 		cat = (cat===null || cat===undefined || cat.trim()==='')?"ALL":cat; 
 		
 		this.CATEGORY_NAME = cat;
@@ -20,6 +22,7 @@ class MyItem{
 	}
 	
 	filter_itemByCategory(ITEMS, CATEGORY_NAME){
+		console.log("\t function invoked... filter_itemByCategory(ITEMS, CATEGORY_NAME)...CATEGORY_NAME="+CATEGORY_NAME);
 		return ITEMS.filter(p => {
 			return (CATEGORY_NAME === 'ALL' || p.category === CATEGORY_NAME);
 		});
@@ -31,6 +34,7 @@ class MyItem{
 	}
 	
 	filter_itemByText(ITEMS, TEXT){
+		console.log("\t function invoked... filter_itemByText(ITEMS, TEXT)... TEXT="+TEXT);
 		return ITEMS.filter(p => {
 			return (this.boolHas(p.category,TEXT) || this.boolHas(p.name,TEXT));
 		});
@@ -38,10 +42,13 @@ class MyItem{
 	
 	
 	showItemsAuto() {
+		console.log("\t function invoked... showItemsAuto()...");
 		this.showItems(this.getFinalFilteredItems());
 	}
 	
 	getFinalFilteredItems(){
+		console.log("\t function invoked... getFinalFilteredItems()...");
+
 		console.log(" ALL_ITEMS_COUNT     len="+this.ALL_ITEMS.length);
 		
 		let items = (this.CATEGORY_ITEMS === null || this.CATEGORY_ITEMS === undefined)?this.ALL_ITEMS : this.CATEGORY_ITEMS;
@@ -58,6 +65,7 @@ class MyItem{
 
 
 	showItems(ITEMS) {
+		console.log("\t function invoked... showItems(ITEMS)...");
 		this.showItems_onPage(ITEMS);
 	}
 	
