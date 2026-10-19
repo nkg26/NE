@@ -13,10 +13,10 @@ class MyItem{
 	// this function is called by the buttons-click.
 	setCategory(cat) {
 		var ALL_ITEMS = this.ALL_ITEMS; // from another js
-		CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
-		CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
-		CATEGORY_ITEMS = this.filter_itemByCategory(ALL_ITEMS, CATEGORY_NAME); 
-		if(BOOL_AUTO_UPDATE_ON_CAT === true) showItems();
+		this.CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
+		this.CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
+		this.CATEGORY_ITEMS = this.filter_itemByCategory(ALL_ITEMS, CATEGORY_NAME); 
+		if(this.BOOL_AUTO_UPDATE_ON_CAT === true) this.showItems();
 	}
 	
 	filter_itemByCategory(ITEMS, CATEGORY_NAME){
@@ -38,14 +38,14 @@ class MyItem{
 	
 
 	getFinalFilteredItems(){
-		let items = (CATEGORY_ITEMS === null)?this.ALL_ITEMS : CATEGORY_ITEMS;
+		let items = (this.CATEGORY_ITEMS === null)?this.ALL_ITEMS : this.CATEGORY_ITEMS;
 		items = (items===null)? [] : items;
-		items = (FILTER_TEXT===null || FILTER_TEXT === '')? items : this.filter_itemByText(items,FILTER_TEXT);
+		items = (this.FILTER_TEXT===null || this.FILTER_TEXT === '')? items : this.filter_itemByText(items, this.FILTER_TEXT);
 		this.showItems(items);
 	}
 	
 	showItemsAuto() {
-		this.showItems(getFinalFilteredItems());
+		this.showItems(this.getFinalFilteredItems());
 	}
 
 	showItems(ITEMS) {
