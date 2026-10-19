@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Read</title>
+</head>
+<body>
+	<style>body{background: linear-gradient(90deg,rgba(207, 62, 14, 0.2) 0%, rgba(20, 9, 121, 0.2) 50%, rgba(27, 194, 194, 0.2) 100%);}</style>
+	<style>input#searchInput{width:98%; margin:5px; padding:5px;}</style>
+	<style>.cat-btn selected{background-color:cyan;} </style>
+	<style>.cat-btn{background-color:yellow; border:1px solid red; padding:2px 3px; margin:3px 5px; border-radius:10px; min-width:35px;} </style>
+	<style>.cat-btn:hover, .cat-btn selected:hover{background-color:orange; } </style>
+
+    <div id="header-placeholder">dynamic text file read</div>
+    <div id="module-items">
+		<main id="items-bag">
+		    <!-- Search and Filter Bar -->
+		    <div id="search-div">
+		        <div id="search-box">
+		            <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="🔍 Search...">
+		        </div>
+		        <div id="search-category"></div>
+		    </div>
+		    <div id="message"></div> 
+		    <div id="productGrid"></div>
+		</main>
+		
+	</div>
+    <div id="footer-placeholder"></div>
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyImgs.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem.js"></script>	
+	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem_table.js"></script>	
+	
+  <script>  
+  		const MY_ITEM = new MyItem_table();
+  		const FX_TABLE = MY_ITEM.FX_TABLE;
+  		function setCategory(CAT){MY_ITEM.setCategory(CAT);}
+  		function show_filtered_products(){ MY_ITEM.update_textFilter();}
+
+      function showFile(path){
+    		var myfile = new MyFile(path);
+    		myfile.loadFile().then(() => {
+    			console.log(myfile.getFinalOutput());
+    			const finalData = myfile.getFinalOutput();
+    			let tabuler_data = FX_TABLE.splitToTable(finalData);
+    			let MAP_LIST = FX_TABLE.toKeyMapObjectList(tabuler_data);
+    			MY_ITEM.ALL_ITEMS = (MAP_LIST);
+    			MY_ITEM.setCategory(null);
+    		});
+      }
+		
+    	// all category in items
+    	function getUniqueCategory(itemsList) {
+    		const uniqueCategories = [...new Set(itemsList.map(item => item.category))];
+    		return uniqueCategories;
+    	}
+    
+    		
+    	function createHTML_CategoryButtons(){
+    	  // extract unique categories ...
+    	  var uniqueCategories = getUniqueCategory(MY_ITEM.ALL_ITEMS);
+    	  var _buttonsHtml = '';
+    	  _buttonsHtml = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
+    	  uniqueCategories.forEach(item =>{ _buttonsHtml += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;});
+    	  return _buttonsHtml;
+    	}
+
+      showFile('https://nkg26.github.io/NE/res/lists/items-name-ifb.txt');
+  </script>
+	  
+</body></html>
