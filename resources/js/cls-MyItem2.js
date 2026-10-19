@@ -7,6 +7,7 @@ class MyItem2 extends MyItem{
 	update_textFilter(){
 		let text = document.getElementById('searchInput').value;
 		if(text !== this.FILTER_TEXT){
+			console.log('\t filter text updated.. >>'+this.FILTER_TEXT+"<<   >>"+text+"<<");
 			this.FILTER_TEXT = text;
 			this.showItemsAuto();
 		}
