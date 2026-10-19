@@ -19,9 +19,9 @@ class MyItem2 extends MyItem{
 		document.querySelectorAll('.'+this.cat_btn_cls).forEach(btn => {btn.className = this.cat_btn_cls_unselected;});
 		try{event.target.className = this.cat_btn_cls_selected; }catch{}  // update seleced class
 		super.setCategory(cat);
-		console.log(" ALL_ITEMS_COUNT = "+this.ALL_ITEMS.length);
-		console.log("\t selected Category = "+this.CATEGORY_SELECTED);
-		console.log(" CATEGORY_ITEMS len = "+this.CATEGORY_ITEMS.length);
+		console.log(" ALL_ITEMS.length = "+this.ALL_ITEMS.length);
+		console.log("\t CATEGORY_SELECTED = "+this.CATEGORY_SELECTED);
+		console.log("\t CATEGORY_ITEMS.length = "+this.CATEGORY_ITEMS.length);
 	}	
 
 // this will show items in html..
