@@ -1,19 +1,14 @@
 class MyItem{
-  FX_TABLE = new MyTable();
-  FX_REGX = new MyRegx();
-  FX_FILE = new MyFile();
-  FX_IMG = new MyImgs();
+	FX_TABLE = new MyTable();
+	FX_REGX = new MyRegx();
+	FX_FILE = new MyFile();
+	FX_IMG = new MyImgs();
 
-
-cat_btn_cls_selected   = "cat-btn selected"; // example
-cat_btn_cls_unselected = "cat-btn uns";  // example
-cat_btn_cls = "cat-btn uns";
-
-ALL_ITEMS = [];
-CATEGORY_ITEMS = null;
-CATEGORY_NAME = null;
-FILTER_TEXT = null; // dynamic value may change every time...
-BOOL_AUTO_UPDATE_ON_CAT = true;
+	ALL_ITEMS = [];
+	CATEGORY_ITEMS = null;
+	CATEGORY_NAME = null;
+	FILTER_TEXT = null; // dynamic value may change every time...
+	BOOL_AUTO_UPDATE_ON_CAT = true;
 
 	// this function is called by the buttons-click.
 	setCategory(cat) {
