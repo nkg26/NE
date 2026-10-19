@@ -46,7 +46,7 @@ class MyItem{
 		
 		items = (this.FILTER_TEXT===null || this.FILTER_TEXT === '')? items : this.filter_itemByText(items, this.FILTER_TEXT);
 		
-		console.log("\t filterd FILTER_TEXT="+FILTER_TEXT+", len="+items.length);
+		console.log("\t filterd FILTER_TEXT="+ this.FILTER_TEXT+", len="+items.length);
 		
 		this.showItems(items);
 	}
