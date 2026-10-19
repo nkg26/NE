@@ -12,10 +12,11 @@ class MyItem{
 
 	// this function is called by the buttons-click.
 	setCategory(cat) {
-		this.CATEGORY_NAME = cat===null?"ALL":cat; // set default value...
-		this.CATEGORY_NAME = cat===''?"ALL":cat; // set default value...
+		cat = (cat===null || cat===undefined || cat.trim()==='')?"ALL":cat; 
+		
+		this.CATEGORY_NAME = cat;
 		this.CATEGORY_ITEMS = this.filter_itemByCategory(this.ALL_ITEMS, this.CATEGORY_NAME); 
-		if(this.BOOL_AUTO_UPDATE_ON_CAT === true) this.showItems();
+		if(this.BOOL_AUTO_UPDATE_ON_CAT === true) this.showItemsAuto();
 	}
 	
 	filter_itemByCategory(ITEMS, CATEGORY_NAME){
@@ -35,7 +36,11 @@ class MyItem{
 		});
 	}
 	
-
+	
+	showItemsAuto() {
+		this.showItems(this.getFinalFilteredItems());
+	}
+	
 	getFinalFilteredItems(){
 		console.log(" ALL_ITEMS_COUNT     len="+this.ALL_ITEMS.length);
 		
@@ -50,10 +55,7 @@ class MyItem{
 		
 		this.showItems(items);
 	}
-	
-	showItemsAuto() {
-		this.showItems(this.getFinalFilteredItems());
-	}
+
 
 	showItems(ITEMS) {
 		this.showItems_onPage(ITEMS);
