@@ -151,6 +151,9 @@
 	{id:"", url:"https://nkg26.github.io/NE/tmp/naveen.html", name:"Naveen", inMenu:true}
   ];
 
+const RN = Math.floor(Math.random()*10000);
+for(let i=0; i<TAB.length; i++) if(TAB[i] && TAB[i].url && TAB[i].url.length>10)	TAB[i].url += '?rnd='+RN;
+	  
   var p = getObjectById('cust');
   document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> Customer </a>`:"";
 	  
