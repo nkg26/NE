@@ -30,11 +30,12 @@ class MyItem{
 
 	boolHas(VAL, TXT){
 		return (VAL!==null && TXT!==null && VAL !== undefined && TXT !== undefined)
-		? VAL.includes(TXT) : false;
+		? VAL.includes(TXT) || VAL.toLowerCase().includes(TXT) : false;
 	}
 	
 	filter_itemByText(ITEMS, TEXT){
 		console.log("\t function invoked... filter_itemByText(ITEMS, TEXT)... TEXT="+TEXT);
+		TEXT = TEXT.toLowerCase();
 		return ITEMS.filter(p => {
 			return (this.boolHas(p.category,TEXT) || this.boolHas(p.name,TEXT));
 		});
