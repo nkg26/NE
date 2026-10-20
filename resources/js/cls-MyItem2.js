@@ -1,11 +1,33 @@
-class MyItem2 extends MyItem{
+class MyItem2 extends MyItem {
+	FX_IMAGE = new MyImgs();
+
 	cat_btn_cls_selected   = "cat-btn selected"; // example
 	cat_btn_cls_unselected = "cat-btn uns";  // example
 	cat_btn_cls = "cat-btn";
+	
+	getItemImage(p){
+		try{
+			return this.FX_IMAGE.getProductImage(p); /* NE/brands/prod-img.js*/
+		}catch(e){console.error(e);}
+		return '';
+	}	
 
+	getItemCategory(p){
+		var cat = p.category;
+		if(cat === "WM") return "Washing Machine";
+		if(cat === "REF") return "Refrigerator";
+		if(cat === "OVEN") return "Microwave Oven";
+		if(cat === "LED") return "LED TV";
+		if(cat === "CD") return "Cloth Dryer";
+		return cat;
+	}
 
-	update_textFilter(){
-		let text = document.getElementById('searchInput').value;
+	getUniqueCategory(itemsList=this.ALL_ITEMS) {
+		return [...new Set(itemsList.map(item => item.category))];
+	}
+
+	update_textFilter(ID='searchInput'){
+		let text = document.getElementById(ID).value;
 		if(text !== this.FILTER_TEXT){
 			console.log('\t filter text updated.. >>'+this.FILTER_TEXT+"<<  to  >>"+text+"<<");
 			this.FILTER_TEXT = text;
@@ -47,7 +69,7 @@ class MyItem2 extends MyItem{
 	 	 	console.log(" >> ---------------------------------------- << ");
 			if(srch !== null) srch.innerHTML = (" "+ ITEMS.length +" items found.");
 
-if(ITEMS.length === 0) console.error("test size...");
+			if(ITEMS.length === 0) console.error("test size...  this is an temp solution...");
 			
 		}
 	}
@@ -65,4 +87,11 @@ if(ITEMS.length === 0) console.error("test size...");
 	  console.log(` >> createHTML_of_item(${p}) is not override... show_item_style-00.js`);
 	  return `<div class='product_html'> no html defined... [show_items_style-00]<br/> ${p}, name = ${p.name},  category = ${p.category}</div>`;
 	}
+
+
+	generateHtmlButtons_Category(categoryList){
+	  var html = `<button class='cat-btn' onclick="setCategory('ALL')">All</button> `;
+	  categoryList.forEach(item =>{ html += ` <button class='cat-btn' onclick="setCategory('${item}')">${item}</button> `;});
+	  return html;
+	}	
 }
