@@ -1,140 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products</title>
-</head>
-<body>
-	<style>body{ padding-top:10px; }</style>
-	<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
-	<style>.dynamic-content a{ text-align:center; display:inline-block; border:2px solid blue; border-radius:15px; color:red; padding: 3px 15px; margin:10px; }</style>
-	<style>.dynamic-content a:hover{color:green; background-color:cyan;  }</style>
-    
-	<div id="header-placeholder"/>
-	<div id="dynamic-content" class="dynamic-content">
-	<span> Showing All Products </span>
-	<a href="">लेटेस्ट ऑफर्स के लिए यहाँ क्लिक करें</a>
-	</div>
-    <div id="module-items">
-	    <!-- Main Container -->
-	    <main class="max-w-6xl mx-auto px-4 py-8">
-	        <!-- Search and Filter Bar -->
-	        <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
-	            <div class="relative w-full md:w-1/4">
-	                <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-	            </div>
-	            <div id="search-category" class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0"></div>
-	        </div>
-	        <!-- Product Cards Container -->
-	        <div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-5 gap-5"> <!-- Dynamic JS Injected Cards --> </div>	
-      </main>
-    </div>
-    <div id="footer-placeholder"></div>
-    <style>div#productGrid{max-height: 85vh;  overflow:auto; border:1px solid seagreen;}</style>
-	<!--
-	gap...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	script started....
-	-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://nkg26.github.io/NE/abc-xyz.js"></script>
-	
-    
-    <script src="https://nkg26.github.io/NE/brands/items_ifb.js"></script>	
-    <script src="https://nkg26.github.io/NE/brands/items_mix.js"></script>	
-    <script src="https://nkg26.github.io/NE/brands/items_oth.js"></script>	
-    <script src="https://nkg26.github.io/NE/brands/itm-prs.js"></script>
-	    
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyImgs.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem.js"></script>
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem2.js"></script>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>All Products</title>
+	</head>
+	<body>
+		<style>body{ padding-top:10px; }</style>
+		<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
+		<style>.dynamic-content a{ text-align:center; display:inline-block; border:2px solid blue; border-radius:15px; color:red; padding: 3px 15px; margin:10px; }</style>
+		<style>.dynamic-content a:hover{color:green; background-color:cyan;  }</style>
 		
-	
-	
-    <script>
-
-	//setTimeout(_start_this,100);
-	function _start_this(){
-		ITEMS.cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
-		ITEMS.cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
-		ITEMS.cat_btn_cls = "cat-btn";
-		init_item_data(); // initialize items...
-		
-		let CATs = ITEMS.getUniqueCategory(ITEMS.ALL_ITEMS);		
-		document.getElementById("search-category").innerHTML = ITEMS.generateHtmlButtons_Category(CATs);
-		ITEMS.setCategory(null);
-	}
-				
-	function _to_item_map_list(data){
-		var indx = ITEMS.FX_TABLE.findHeaderIndex(data,"n-category");
-		if(indx >=0) data[0][indx] = "category";
-		return (ITEMS.FX_TABLE.toKeyMapObjectList(data));
-	}
-		
-	function init_item_data(){
-		var P1 = _to_item_map_list(items_table_ifb);
-		var P2 = _to_item_map_list(items_table_mix);
-		var P3 = _to_item_map_list(items_table_other);
-		
-		P1 = P1.concat(P2).concat(P3);
-		var MRP = _to_item_map_list(items_tabl_price);
-		
-		ITEMS.FX_TABLE.merge_KeyMapObjects(P1, MRP, 'nsap');
-
-		ITEMS.ALL_ITEMS = P1;
-	}
-
-	function setCategory(cat){
-		ITEMS.setCategory(cat);
-	}
-	
-	function show_filtered_products(){
-		ITEMS.update_textFilter();
-	}
-	
-	class MyItem_Card extends MyItem2{
-
-		generate_one_item_HTML_VIEW(p){
-			return `
-			<div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
-				<div> <div class="flex justify-between items-start mb-2">
-						<span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${this.getItemCategory(p)}</span>
+		<div id="header-placeholder"/>
+		<div id="dynamic-content" class="dynamic-content">
+		<span> Showing All Products </span>
+		<a href="javascript:void{}" onclick="openPage('latest-offer')">लेटेस्ट ऑफर्स के लिए यहाँ क्लिक करें</a>
+		</div>
+		<div id="module-items">
+			<!-- Main Container -->
+			<main class="max-w-6xl mx-auto px-4 py-8">
+				<!-- Search and Filter Bar -->
+				<div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
+					<div class="relative w-full md:w-1/4">
+						<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
 					</div>
-						<span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
-					<h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
-					<p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
-					${this.getItemImage(p)}
-					<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
-						<div class="flex justify-between text-xL text-slate-1000 mb-1">
-							<span>MRP: ₹${this.safeLocaleString(p.mrp)}</span>
+					<div id="search-category" class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0"></div>
+				</div>
+				<!-- Product Cards Container -->
+				<div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-5 gap-5"> <!-- Dynamic JS Injected Cards --> </div>	
+		  </main>
+		</div>
+		<div id="footer-placeholder"></div>
+		<style>div#productGrid{max-height: 85vh;  overflow:auto; border:1px solid seagreen;}</style>
+		<!--
+		gap...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		script started....
+		-->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://nkg26.github.io/NE/abc-xyz.js"></script>
+		
+		
+		<script src="https://nkg26.github.io/NE/brands/items_ifb.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/items_mix.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/items_oth.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/itm-prs.js"></script>
+			
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyImgs.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem.js"></script>
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem2.js"></script>
+			
+		
+		
+		<script>
+
+	//	function openPage(val){alert('currently no page exist..'+val);};
+
+		//setTimeout(_start_this,100);
+		function _start_this(){
+			ITEMS.cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+			ITEMS.cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+			ITEMS.cat_btn_cls = "cat-btn";
+			init_item_data(); // initialize items...
+			
+			let CATs = ITEMS.getUniqueCategory(ITEMS.ALL_ITEMS);		
+			document.getElementById("search-category").innerHTML = ITEMS.generateHtmlButtons_Category(CATs);
+			ITEMS.setCategory(null);
+		}
+					
+		function _to_item_map_list(data){
+			var indx = ITEMS.FX_TABLE.findHeaderIndex(data,"n-category");
+			if(indx >=0) data[0][indx] = "category";
+			return (ITEMS.FX_TABLE.toKeyMapObjectList(data));
+		}
+			
+		function init_item_data(){
+			var P1 = _to_item_map_list(items_table_ifb);
+			var P2 = _to_item_map_list(items_table_mix);
+			var P3 = _to_item_map_list(items_table_other);
+			
+			P1 = P1.concat(P2).concat(P3);
+			var MRP = _to_item_map_list(items_tabl_price);
+			
+			ITEMS.FX_TABLE.merge_KeyMapObjects(P1, MRP, 'nsap');
+
+			ITEMS.ALL_ITEMS = P1;
+		}
+
+		function setCategory(cat){
+			ITEMS.setCategory(cat);
+		}
+		
+		function show_filtered_products(){
+			ITEMS.update_textFilter();
+		}
+		
+		class MyItem_Card extends MyItem2{
+
+			generate_one_item_HTML_VIEW(p){
+				return `
+				<div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all p-5 border border-slate-100 flex flex-col justify-between">
+					<div> <div class="flex justify-between items-start mb-2">
+							<span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${this.getItemCategory(p)}</span>
+						</div>
+							<span class="text-xs text-slate-400 font-medium">${p.capacity}</span>
+						<h3 class="font-bold text-slate-800 text-lg mb-1">${p.name}</h3>
+						<p class="text-xs text-slate-500 mb-4">Color: ${p.color}</p>
+						${this.getItemImage(p)}
+						<div class="bg-slate-50 p-3 rounded-xl mb-4 border border-slate-100">
+							<div class="flex justify-between text-xL text-slate-1000 mb-1">
+								<span>MRP: ₹${this.safeLocaleString(p.mrp)}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>`;
+				</div>`;
+			}
 		}
-	}
-	const ITEMS = new MyItem_Card();
-	_start_this();
-	</script>
-</body></html>
+		const ITEMS = new MyItem_Card();
+		_start_this();
+		</script>
+		
+		<div style="font-size:6px;">NE> 2K6 >all-products</div>
+	</body></html>
