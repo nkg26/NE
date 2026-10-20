@@ -1,204 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stk-table</title>
-</head>
-<body>
-	<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
-  <div id="header-placeholder"></div>
-	<div id="dynamic-content" class="dynamic-content"> <span> Showing File Items </span></div>
-
-    <div id="module-items">
-	    <main>
-	        <div>
-	            <div>
-	                <input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-	            </div>
-	            <div id="search-category"></div>
-	        </div>
-	        <div id="message">  </div>	
-	        <!-- Product Cards Container -->
-	        <div id="productGrid"> <!-- Dynamic JS Injected Cards --> </div>	
-      </main>
-    </div>
-
-  <script src="https://nkg26.github.io/NE/2K6/js/fx-items.js"></script>
-    <script src="https://nkg26.github.io/NE/2K6/js/show_items_style-00.js"></script>
-	    
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
-	<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
-	
-	<style> 
-	table{ border:1px solid red;}
-	table td { border:1px solid gray;}
-	</style>
-    <script>  
-	
-
-		let H;
-		var products = [];
-		const FX_TABLE = new MyTable();
-		const FX_REGX = new MyRegx();
-					
-		const file = new MyFile("https://nkg26.github.io/NE/res/lists/stk-ifb-261017.txt");
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>All Products - Table</title>
+	</head>
+	<body>
+		<style>body{ padding-top:10px; }</style>
+		<style>.dynamic-content{ text-align:center; font-size:1.2em; }</style>
+		<style>.dynamic-content a{ text-align:center; display:inline-block; border:2px solid blue; border-radius:15px; color:red; padding: 3px 15px; margin:10px; }</style>
+		<style>.dynamic-content a:hover{color:green; background-color:cyan;  }</style>
 		
-		file.loadFile().then(() => {
-			const finalData = file.getFinalOutput();
-			showFileContent(finalData);
-		});
+		<div id="header-placeholder"/>
+		<div id="dynamic-content" class="dynamic-content">
+		<span> All Products (Table Form)</span>
+		<a href="javascript:void{}" onclick="openPage('latest-offer')">लेटेस्ट ऑफर्स के लिए यहाँ क्लिक करें</a>
+		</div>
+		<div id="module-items">
+			<!-- Main Container -->
+			<main class="max-w-6xl mx-auto px-4 py-8">
+				<!-- Search and Filter Bar -->
+				<div class="bg-pink p-2 rounded-xl border border-slate-20 mb-8 flex flex-col md:flex-row gap-2 justify-between items-center">
+					<div class="relative w-full md:w-1/4">
+						<input type="text" id="searchInput" onkeyup="show_filtered_products()" placeholder="Search by model name or category (e.g. Elena, Top Load, 8 Kg)..." class="w-full pl-2 pr-2 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+					</div>
+					<div id="search-category" class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0"></div>
+				</div>
+				<!-- Product Cards Container -->
+				<div id="productGrid" class="grid grid-cols-2 lg:grid-cols-4 lg:grid-cols-5 gap-5"> <!-- Dynamic JS Injected Cards --> </div>	
+		  </main>
+		</div>
+		<div id="footer-placeholder"></div>
+		<style>div#productGrid{max-height: 85vh;  overflow:auto; border:1px solid seagreen;}</style>
+		<style>div#productGrid table{width: 100%;}</style>
+		<!--
+		gap...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
-		function showFileContent(fileContent){
-			let TAB = FX_TABLE.splitToTable(fileContent);
-			H = TAB[0];
-			console.error(" >> HEADER = "+H);
-			products = FX_TABLE.toKeyMapObjectList(TAB);
+		script started....
+		-->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://nkg26.github.io/NE/abc-xyz.js"></script>
+		
+		
+		<script src="https://nkg26.github.io/NE/brands/items_ifb.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/items_mix.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/items_oth.js"></script>	
+		<script src="https://nkg26.github.io/NE/brands/itm-prs.js"></script>
 			
-			document.getElementById("search-category").innerHTML = createHTML_CategoryButtons();
-			setCategory(null);
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyRegx.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyFile.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyTable.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyImgs.js"></script>	
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem.js"></script>
+		<script src="https://nkg26.github.io/NE/resources/js/cls-MyItem2.js"></script>
+			
+		
+		
+		<script>
+
+	//	function openPage(val){alert('currently no page exist..'+val);};
+
+		function _start_this(){
+			ITEMS.cat_btn_cls_selected   = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-amber-500 text-white whitespace-nowrap";
+			ITEMS.cat_btn_cls_unselected = "cat-btn px-4 py-2 rounded-lg text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 whitespace-nowrap";
+			ITEMS.cat_btn_cls = "cat-btn";
+			init_item_data(); // initialize items...
+			
+			let CATs = ITEMS.getUniqueCategory(ITEMS.ALL_ITEMS);		
+			document.getElementById("search-category").innerHTML = ITEMS.generateHtmlButtons_Category(CATs);
+			ITEMS.setCategory(null);
+		}
+					
+		function _to_item_map_list(data){
+			var indx = ITEMS.FX_TABLE.findHeaderIndex(data,"n-category");
+			if(indx >=0) data[0][indx] = "category";
+			return (ITEMS.FX_TABLE.toKeyMapObjectList(data));
+		}
+			
+		function init_item_data(){
+			var P1 = _to_item_map_list(items_table_ifb);
+			var P2 = _to_item_map_list(items_table_mix);
+			var P3 = _to_item_map_list(items_table_other);
+			
+			P1 = P1.concat(P2).concat(P3);
+			var MRP = _to_item_map_list(items_tabl_price);
+			
+			ITEMS.FX_TABLE.merge_KeyMapObjects(P1, MRP, 'nsap');
+
+			ITEMS.ALL_ITEMS = P1;
 		}
 
-	
-	function show_filtered_products() {
-	  //console.log(" >> show_filtered_products() is not implemented... show_item_style-00.js");
-		var box = document.getElementById('searchInput');
-		if(box !== null){
-			var text = box.value.toLowerCase();
-			if(text === FILTER_TEXT){
-			console.log(" skpil due to same text--- "+text);
-				return;
-			}
-			FILTER_TEXT = text;
-			render_and_show_items();
-		} else 
-			console.log(" no input search box found having id 'searchInput'.");
-	}
-
-
-
-
-		
-	// Delimiter पहचानने का सरल तरीका (class wala abhi kaam nahi kar rha hai)
-	function detectDelimiter(firstLine) {
-		  // पहले टैब (	) चेक करो, फिर कॉमा, फिर पाइप (|)
-		  if (firstLine.includes('	')) return '	';
-		  if (firstLine.includes('|')) return '|';
-		  return ','; // डिफ़ॉल्ट कॉमा
-	}
-				
-
-
-	function filter_by_text(itemList, text) {
-		return itemList.filter(p => {
-			return (p.name.toLowerCase().includes(text) || p.category.toLowerCase().includes(text));
-		});
-	}
-	
-	function filter_by_regx(itemList, regx) {
-		return itemList.filter(p => {return (regx.test(p.name) || regx.test(p.category));});
-	}
-	
-	function filterItems_byText(itemList, searchVal) {
-		if(searchVal === null || searchVal === '' || itemList === null) itemList;
-		searchVal = searchVal.toLowerCase().trim();
-		console.log(" ================== ");
-		console.log("A = "+searchVal);
-		
-		var rx = FX_REGX.toRegxAuto(searchVal);
-		if(rx !== null){
-			return filter_by_regx(itemList, new RegExp(rx,'i') );
+		function setCategory(cat){
+			ITEMS.setCategory(cat);
 		}
-		var nx = FX_REGX.toNormalAuto(searchVal);
-		if(nx !== null){
-			return filter_by_text(itemList, nx);
+		
+		function show_filtered_products(){
+			ITEMS.update_textFilter();
 		}
-		return filter_by_text(itemList, searchVal);			
-	}
-	
-	function generate_all_items_HTML_VIEW(filtered) {
-		document.getElementById('message').innerHTML = "";
-		if(filtered === null) 	return "<div> null data lisr....</div>";
-		if(filtered.length === 0) return "<div>No appliances found matching your criteria.</div>";
 		
-		document.getElementById('message').innerHTML = " > > " + filtered.length + " items found.";
+		class MyItem_Table extends MyItem2{
+		
+			generate_all_items_HTML_VIEW(itemList) {
+				let html = `
+						<style>
+								table.simple_table{min-width:1000px;  border:1px solid seagreen;}
+								.simple_table td {border:1px solid gray; padding: 3px 5px;}
+								.simple_table th {border:1px solid gray; background-color:cyan;}
+						</style>
+				`;
+				html +="<table cellspacing=0 border=true class='simple_table' id='simple_table'>";
+				html +="<thead><tr><th>Cat</th><th>Cap</th><th>Name</th><th>MRP</th><th>DP</th><th>Color</th></tr></thead>";
 				
-		var mydata = ""+css;			
-		mydata += '<div class="items-div"><table border=true cellspacing=0 class="items_table" > <thead>';
-		
-		mydata += "<tr>";
-		for(var i=0; i<H.length; i++)	mydata += "<th>"+H[i]+"</th>";
-		mydata += "</tr> </thead> <tbody>";
-		
-		var cnt = 0;
-		filtered.forEach(p => {
-			var row = '';
-			for(var i=0; i<H.length; i++)	row += "<td class='col"+i+"'>"+p[H[i]]+"</td>";
-			mydata += "<tr>"+row+"</tr>"; 
-		});
-
-		mydata += '</tbody></table> </div>';
-		return mydata;
-	}
-	
-	
-	
-	function generate_all_items_HTML_VIEW_old(filtered) {
-		document.getElementById('message').innerHTML = "";
-		if(filtered === null) 	return "<div> null data lisr....</div>";
-		if(filtered.length === 0) return "<div>No appliances found matching your criteria.</div>";
-		
-		document.getElementById('message').innerHTML = " > > " + filtered.length + " items found.";
+				html +="<tbody>";
 				
-		var mydata = ""+css;			
-		mydata += `
-			<div class="items-div">
-			<table border=true cellspacing=0 class="items_table" > <thead>
-			<tr> <th>#</th> <th>Brand</th> <th>Cat</th> <th>Size/Cap</th> <th>Name</th> <th>Color</th> <th>MRP</th> <th>Offer-Price</th> <th>Advance</th> </tr>
-			</thead> <tbody>
-		`;
+				for(let r=0; r<itemList.length; r++){
+					let p = itemList[r];
+				  html += `<tr> <td>${this.getItemCategory(p)} </td><td>${p.capacity} </td><td>${p.name} </td><td>₹ ${this.safeLocaleString(p.mrp)} </td><td>₹ ${this.safeLocaleString(p.dp)}</td><td>${p.color} </td></tr>`;
+				}
+					
+				html +="<tbody>";
+				html +="</table>";
+				return html;
+			}
+		}
+		const ITEMS = new MyItem_Table();
+		_start_this();
+		</script>
 		
-		// ₹
-		var cnt = 0;
-		filtered.forEach(p => {
-			mydata += `<tr> 
-			<td class='col0'>${++cnt}</td>
-			<td class='col1'>${safeVal(p.brand)}</td>
-			<td class='col1'>${safeVal(p.category)}</td>
-			<td class='col2'>${safeVal(p.capacity)}</td>
-			<td class='col3'>${safeVal(p.name)}</td>
-			<td class='col4'>${safeVal(p.color)}</td>
-			<td class='col5'>${safeLocaleString(p.mrp)}</td>
-			<td class='col6'>${safeLocaleString(p.offerPrice)}</td>
-			<td class='col7'>${safeLocaleString(p.advance)}</td>
-			</tr>`;
-		});
-
-		mydata += `</tbody></table> </div>`;
-		return mydata;
-	}
-	
-			var css = `<style> 
-			div.items-div table.items_table td{
-				border:1px solid gray; padding:3px;
-			}
-			tbody tr:nth-child(odd) { background-color: #fff2f25; }
-			tbody tr:nth-child(even) { background-color: #fff7; }
-			div.items-div table.items_table thead tr th{
-				  position: sticky;   top: 0; background:pink;			padding:3px;
-			}
-			div.items-div{
-				max-height: 85vh; /* viewport ki height ka 50% */ 
-				overflow:auto; border:1px solid seagreen;
-			}</style>	`;
-
-
-
-
-	</script>
-
-
-  
-</body>
-</html>
+		<div style="font-size:6px;">NE> 2K6 >all-products</div>
+	</body></html>
