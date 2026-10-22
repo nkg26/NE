@@ -57,25 +57,21 @@
         <option value="https://nkg26.github.io/NE/res/txt/prch.txt">Purchase</option>
         <option value="https://nkg26.github.io/NE/res/lists/items-name-ifb.txt">IFB Names</option>
         <option value="https://nkg26.github.io/NE/res/ifb/tieup/ref26.webp">ref tie-up</option>
-
-		
-
-		
-
     </select>
     <button onclick="goToPage()">Go</button>
 	
 	<script>
+	const RN = Math.floor(Math.random()*10000);
+	const Append_RN_TXT '?rnd='+RN;
+
+		
 	function goToPage() {
             const dropdown = document.getElementById("pageDropdown");
             const selectedValue = dropdown.value;
             if (selectedValue) {
                 //window.location.href = selectedValue; // Opens the link in the same tab
                 // window.open(selectedValue, '_blank'); // Use this instead if you want to open in a new tab:
-				
-				MY_ITEM.loadAndShowFileData(selectedValue);
-				
-				
+				MY_ITEM.loadAndShowFileData(selectedValue+Append_RN_TXT);
             } else {
                 alert("Please select a valid option first!");
             }
