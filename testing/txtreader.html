@@ -50,24 +50,15 @@
     </style>
 	 
 
-    <div id="header">Dynamic Text File Reading &nbsp; &nbsp; &nbsp; <a href="#"> REFRESH </a></div>
-    
+    <div id="header">Dynamic Text File Reading </div>
 	<select id="pageDropdown">
-        <option value="https://nkg26.github.io/NE//res/ifb/2611.dll">NE + IFB</option>
-
-        <option value="https://nkg26.github.io/NE//res/lists/temp-261024.tmp">card off</option>
-        <option value="https://nkg26.github.io/NE//res/ifb/features-wm-fl.tmp">Features - WM - FL</option>
-        <option value="https://nkg26.github.io/NE//res/ifb/features-wm-tl.tmp">Features - WM - TL</option>
-
-		
-		
+        <option value="https://nkg26.github.io/NE/res/ifb/2611.dll">NE + IFB</option>
+        <option value="https://nkg26.github.io/NE/res/lists/temp-261024.tmp">card off</option>
+        <option value="https://nkg26.github.io/NE/res/ifb/features-wm-fl.tmp">Features - WM - FL</option>
+        <option value="https://nkg26.github.io/NE/res/ifb/features-wm-tl.tmp">Features - WM - TL</option>
         <option value="https://nkg26.github.io/NE/res/txt/prch.txt">Purchase</option>
         <option value="https://nkg26.github.io/NE/res/lists/items-name-ifb.txt">IFB Names</option>
         <option value="https://nkg26.github.io/NE/res/ifb/tieup/ref26.webp">ref tie-up</option>
-
-
-
-		
     </select>
     <button onclick="goToPage()">Go</button>
 
@@ -98,7 +89,6 @@
 	<script>
 	const RN = Math.floor(Math.random()*10000);
 	const Append_RN_TXT = '?rnd='+RN;
-
 		
 	function goToPage() {
             const dropdown = document.getElementById("pageDropdown");
@@ -122,6 +112,12 @@
 			// Default size store karne ke liye variable
 			const DEFAULT_SIZE = 16;
 			let currentSize = DEFAULT_SIZE;
+			
+			function resetFontSize() {
+				const table = document.getElementById("productGrid");
+				currentSize = DEFAULT_SIZE;
+				table.style.fontSize = DEFAULT_SIZE + "px";
+			}
 
 			function changeFontSize(action) {
 				// 1. Table element ko select kiya
@@ -131,18 +127,13 @@
 				currentSize += action;
 
 				// Safe Limits: Font ko bohot chhota (10px) ya bohot bada (30px) hone se rokne ke liye
-				if (currentSize < 8) currentSize = 8;
+				if (currentSize < 4) currentSize = 4;
 				if (currentSize > 30) currentSize = 30;
 
 				// 3. Style apply kiya ('px' ke sath)
 				table.style.fontSize = currentSize + "px";
 			}
 
-			function resetFontSize() {
-				const table = document.getElementById("productGrid");
-				currentSize = DEFAULT_SIZE;
-				table.style.fontSize = DEFAULT_SIZE + "px";
-			}
 		</script>
     </div>
 	
