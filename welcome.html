@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नितिन एंटरप्राइज - दीपावली एवं शादी स्पेशल ऑफर</title>
+    <style>
+        /* CSS Reset & General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcf8f2;
+            color: #333333;
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        /* Container Card */
+        .card {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            border: 2px solid #d4af37;
+            overflow: hidden;
+        }
+
+        /* Banner Header */
+        .header {
+            background: linear-gradient(135deg, #8b0000 0%, #b30000 50%, #8b0000 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 4px solid #d4af37;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .header p.slogan {
+            font-size: 18px;
+            font-style: italic;
+            color: #fff8dc;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px dashed #ffd700;
+        }
+
+        /* Content Body */
+        .content {
+            padding: 30px 25px;
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8b0000;
+            margin-bottom: 15px;
+        }
+
+        .sub-header {
+            background-color: #fff9e6;
+            border-left: 5px solid #d4af37;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            font-size: 17px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-firm {
+            color: #b30000;
+            font-weight: bold;
+        }
+
+        /* Seth / Trust Box */
+        .trust-box {
+            background: #fff0f0;
+            border: 1px solid #ffcccc;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .trust-box h3 {
+            color: #8b0000;
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-box p {
+            font-size: 15px;
+            color: #444;
+        }
+
+        /* Features List */
+        .features-title {
+            font-size: 19px;
+            color: #8b0000;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .features-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .features-list li strong {
+            color: #111;
+        }
+
+        /* Call to Action Box */
+        .cta-text {
+            text-align: center;
+            font-size: 17px;
+            font-weight: bold;
+            color: #8b0000;
+            margin: 25px 0 15px 0;
+            background: #eef9ff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px dashed #007bb5;
+        }
+
+        /* Contact Details */
+        .contact-info {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info strong {
+            color: #333;
+        }
+
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer & Buttons */
+        .footer {
+            text-align: center;
+            padding: 25px 20px;
+            background-color: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        .shop-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8b0000;
+            margin-bottom: 20px;
+        }
+
+        /* Target Page / Next Button */
+        .btn-next {
+            display: inline-block;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .header p.slogan {
+                font-size: 15px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .btn-next {
+                width: 100%;
+                padding: 14px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Header Banner -->
+        <div class="header">
+            <h1>✨ दीपावली एवं शादी स्पेशल धमाकेदार ऑफर! ✨</h1>
+            <p class="slogan">“इस दिवाली खुशियों के दिए जलाएं, और नितिन एंटरप्राइज के साथ अपने हर त्योहार को खास बनाएं!” 🪔💥</p>
+        </div>
+
+        <!-- Content Body -->
+        <div class="content">
+            <div class="greeting">नमस्कार दोस्तों! 🙏</div>
+
+            <div class="sub-header">
+                आपकी अपनी पुरानी और भरोसेमंद दुकान <span class="highlight-firm">"गर्ग बैटरी झोझू वाले"</span> (बैटरी एवं सोलर सिस्टम) का नया उपक्रम — <strong>नितिन एंटरप्राइज</strong> में आपका हार्दिक स्वागत है! ⚡
+            </div>
+
+            <!-- Trust / Baniya Seth Commitment Box -->
+            <div class="trust-box">
+                <h3>🤝 सेठ/बनिया का पक्का वादा</h3>
+                <p>एक बनिया/सेठ का व्यापार सिर्फ सामान बेचना नहीं, बल्कि पीढ़ी-दर-पीढ़ी विश्वास और जिम्मेदारी निभाना होता है! जैसा कि आप सब जानते हैं, एक आम दुकानदार और बनिया/सेठ दुकानदार में यही फर्क होता है—बनिया का दिया हुआ हर एक शब्द पत्थर की लकीर होता है और हम <strong>"हरज़-मर्ज़"</strong> (हर तरह की जिम्मेदारी और आफ्टर-सेल सर्विस) में हमेशा आपके साथ खड़े मिलते हैं।</p>
+            </div>
+
+            <p style="font-size: 16px; margin-bottom: 15px;">
+                आपके उसी पुराने और पक्के विश्वास को आगे बढ़ाते हुए, अब हम <strong>नितिन एंटरप्राइज</strong> के रूप में आपके लिए लेकर आए हैं <strong>इलेक्ट्रॉनिक्स, होम एप्लायंसेज और शादी-सावा का संपूर्ण सामान!</strong> अब अपने घर को दें एक नया और शानदार रूप—
+            </p>
+
+            <!-- Features List -->
+            <div class="features-title">🛍️ हमारी खास विशेषताएं:</div>
+            <ul class="features-list">
+                <li><strong>वर्षों पुराना विश्वास:</strong> वही पुराना "गर्ग बैटरी झोझू वाले" का अटूट भरोसा, जो हरज़-मर्ज़ में आपके साथ है।</li>
+                <li><strong>नया स्टोर, संपूर्ण सामान:</strong> बैटरी-सोलर के साथ-साथ अब इलेक्ट्रॉनिक्स व होम एप्लायंसेज का पूरा बेहतरीन कलेक्शन।</li>
+                <li><strong>100% ब्रांडेड और बेस्ट क्वालिटी:</strong> जो चले सालों-साल बिना किसी परेशानी के।</li>
+                <li><strong>किफायती और सही दाम:</strong> सेठ-बनिया वाला उचित दाम, जो हर बजट के लिए बिल्कुल सही हो।</li>
+                <li><strong>शादी व सावा की खरीदारी:</strong> एक ही छत के नीचे सब कुछ उपलब्ध।</li>
+            </ul>
+
+            <!-- Call To Action -->
+            <div class="cta-text">
+                इस दिवाली और शादी के सीजन में, बाजार जाने से पहले एक बार नितिन एंटरप्राइज (गर्ग बैटरी झोझू वाले) पर जरूर पधारें और बनिया/सेठ वाले विश्वास के साथ बेहतरीन ऑफर्स का लाभ उठाएं!
+            </div>
+
+            <!-- Address and Contact Details -->
+            <div class="contact-info">
+                <p>📍 <strong>पता (Address):</strong> क्रांतिकारी चौक के पास, नज़दीक ग्रामीण बैंक, दादरी रोड, बाढड़ा</p>
+                <p>📞 <strong>संपर्क करें (Contact No.):</strong> <a href="tel:7056715458">7056715458</a></p>
+                <p>🌐 <strong>वेबसाइट:</strong> <a href="consumer.html" target0="_blank">Next Page</a></p>
+            </div>
+        </div>
+
+        <!-- Footer with Target Page Link Button -->
+        <div class="footer">
+            <div class="shop-name">
+                आपका अपना विश्वसनीय प्रतिष्ठान — नितिन एंटरप्राइज (गर्ग बैटरी झोझू वाले) 🙏
+            </div>
+            
+            <!-- Target Page / Next Page Link Button -->
+            <a href="consumer.html" class="btn-next">
+                🛒 मुख्य ऑनलाइन स्टोर पर जाएं (Next Page) &rarr;
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
