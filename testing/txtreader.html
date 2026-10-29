@@ -163,7 +163,8 @@
 			analyzeData(RAW_DATA){
 				this.table_data = this.FX_TABLE.splitToTable(RAW_DATA);
 				try{
-					showFinalData(this.getTabularData());
+					//showFinalData(this.getTabularData()); comment 
+					show_filtered_products();
 				}catch{
 					console.log(' showFinalData(this.getTabularData()); is either not implemented or any other reasion..');
 				}
