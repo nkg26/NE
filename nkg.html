@@ -24,7 +24,7 @@
     .mobile-header {
       background: #4f46e5;
       color: white;
-      padding: 12px 15px;
+      _padding: 12px 15px;
       align-items: center;
       justify-content: space-between;
     }
@@ -32,7 +32,7 @@
     .mobile-header button {
       background: rgba(255, 255, 255, 0.2);
       border: none;
-      color: white;
+      color: red;
       padding: 8px 14px;
       font-size: 16px;
       border-radius: 6px;
@@ -85,24 +85,25 @@
 <body>
 <style>.main-content{border:0px solid red; max-height:100vh; overflow:auto;}</style>
 <style>
+
 	div#main-links a{
 			display: inline-block; padding:5px; margin:4px 10px; border-radius:8px; color:black; width:200px;
 				text-align:center; font-size:1.3em; color:black;
-			background:linear-gradient(90deg,rgba(207, 62, 14, 0.8) 0%, rgba(20, 9, 121, 0.4) 50%, rgba(27, 194, 194, 0.8) 100%);}
+			background-color:pink;
+		}
 			
 	div#main-links a:hover{background-color:black; color:white;}
 	
 
-	#cust-link{
-						text-align:center; 	font-size:1.3em; 	padding: 2px 15px; margin:2px 5px; 
-						border:2px solid blue; 	border-radius:15px; 
+	#cust-link, .link2{
+		text-align:center; 	font-size:1.3em; 	padding: 2px 15px; margin:2px 5px; 
+		border:2px solid blue; 	border-radius:15px; 
 	}
-	#cust-link:hover{ background-color:cyan; }
+	#cust-link:hover, .link2:hover{ background-color:cyan; }
 </style>
-<style>body{background:radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%); }</style>
-<style>.mobile-header{background:linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%); }</style>
 <style>.mobile-header{background:none; }</style>
-<style>.mobile-header{background-color:seagreen; }</style>
+<style>.mobile-header{background-color:pink; }</style>
+<style>body{background:none; background-color:gray; }</style>
 
   <div class="main-wrapper">
     <!-- Mobile Header Bar -->
@@ -111,7 +112,7 @@
       <button id="b2" onclick="showFrame()">☰ F </button>
 	  <a href="nkg.html"> <span style="font-weight: bold;"> &nbsp; NK &nbsp; </span> </a>
       <span id='cust-link'></span>
-	  <a href="https://nkg26.github.io/ifb/see.html"> IFB </a>
+	  <a class="link2" href="https://nkg26.github.io/ifb/see.html"> IFB </a>
     </div>
 
   <div id="asd"></div>
@@ -155,7 +156,7 @@ const RN = Math.floor(Math.random()*10000);
 for(let i=0; i<TAB.length; i++) if(TAB[i] && TAB[i].url && TAB[i].url.length>10)	TAB[i].url += '?rnd='+RN;
 	  
   var p = getObjectById('cust');
-  document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> Customer </a>`:"";
+  document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> cust </a>`:"";
 	  
   function showLinks(){
 	  document.getElementById("b2").style.display='inline';
