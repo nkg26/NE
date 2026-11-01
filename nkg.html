@@ -80,6 +80,13 @@
         height: calc(100vh - 50px);
       }
     }
+	
+	/* Chrome, Safari, aur New Edge ke liye */
+	::-webkit-scrollbar {
+		width: 5px;  /* Vertical scrollbar ki चौड़ाई (width) */
+		height: 5px; /* Horizontal scrollbar ki ऊँचाई (height) */
+	}
+
 
 	.main-content{border:0px solid red; max-height:100vh; overflow:auto;}
 	
@@ -91,9 +98,15 @@
 			padding:5px; 
 			margin:4px 10px; 
 			border-radius:8px; 
-			min-width:180px;
-			width:40vw;
-			font-size:1.3em; 
+			white-space: nowrap;
+			
+			overflow:auto;
+			scrollbar-width: thin; /* Options: auto | thin | none */
+			
+			
+			min-width:170px;
+			max-width:30vw;
+			font-size:1.0em; 
 			
 			color:black;
 			background-color:pink;
@@ -198,7 +211,7 @@ const RN_KEY = 'rnd='+Math.floor(Math.random()*10000);
   
   var html = '';
   for(let i=0;i<TAB.length;i++){
-	  html += `<a href="javascript:void(0);" onclick='openX(${i})'> ${i+1}. &nbsp;  ${TAB[i].name} </a>`;
+	  html += `<a href="javascript:void(0);" onclick='openX(${i})'> ${i+1}. ${TAB[i].name} </a>`;
   }
   document.getElementById("main-links").innerHTML = html;
   showLinksPane();
