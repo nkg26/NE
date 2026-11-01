@@ -33,7 +33,7 @@
       background: rgba(255, 255, 255, 0.2);
       border: none;
       color: red;
-      padding: 8px 14px;
+      padding: 2px 5px;
       font-size: 16px;
       border-radius: 6px;
       cursor: pointer;
@@ -80,39 +80,48 @@
         height: calc(100vh - 50px);
       }
     }
-  </style>
-</head>
-<body>
-<style>.main-content{border:0px solid red; max-height:100vh; overflow:auto;}</style>
-<style>
+
+	.main-content{border:0px solid red; max-height:100vh; overflow:auto;}
+	
+	a				{text-decoration: none; text-align:left; color:seagreen;}
+	a:hover	{background-color:black; color:white;}
 
 	div#main-links a{
-			display: inline-block; padding:5px; margin:4px 10px; border-radius:8px; color:black; width:200px;
-				text-align:center; font-size:1.3em; color:black;
+			display: inline-block; 
+			padding:5px; 
+			margin:4px 10px; 
+			border-radius:8px; 
+			min-width:180px;
+			width:40vw;
+			font-size:1.3em; 
+			
+			color:black;
 			background-color:pink;
 		}
-			
-	div#main-links a:hover{background-color:black; color:white;}
+		
+	.if{color:#222222; padding:2px 6px; font-size:0.8em; border-radius:5px; vertical-align:center;}
+	.if:hover{ background-color:cyan; }
 	
+	.link2{ text-align:center; font-size:0.8em; border:1px solid red; padding:3px 6px; border-radius:5px; }
+	.link2:hover{ background-color:cyan; border:1px solid blue; }
+	
+	.mobile-header button:hover{ background-color:cyan; }
+	.mobile-header{background-color:pink; }
+	body{background:none; background-color:gray; }
+	
+	</style>
+</head>
 
-	#cust-link, .link2{
-		text-align:center; 	font-size:1.3em; 	padding: 2px 15px; margin:2px 5px; 
-		border:2px solid blue; 	border-radius:15px; 
-	}
-	#cust-link:hover, .link2:hover{ background-color:cyan; }
-</style>
-<style>.mobile-header{background:none; }</style>
-<style>.mobile-header{background-color:pink; }</style>
-<style>body{background:none; background-color:gray; }</style>
+<body>
 
   <div class="main-wrapper">
     <!-- Mobile Header Bar -->
     <div class="mobile-header">
-      <button id="b1" onclick="showLinks()">☰ L </button>
-      <button id="b2" onclick="showFrame()">☰ F </button>
-	  <a href="nkg.html"> <span style="font-weight: bold;"> &nbsp; NK &nbsp; </span> </a>
-      <span id='cust-link'></span>
-	  <a class="link2" href="https://nkg26.github.io/ifb/see.html"> IFB </a>
+      <button id="b1" onclick="showLinksPane()">☰ L </button>
+      <button id="b2" onclick="showFramePane()">☰ F </button>
+	  <a class="link2" id="reload">NK</a>
+	  <a class="link2" id="ifb"> IFB </a>
+	  <div class="if"> <input checked type="checkbox" id="cb1"> <label for="cb1"> iFrame</label> </div>
     </div>
 
   <div id="asd"></div>
@@ -123,111 +132,76 @@
   </div>
 
   <script>
-	
+//		window.location.href = "https://example.com"; // open in same tab...
+//		window.open("https://example.com", "_blank"); // open in new tab
+
+	  document.getElementById("reload").href = window.location.href;
+	  document.getElementById("ifb").href = "https://nkg26.github.io/ifb/see.html";
+
   var UrlKeyMap;
-  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search); load_final_page()});
+  window.addEventListener('DOMContentLoaded', () => {UrlKeyMap = new URLSearchParams(window.location.search);});
   
   // menu links and all...
-  var TAB = [
-	{id:"", url:"https://nkg26.github.io/NE", name:"Home", inMenu:true},
-
-	{id:"", url:"https://nkg26.github.io/NE/testing/txtreader.html", name:"Dynamic File", inMenu:true},
-	  
-	{id:"", url:"https://nkg26.github.io/NE/shop/nepvt-products-table.html", name:"pvt-tab", inMenu:true},
-	{id:"all-items", url:"https://nkg26.github.io/NE/2K6/all-products.html", name:"All Products - Card", inMenu:true},
-	{id:"all-items", url:"https://nkg26.github.io/NE/2K6/all-products-table.html", name:"AllProduct - Table", inMenu:true},
-	{name:"%separator%", inMenu:true},
-	
-	{id:"all-items", url:"https://nkg26.github.io/NE/resources/pvt-all-qr.html", name:"Payment QR", inMenu:true},
-	{name:"%separator%", inMenu:true},
-
-	  {id:"cust", url:"https://nkg26.github.io/NE/consumer.html", name:"Customer", inMenu:true},
-	{name:"%separator%", inMenu:true},
-
-	{id:"", url:"https://nkg26.github.io/NE/resources/bajaj-finanace.html", name:"Bajaj Finance", inMenu:true},
-
-	{id:"location-us", url:"https://nkg26.github.io/NE/resources/location-ne.html", name:"Google Location", inMenu:true},
-	{id:"conatct-us", url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us", inMenu:true},
-	{name:"%separator%", inMenu:true},
-	{id:"", url:"https://nkg26.github.io/NE/tmp/naveen.html", name:"Naveen", inMenu:true}
+  const TAB = [
+	{url:"https://nkg26.github.io/NE", name:"Home"},
+	{url:"https://nkg26.github.io/NE/consumer.html", name:"Customer"},
+	{url:"https://nkg26.github.io/NE/testing/txtreader.html", name:"Dynamic File"},
+	{url:"https://nkg26.github.io/NE/shop/nepvt-products-table.html", name:"pvt-tab"},
+	{url:"https://nkg26.github.io/NE/2K6/all-products.html", name:"All Products - Card"},
+	{url:"https://nkg26.github.io/NE/2K6/all-products-table.html", name:"AllProduct - Table"},
+	{url:"https://nkg26.github.io/NE/resources/pvt-all-qr.html", name:"Payment QR"},
+	{url:"https://nkg26.github.io/NE/resources/bajaj-finanace.html", name:"Bajaj Finance"},
+	{url:"https://nkg26.github.io/NE/resources/location-ne.html", name:"Google Location"},
+	{url:"https://nkg26.github.io/NE/resources/contact-us.html", name:"Contact Us"},
+	{url:"https://nkg26.github.io/NE/tmp/naveen.html", name:"Naveen"}
   ];
 
-const RN = Math.floor(Math.random()*10000);
-for(let i=0; i<TAB.length; i++) if(TAB[i] && TAB[i].url && TAB[i].url.length>10)	TAB[i].url += '?rnd='+RN;
-	  
-  var p = getObjectById('cust');
-  document.getElementById('cust-link').innerHTML=p?`<a href="${p.url}"> cust </a>`:"";
-	  
-  function showLinks(){
-	  document.getElementById("b2").style.display='inline';
-	  document.getElementById("b1").style.display='none';
-	  document.getElementById("center-iframe").style.display='none';
-	  document.getElementById("main-links").style.display='block';
+const RN_KEY = 'rnd='+Math.floor(Math.random()*10000);
+	  	  
+  function openX(index){
+	let p  = TAB[index];
+	let sel = document.getElementById("cb1").checked;
+	let url  = p.url;
+	
+	url += (url.includes("?")?";":"?")+RN_KEY;
+	//alert(url); return;
+
+	if(sel){
+		showFramePane();
+		document.getElementById("center-iframe").src=url;
+	}else{
+		window.location.href = url; // open in same tab...
+	}
   }
-  function showFrame(){
-	  document.getElementById("b1").style.display='inline';
-	  document.getElementById("b2").style.display='none';
-	  
-		document.getElementById("center-iframe").style.display='block';
-		document.getElementById("main-links").style.display='none';
+  
+  function showLinksPane(){
+	document.getElementById("b2").style.display='inline';
+	document.getElementById("b1").style.display='none';
+	document.getElementById("center-iframe").style.display='none';
+	document.getElementById("main-links").style.display='block';
+  }
+  function showFramePane(){
+	document.getElementById("b1").style.display='inline';
+	document.getElementById("b2").style.display='none';
+	document.getElementById("center-iframe").style.display='block';
+	document.getElementById("main-links").style.display='none';
   }
   
   
   function getObjectById(ID, start=0){
 	for(var i=(start<0?0:start); i<TAB.length; i++){
-	  var p = TAB[i];
-	  if(p!==null && p.id === ID){
-		return p;
-	  }
+	  if(TAB[i] !==null && TAB[i].id === ID) return TAB[i];
 	}
+	return null;
  }
   
-  function setIframeURLByID(ID){
-	var p = ID?getObjectById(ID):null;
-	setIframeURL(p?p.url:"");
+  
+  var html = '';
+  for(let i=0;i<TAB.length;i++){
+	  html += `<a href="javascript:void(0);" onclick='openX(${i})'> ${i+1}. &nbsp;  ${TAB[i].name} </a>`;
   }
-  function setIframeURL(URL){
-	closeSidebar();
-	document.getElementById("center-iframe").src=URL;
-	try{
-		document.getElementById("asd").innerHTML=URL;
-		//document.getElementById("asd").style.display='none';
-	}catch{}
- }
-  
-  var sidebar_menu_html = '';
-  for(var i=0;i<TAB.length;i++){
-	  var p = TAB[i];
-	  if(p.inMenu === true){
-		  if(p.name==='%separator%'){
-				//sidebar_menu_html += `<br/>`;
-			} else {
-				// below all 3 are working fine..
-				sidebar_menu_html += `<a href="${p.url}" target="center-frame" onclick="showFrame()">${p.name}</a>`;
-				// sidebar_menu_html += `<a href="?id=${p.id}" >${p.name}</a>`;
-				//sidebar_menu_html += `<a href="javascript:void(0);" onclick="setIframeURL('${p.url}')" > ${p.name}</a>`;
-				//sidebar_menu_html += `<br/>`;
-			}
-		}
-  }
+  document.getElementById("main-links").innerHTML = html;
+  showLinksPane();
   
   
-  document.getElementById("main-links").innerHTML = sidebar_menu_html;
-  showLinks();
-
-function load_final_page(){
-	var x = UrlKeyMap.get('id');
-	x = x?x:"navratre";
-	if(x){
-		var p = getObjectById(x);
-//		setIframeURL(p.url);
-	}
-}
-
-</script>
-
-
-
-</body>
-
-</html>
+</script></body></html>
