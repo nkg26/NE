@@ -192,7 +192,7 @@ for(let i=0; i<TAB.length; i++){if(TAB[i]) TAB[i]['uid'] = "link-id-"+i;}
 	let sel = document.getElementById("cb1").checked;
 	let url  = p.url;
 
-	if(p[target]==='_this') sel=false;
+	if(p['target']==='_this') sel=false;
 	
 	url += (url.includes("?")?";":"?")+RN_KEY;
 
