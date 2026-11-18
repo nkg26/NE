@@ -176,20 +176,24 @@
 	{url:"https://nkg26.github.io/ifb/res/sapcodes/sap.html", name:"AI SAP - 261111"},
 
 	{url:"https://nkg26.github.io/ifb", name:"IFB - Home"},
-	{url:"https://nkg26.github.io/ifb/see.html", name:"IFB-Dyn See 1"},
-	{url:"https://nkg26.github.io/ifb/see2.html", name:"IFB-Dyn See 2"},
-	{url:"https://nkg26.github.io/ifb/webp.html", name:"IFB-Webp"}
+	{url:"https://nkg26.github.io/ifb/see2.html", name:"IFB-Dyn See 2", target:"_this"},
+	{url:"https://nkg26.github.io/ifb/webp.html", name:"IFB-Webp", target:"_this"},
+
+	{url:"https://docs.google.com/spreadsheets/d/12eDPew8w6gOywSvrUd6RPuxP_vg7c-wRLrKHVPX5u78", name:"Google-IMG Pruchase", target:"_this"}
   ];
 
 const RN_KEY = 'rnd='+Math.floor(Math.random()*10000);
-	  	  
+
+for(let i=0; i<TAB.length; i++){if(TAB[i]) TAB[i]['uid'] = "link-id-"+i;}
+	  
   function openX(index){
 	let p  = TAB[index];
 	let sel = document.getElementById("cb1").checked;
 	let url  = p.url;
+
+	if(p[target]==='_this') sel=false;
 	
 	url += (url.includes("?")?";":"?")+RN_KEY;
-	//alert(url); return;
 
 	if(sel){
 		showFramePane();
