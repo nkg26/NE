@@ -137,7 +137,8 @@
       <button id="b2" onclick="showFramePane()">☰ F </button>
 	  <a class="link2" id="reload">NK</a>
 	  <a class="link2" id="ifb"> IFB </a>
-	  <div class="if"> <input type="checkbox" id="cb1"> <label for="cb1"> iFrame</label> </div>
+	  <div class="if"> <label> <input type="checkbox" id="cb1"> iFrame</label> </div>
+	  <div class="if"> <label> <input type="checkbox" id="cb2"> Random ID</label> </div>
     </div>
 
   <div id="asd"></div>
@@ -193,7 +194,8 @@ for(let i=0; i<TAB.length; i++){if(TAB[i]) TAB[i]['uid'] = "link-id-"+i;}
 
 	if(p['target']==='_this') sel=false;
 	
-	url += (url.includes("?")?";":"?")+RN_KEY;
+	if(document.getElementById("cb2").checked)
+		url += (url.includes("?")?";":"?")+RN_KEY;
 
 	if(sel){
 		showFramePane();
