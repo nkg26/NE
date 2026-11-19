@@ -88,8 +88,8 @@ class NE{
 			script.src = scriptPath; //'https://example.com';
 			script.type = 'text/javascript';
 			script.async = true; // Page loading block na ho isliye async true rakhein
-			script.onload = function() { console.log('Script successfully load ho gayi!');};
-			script.onerror = function() {console.error('Script load hone me error aaya.');};
+			script.onload = function() { console.log('Script successfully load ho gayi! '+scriptPath);};
+			script.onerror = function() {console.error('Script load hone me error aaya. '+scriptPath);};
 			document.head.appendChild(script);
 		}
 	}
