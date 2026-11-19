@@ -14,14 +14,43 @@ class NE{
 		var gmap_ne_ifb="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.885322660781!2d75.94255987546455!3d28.513097775730152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3912f10f5c811001%3A0x8e2642e1e77c753b!2sIFB%20Point%20-%20Krantikari%20Chowk%2C%20Badhra!5e0!3m2!1sen!2sin!4v1791430886611!5m2!1sen!2sin";
 		
 		
-		ObjMap['gmap_ne'] = gmap_ne;
-		ObjMap['gmap_ne_ifb'] = gmap_ne_ifb;
+		this.ObjMap['gmap_ne'] = gmap_ne;
+		this.ObjMap['gmap_ne_ifb'] = gmap_ne_ifb;
 		
 		
-		ObjMap['header.html'] = this.root+("/resources/header.html"); 
-		ObjMap['footer.html'] = this.root+("/resources/footer.html"); 
-		ObjMap['location.html'] = this.root+("/resources/location-ne.html"); 
-		ObjMap['finance.html'] = this.root+("/resources/bajaj-finance.html"); 
+		this.ObjMap['welcome-page'] = this.root+("welcome.html"); 
+		this.ObjMap['header.html'] = this.root+("/resources/header.html"); 
+		this.ObjMap['footer.html'] = this.root+("/resources/footer.html"); 
+		this.ObjMap['location.html'] = this.root+("/resources/location-ne.html"); 
+		this.ObjMap['finance.html'] = this.root+("/resources/bajaj-finance.html"); 
+		this.ObjMap['contact.html'] = this.root+("/resources/contact-us.html"); 
+
+		this.ObjMap['payment-qr'] = [
+			{name:'ne-amazon', path:'/resources/qrs/ne-amazon.webp'},
+			{name:'ne-hdfc-phonePe', path:'/resources/qrs/ne-hdfc-phonepe.webp'},
+			{name:'raj-hdfc-phonePe', path:'/resources/qrs/rajesh-hdfc-phonepe.webp'},
+			{name:'usha-hdfc-phonePe', path:'/resources/qrs/usha-hdfc-phonepe.webp'},
+		]; 
+		
+		this.ObjMap['qr-oth'] = [
+			{name:'ne-bajaj-finance', path:'/resources/qrs/ne-qr-bajaj-finance.webp'},
+		]; 
+		
+		let root = this.root;
+		this.ObjMap['script-paths'] = [
+		{name:'default', path: root+ "/resources/default.js"},
+		{name:'redirect', path: root+ "/resources/redirect.js"},
+		{name:'', path: root+ "/2K6/js/fx-items.js"},	
+		{name:'', path: root+ "/2K6/js/products.js"},	
+		{name:'', path: root+ "/2K6/js/show_items_style-00.js"},
+		{name:'', path: root+ "/brands/tab-items-fx.js"},	
+		{name:'', path: root+ "/brands/items_ifb.js"},	
+		{name:'', path: root+ "/brands/items_mix.js"},	
+		{name:'', path: root+ "/brands/items_oth.js"},	
+		{name:'', path: root+ "/brands/itm-prs.js"}	
+	  ];
+ 
+		
 	}
 	
 	getUrlValue(KEY){
@@ -33,6 +62,9 @@ class NE{
 		return KEY;
 	}
 	
+	putValue(KEY, VALUE){
+		this.ObjMap[KEY] = VALUE;
+	}
 	getValue(KEY){
 		return this.ObjMap[KEY];
 	}
@@ -45,41 +77,39 @@ class NE{
 		return Object.keys(pList);
 	}
 	
+	/* load single script in document...*/
+	loadScript(scriptPath){
+		if(scriptPath && scriptPath !== ''){
+			const script = document.createElement('script');
+			script.src = scriptPath; //'https://example.com';
+			script.type = 'text/javascript';
+			script.async = true; // Page loading block na ho isliye async true rakhein
+			script.onload = function() { console.log('Script successfully load ho gayi!');};
+			script.onerror = function() {console.error('Script load hone me error aaya.');};
+			document.head.appendChild(script);
+		}
+	}
+	
 	/* load multiple scripts in document...*/
 	loadScripts(list){
-		if(list){
-			for(let 1=0; i<list.length; i++){
-				if(list[i] && list[i] !== ''){
-					const script = document.createElement('script');
-					script.src = list[i]; //'https://example.com';
-					script.type = 'text/javascript';
-					script.async = true; // Page loading block na ho isliye async true rakhein
-	//				script.onload = function() { console.log('Script successfully load ho gayi!');};
-	//				script.onerror = function() {console.error('Script load hone me error aaya.');};
-					document.head.appendChild(script);
-				}
-			}
-		}
+		if(list) for(let 1=0; i<list.length; i++) this.loadScript(list[i]);
+		//if(list) list.forEach() this.loadScript(list[i]);
 	}
 
 	loadDefaultScripts(){
-	  var root = "https://nkg26.github.io/NE";
-	  let list = [
-		root+ "/resources/default.js",
-		root+ "/resources/redirect.js",
-		root+ "/2K6/js/fx-items.js",	
-		root+ "/2K6/js/products.js",	
-		root+ "/2K6/js/show_items_style-00.js",
-		root+ "/brands/tab-items-fx.js",	
-		root+ "/brands/items_ifb.js",	
-		root+ "/brands/items_mix.js",	
-		root+ "/brands/items_oth.js",	
-		root+ "/brands/itm-prs.js"	
-	  ];
-	  this.loadScripts(list);
-	  
+		let pList = this.getValue['script-paths'];
+		pList.forEach(item =>{ this.loadScript(item.path);});
 	}
 
+	getImgPathByP(P){
+		return null;
+	}
+
+	/* given path is extist or not*/	
+	existPath(path){
+		return null;
+	}
+	
 }
 
 
