@@ -38,16 +38,13 @@ class NE{
 		
 		let root = this.root;
 		this.ObjMap['script-paths'] = [
-		{name:'default', path: root+ '/resources/default.js'},
-		{name:'redirect', path: root+ '/resources/redirect.js'},
+		{name:'default', path: root+ '/resources/js/default.js'},
+		{name:'redirect', path: root+ '/resources/js/redirect.js'},
 		{name:'', path: root+ '/2K6/js/fx-items.js'},	
 		{name:'', path: root+ '/2K6/js/products.js'},	
 		{name:'', path: root+ '/2K6/js/show_items_style-00.js'},
-		{name:'', path: root+ '/brands/tab-items-fx.js'},	
 		{name:'', path: root+ '/brands/items_ifb.js'},	
 		{name:'', path: root+ '/brands/items_mix.js'},	
-		{name:'', path: root+ '/brands/items_oth.js'},	
-		{name:'', path: root+ '/brands/itm-prs.js'}	
 	  ];
  		
 		this.ObjMap['purch-ne'] = [
