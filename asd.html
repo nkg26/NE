@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+	<div id="asd"></div>
+	
+	<script>
+	// generate dynamic dropdown content...
+	// https://docs.google.com/spreadsheets/d/1qibIIN-O89gFzxGIqh8IlUcU3M6UFCsrhUH56BTGt_4/edit?gid=0#gid=0
+	// https://docs.google.com/spreadsheets/d/SHEET_ID/export?format=csv&gid=0
+	
+	let url = 'https://docs.google.com/spreadsheets/d/1qibIIN-O89gFzxGIqh8IlUcU3M6UFCsrhUH56BTGt_4/export?format=csv&gid=0';
+	
+	async function getData() {
+	try{
+		const res = await fetch(url);
+		let text = await res.text();
+			console.log(text);
+			document.getElementById('asd').innerHTML = text;
+		}catch(e){
+			document.getElementById('asd').innerHTML = e;
+		}
+		// Google aage-peeche extra text bhejta hai, usko hatana padta hai
+/*		text = text.substring(47).slice(0, -2);
+		const json = JSON.parse(text);
+		console.log(json.table.rows);
+*/	}
+	getData();
+	
+	</script>
+	
+
+  </script>
+	  
+</body></html>
