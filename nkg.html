@@ -180,7 +180,13 @@
 	{url:"https://nkg26.github.io/ifb/webp.html", name:"IFB-Webp", target:"_this"},
 
 	{url:"https://docs.google.com/spreadsheets/d/12eDPew8w6gOywSvrUd6RPuxP_vg7c-wRLrKHVPX5u78", name:"Google-IMG Pruchase", target:"_this"},
-	{url:"https://dealerportal.ifbsupport.com", name:"IFB Dealer Portal", target:"_this"}
+	{url:"https://dealerportal.ifbsupport.com", name:"IFB Dealer Portal", target:"_this"},
+
+
+
+
+	{url:"https://www.the-qrcode-generator.com", name:"QR Code Generator", target:"_iframe"},
+	  
   ];
 
 const RN_KEY = 'rnd='+Math.floor(Math.random()*10000);
@@ -193,6 +199,7 @@ for(let i=0; i<TAB.length; i++){if(TAB[i]) TAB[i]['uid'] = "link-id-"+i;}
 	let url  = p.url;
 
 	if(p['target']==='_this') sel=false;
+	if(p['target']==='_iframe') sel=true;
 	
 	if(document.getElementById("cb2").checked)
 		url += (url.includes("?")?";":"?")+RN_KEY;
