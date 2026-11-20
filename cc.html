@@ -1,0 +1,61 @@
+<div id='output'> </div>
+<script>
+const WA = "https://wa.me/91";
+const TEL = "tel:";
+
+let tab = [
+//	['whatsapp','tel','name'] << data format
+	['9231004321','8069545678','IFB'],
+	['','1800-889-1047','BPL'],
+	['','8448449442','Atomburg Fan'],
+	
+	['9633503333','0120-485-0100','VGuard'],
+	['9711773333','',"Havell's"],
+	['9327553767','1800-103-2676','RR'],
+	['7042833939','1800-103-3039','Luminous'],
+	['9319699755','','Smarten'],
+	['8800255733','','Microtek'],
+	['7428191002','','Livguard/Livserve'],
+];
+
+let html='<H1> Customer care / Toll free </H1>';
+	html += '<table class="customer-care" border=true>';
+	html += '<thead>';
+	html += "<tr><th>Name</th><th>What's App</th><th>Call</th></tr>";
+	html += '</thead>';
+	html += '</tbody>';
+	tab.forEach(T=> {
+		html += `<tr> `;
+		html += `<td>${T[2]}  </td> `;
+		html += (!T[0])?'<td></td>':`<td class='data'><a href="${WA}${T[0]}" >${T[0]} </a></td>`;
+		html += (!T[1])?'<td></td>':`<td class='data'><a href="${TEL}${T[1]}" >${T[1]} </a></td>`;
+		html += `</tr>`;
+	});
+	html += '</tbody>';
+	html += '</table>';
+	
+	document.getElementById('output').innerHTML = html;
+
+</script>
+
+ <style>
+ .customer-care {
+	min-width : 100%;
+ }
+ 
+ .customer-care tr,  .customer-care td,  .customer-care th{ border:1px solid transparent; }
+ .customer-care td, .customer-care th{ border-radius:5px; }
+ .customer-care thead{ background-color:gray; }
+ 
+ td.data{
+	padding: 5px 10px;
+	text-align: center;
+ }
+ 
+ td.data:hover{
+	background-color: cyan;
+	border: 1px solid red;
+	border-radius:5px;
+ }
+ 
+</style>
